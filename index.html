@@ -9,10 +9,10 @@
 /* Set theme before first paint — prevents a flash of the wrong theme */
 (function(){
   if('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  /* Every visit opens dark. No OS sniffing, no stored preference — the toggle
-     works for the duration of a visit, but the site always presents dark first.
+  /* Always default to light. The toggle changes the theme for the session
+     and the site always presents light first, regardless of OS preference.
      (Routing is hash-based, so navigating pages never resets their choice.) */
-  document.documentElement.setAttribute('data-theme', 'dark');
+  document.documentElement.setAttribute('data-theme', 'light');
   try { localStorage.removeItem('dd-theme'); } catch(e){}
 })();
 </script>
@@ -1965,7 +1965,7 @@ const LINKS = {
   phone:'+91 98484 80646',
   phoneRaw:'+919848480646',
   linkedin:'https://www.linkedin.com/in/dinesh-doddaga-579a3a19a/',
-  resume:'https://drive.google.com/file/d/1tgM7gtLJaIo2on7f_rKFm8gIBToSUx9Z/view?usp=sharing'
+  resume:'https://drive.google.com/file/d/1oYvjSNfmlQJk3kHDapukw2sHJs0bRwTK/view'
 };
 
 function Contact(){
