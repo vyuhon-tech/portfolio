@@ -1,237 +1,630 @@
 <!doctype html>
 <html lang="en" data-brand="d">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex">
-<title>Portfolio Strategy — for Dinesh</title>
-<script>document.documentElement.classList.add('js');(function(){try{var q=new URLSearchParams(location.search).get('brand'),s=sessionStorage;if(q){s.setItem('dd-brand',q);}var b=s.getItem('dd-brand');if(b)document.documentElement.dataset.brand=b;}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=33">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2055%2061%22%3E%3Crect%20width%3D%2255%22%20height%3D%2261%22%20rx%3D%2213%22%20fill%3D%22%2308080a%22/%3E%3Cpath%20d%3D%22M35.9272%2030.0833C35.9272%2030.6302%2035.8751%2031.1667%2035.7709%2031.7031C35.6615%2032.2344%2035.5053%2032.7552%2035.297%2033.2552C35.0886%2033.7604%2034.8334%2034.2396%2034.5313%2034.6875C34.2293%2035.1406%2033.8855%2035.5625%2033.5001%2035.9479C33.1147%2036.3281%2032.698%2036.6719%2032.2449%2036.974C31.7918%2037.276%2031.3178%2037.5313%2030.8126%2037.7396C30.3126%2037.9479%2029.7917%2038.1094%2029.2605%2038.2135C28.724%2038.3177%2028.1876%2038.375%2027.6407%2038.375C27.099%2038.375%2026.5574%2038.3177%2026.0261%2038.2135C25.4897%2038.1094%2024.974%2037.9479%2024.4688%2037.7396C23.9688%2037.5313%2023.4897%2037.276%2023.0365%2036.974C22.5834%2036.6719%2022.1667%2036.3281%2021.7813%2035.9479C21.3959%2035.5625%2021.0522%2035.1406%2020.7501%2034.6875C20.448%2034.2396%2020.1928%2033.7604%2019.9845%2033.2552C19.7761%2032.7552%2019.6199%2032.2344%2019.5157%2031.7031C19.4063%2031.1667%2019.3542%2030.6302%2019.3542%2030.0833C19.3542%2029.5417%2019.4063%2029.0052%2019.5157%2028.4688C19.6199%2027.9375%2019.7761%2027.4167%2019.9845%2026.9167C20.1928%2026.4115%2020.448%2025.9323%2020.7501%2025.4844C21.0522%2025.0312%2021.3959%2024.6094%2021.7813%2024.224C22.1667%2023.8438%2022.5834%2023.5%2023.0365%2023.1979C23.4897%2022.8958%2023.9688%2022.6406%2024.4688%2022.4323C24.974%2022.224%2025.4897%2022.0625%2026.0261%2021.9583C26.5574%2021.8542%2027.099%2021.7969%2027.6407%2021.7969C28.1876%2021.7969%2028.724%2021.8542%2029.2605%2021.9583C29.7917%2022.0625%2030.3126%2022.224%2030.8126%2022.4323C31.3178%2022.6406%2031.7918%2022.8958%2032.2449%2023.1979C32.698%2023.5%2033.1147%2023.8438%2033.5001%2024.224C33.8855%2024.6094%2034.2293%2025.0312%2034.5313%2025.4844C34.8334%2025.9323%2035.0886%2026.4115%2035.297%2026.9167C35.5053%2027.4167%2035.6615%2027.9375%2035.7709%2028.4688C35.8751%2029.0052%2035.9272%2029.5417%2035.9272%2030.0833Z%22%20fill%3D%22%23f5f5f6%22/%3E%3Cpath%20d%3D%22M50.1301%2012.052L47.151%2010.3333V30.8124H47.1353C47.1093%2031.5051%2047.0468%2032.1926%2046.9478%2032.8801C46.8489%2033.5676%2046.7135%2034.2447%2046.5416%2034.9166C46.3697%2035.5885%2046.1614%2036.2447%2045.9166%2036.8958C45.677%2037.5468%2045.401%2038.1822%2045.0885%2038.802C44.7812%2039.4218%2044.4374%2040.0208%2044.0624%2040.6041C43.6874%2041.1874%2043.2864%2041.7499%2042.8489%2042.2916C42.4166%2042.828%2041.953%2043.3437%2041.4635%2043.8385C40.9791%2044.328%2040.4635%2044.7916%2039.927%2045.2291C39.3853%2045.6614%2038.828%2046.0676%2038.2447%2046.4478C37.6614%2046.8228%2037.0624%2047.1666%2036.4426%2047.4791C35.8228%2047.7916%2035.1926%2048.0728%2034.5416%2048.3176C33.8958%2048.5624%2033.2343%2048.7708%2032.5676%2048.9426C31.8958%2049.1197%2031.2187%2049.2603%2030.5312%2049.3593C29.8437%2049.4635%2029.1562%2049.5312%2028.4635%2049.5572C27.7708%2049.5885%2027.078%2049.578%2026.3905%2049.5312C25.6978%2049.4895%2025.0103%2049.4062%2024.328%2049.2916C23.6458%2049.1718%2022.9687%2049.0155%2022.302%2048.828C21.6353%2048.6353%2020.9843%2048.4114%2020.3385%2048.151C19.6978%2047.8905%2019.0728%2047.5989%2018.4583%2047.2708C17.8489%2046.9478%2017.2551%2046.5885%2016.6822%2046.1978C16.1093%2045.8072%2015.5572%2045.3905%2015.0312%2044.9374C14.5051%2044.4895%2013.9999%2044.0155%2013.5208%2043.5155C13.0468%2043.0103%2012.5937%2042.4843%2012.1718%2041.9374C11.7499%2041.3853%2011.3593%2040.8124%2010.9999%2040.2239C10.6405%2039.6301%2010.3124%2039.0208%2010.0155%2038.3958C9.71867%2037.7655%209.45825%2037.1249%209.22909%2036.4739C9.00513%2035.8176%208.81242%2035.151%208.65617%2034.4791C8.49992%2033.802%208.38013%2033.1197%208.29679%2032.4322C8.21346%2031.7447%208.16659%2031.0572%208.15617%2030.3645C8.14575%2029.6718%208.17179%2028.9791%208.23429%2028.2864C8.29679%2027.5989%208.39575%2026.9114%208.53638%2026.2343C8.67179%2025.552%208.84367%2024.8853%209.052%2024.2239C9.26034%2023.5624%209.49992%2022.9114%209.78117%2022.276C10.0572%2021.6458%2010.3645%2021.026%2010.7083%2020.4218C11.052%2019.8228%2011.427%2019.2395%2011.8333%2018.677C12.2343%2018.1145%2012.6718%2017.5728%2013.1353%2017.0572C13.5937%2016.5416%2014.0833%2016.052%2014.5989%2015.5885C15.1145%2015.1249%2015.651%2014.6874%2016.2135%2014.2812C16.776%2013.8749%2017.3541%2013.4999%2017.9583%2013.1562C18.5572%2012.8124%2019.177%2012.4999%2019.8124%2012.2239C20.4478%2011.9426%2021.0937%2011.6978%2021.7551%2011.4895C22.4166%2011.2812%2023.0833%2011.1041%2023.7655%2010.9687C24.4426%2010.828%2025.1249%2010.7291%2025.8176%2010.6614C26.5051%2010.5989%2027.1978%2010.5676%2027.8905%2010.578C28.5833%2010.5885%2029.276%2010.6301%2029.9635%2010.7135C30.651%2010.7968%2031.3333%2010.9166%2032.0103%2011.0676C32.6822%2011.2239%2033.3489%2011.4166%2034.0051%2011.6405C34.6614%2011.8645%2035.302%2012.1249%2035.927%2012.4218V3.85409L32.276%201.74471C31.5728%201.33846%2030.828%201.03117%2030.0416%200.822835C29.2551%200.609294%2028.453%200.505127%2027.6405%200.505127C26.828%200.505127%2026.026%200.609294%2025.2447%200.822835C24.4583%201.03117%2023.7135%201.33846%2023.0051%201.74471L5.15617%2012.052C4.44784%2012.4583%203.80721%2012.9478%203.23429%2013.526C2.66138%2014.0989%202.16659%2014.7395%201.76034%2015.4478C1.35409%2016.151%201.04679%2016.8958%200.833252%2017.6822C0.624919%2018.4687%200.520752%2019.2655%200.520752%2020.078V40.6926C0.520752%2041.5051%200.624919%2042.3072%200.833252%2043.0937C1.04679%2043.8801%201.35409%2044.6249%201.76034%2045.328C2.16659%2046.0312%202.66138%2046.6718%203.23429%2047.2499C3.80721%2047.8228%204.44784%2048.3124%205.15617%2048.7187L23.0051%2059.026C23.7135%2059.4322%2024.4583%2059.7447%2025.2447%2059.953C26.026%2060.1614%2026.828%2060.2708%2027.6405%2060.2708C28.453%2060.2708%2029.2551%2060.1614%2030.0416%2059.953C30.828%2059.7447%2031.5728%2059.4322%2032.276%2059.026L50.1301%2048.7187C50.8333%2048.3124%2051.4739%2047.8228%2052.0468%2047.2447C52.6249%2046.6718%2053.1145%2046.0312%2053.5208%2045.328C53.927%2044.6197%2054.2395%2043.8749%2054.4478%2043.0885C54.6562%2042.3072%2054.7655%2041.5051%2054.7655%2040.6926V20.078C54.7655%2019.2655%2054.6562%2018.4687%2054.4478%2017.6822C54.2395%2016.8958%2053.927%2016.151%2053.5208%2015.4478C53.1145%2014.7395%2052.6249%2014.0989%2052.0468%2013.526C51.4739%2012.9478%2050.8333%2012.4583%2050.1301%2012.052Z%22%20fill%3D%22%23f5f5f6%22/%3E%3C/svg%3E">
-<style>
-  .t { width: 100%; border-collapse: collapse; font-size: 15px; }
-  .t th, .t td { text-align: left; vertical-align: top; padding: 14px 12px 14px 0; border-bottom: 1px solid var(--line); }
-  .t th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); font-weight: 500; }
-  .t td:first-child { font-weight: 600; white-space: nowrap; }
-  .t td { color: var(--ink-2); }
-  .tscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .tscroll .t { min-width: 760px; }
-  .todo { list-style: none; padding: 0; margin: 0; counter-reset: c; }
-  .todo li { counter-increment: c; display: grid; grid-template-columns: 36px 1fr; gap: 8px; padding: 16px 0; border-bottom: 1px solid var(--line); }
-  .todo li::before { content: counter(c, decimal-leading-zero); font-family: var(--mono); font-size: 12px; color: var(--signal); padding-top: 4px; }
-  .todo strong { display: block; margin-bottom: 2px; }
-  .todo span { color: var(--ink-2); font-size: 15.5px; }
-  .ba { display: grid; gap: 12px; }
-  @media (min-width: 820px) { .ba { grid-template-columns: 1fr 1fr; } }
-  .ba > div { border: 1px solid var(--line); border-radius: 12px; padding: 20px; background: var(--card); }
-  .ba .after { border-color: var(--signal); }
-  .ba p { margin: 8px 0 0; font-size: 18px; line-height: 1.4; letter-spacing: -0.01em; }
-  .steps { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
-  @media (min-width: 900px) { .steps { grid-template-columns: repeat(4, 1fr); } }
-  .steps > div { background: var(--paper); padding: 20px; }
-  .steps strong { font-size: 28px; letter-spacing: -0.04em; display: block; }
-  .steps p { margin: 8px 0 0; font-size: 14.5px; color: var(--ink-2); }
-  h2.h3 { margin-bottom: 18px; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Portfolio Strategy — for Dinesh</title>
+  <script>document.documentElement.classList.add('js'); (function () { try { var q = new URLSearchParams(location.search).get('brand'), s = sessionStorage; if (q) { s.setItem('dd-brand', q); } var b = s.getItem('dd-brand'); if (b) document.documentElement.dataset.brand = b; } catch (e) { } })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css?v=33">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2055%2061%22%3E%3Crect%20width%3D%2255%22%20height%3D%2261%22%20rx%3D%2213%22%20fill%3D%22%2308080a%22/%3E%3Cpath%20d%3D%22M35.9272%2030.0833C35.9272%2030.6302%2035.8751%2031.1667%2035.7709%2031.7031C35.6615%2032.2344%2035.5053%2032.7552%2035.297%2033.2552C35.0886%2033.7604%2034.8334%2034.2396%2034.5313%2034.6875C34.2293%2035.1406%2033.8855%2035.5625%2033.5001%2035.9479C33.1147%2036.3281%2032.698%2036.6719%2032.2449%2036.974C31.7918%2037.276%2031.3178%2037.5313%2030.8126%2037.7396C30.3126%2037.9479%2029.7917%2038.1094%2029.2605%2038.2135C28.724%2038.3177%2028.1876%2038.375%2027.6407%2038.375C27.099%2038.375%2026.5574%2038.3177%2026.0261%2038.2135C25.4897%2038.1094%2024.974%2037.9479%2024.4688%2037.7396C23.9688%2037.5313%2023.4897%2037.276%2023.0365%2036.974C22.5834%2036.6719%2022.1667%2036.3281%2021.7813%2035.9479C21.3959%2035.5625%2021.0522%2035.1406%2020.7501%2034.6875C20.448%2034.2396%2020.1928%2033.7604%2019.9845%2033.2552C19.7761%2032.7552%2019.6199%2032.2344%2019.5157%2031.7031C19.4063%2031.1667%2019.3542%2030.6302%2019.3542%2030.0833C19.3542%2029.5417%2019.4063%2029.0052%2019.5157%2028.4688C19.6199%2027.9375%2019.7761%2027.4167%2019.9845%2026.9167C20.1928%2026.4115%2020.448%2025.9323%2020.7501%2025.4844C21.0522%2025.0312%2021.3959%2024.6094%2021.7813%2024.224C22.1667%2023.8438%2022.5834%2023.5%2023.0365%2023.1979C23.4897%2022.8958%2023.9688%2022.6406%2024.4688%2022.4323C24.974%2022.224%2025.4897%2022.0625%2026.0261%2021.9583C26.5574%2021.8542%2027.099%2021.7969%2027.6407%2021.7969C28.1876%2021.7969%2028.724%2021.8542%2029.2605%2021.9583C29.7917%2022.0625%2030.3126%2022.224%2030.8126%2022.4323C31.3178%2022.6406%2031.7918%2022.8958%2032.2449%2023.1979C32.698%2023.5%2033.1147%2023.8438%2033.5001%2024.224C33.8855%2024.6094%2034.2293%2025.0312%2034.5313%2025.4844C34.8334%2025.9323%2035.0886%2026.4115%2035.297%2026.9167C35.5053%2027.4167%2035.6615%2027.9375%2035.7709%2028.4688C35.8751%2029.0052%2035.9272%2029.5417%2035.9272%2030.0833Z%22%20fill%3D%22%23f5f5f6%22/%3E%3Cpath%20d%3D%22M50.1301%2012.052L47.151%2010.3333V30.8124H47.1353C47.1093%2031.5051%2047.0468%2032.1926%2046.9478%2032.8801C46.8489%2033.5676%2046.7135%2034.2447%2046.5416%2034.9166C46.3697%2035.5885%2046.1614%2036.2447%2045.9166%2036.8958C45.677%2037.5468%2045.401%2038.1822%2045.0885%2038.802C44.7812%2039.4218%2044.4374%2040.0208%2044.0624%2040.6041C43.6874%2041.1874%2043.2864%2041.7499%2042.8489%2042.2916C42.4166%2042.828%2041.953%2043.3437%2041.4635%2043.8385C40.9791%2044.328%2040.4635%2044.7916%2039.927%2045.2291C39.3853%2045.6614%2038.828%2046.0676%2038.2447%2046.4478C37.6614%2046.8228%2037.0624%2047.1666%2036.4426%2047.4791C35.8228%2047.7916%2035.1926%2048.0728%2034.5416%2048.3176C33.8958%2048.5624%2033.2343%2048.7708%2032.5676%2048.9426C31.8958%2049.1197%2031.2187%2049.2603%2030.5312%2049.3593C29.8437%2049.4635%2029.1562%2049.5312%2028.4635%2049.5572C27.7708%2049.5885%2027.078%2049.578%2026.3905%2049.5312C25.6978%2049.4895%2025.0103%2049.4062%2024.328%2049.2916C23.6458%2049.1718%2022.9687%2049.0155%2022.302%2048.828C21.6353%2048.6353%2020.9843%2048.4114%2020.3385%2048.151C19.6978%2047.8905%2019.0728%2047.5989%2018.4583%2047.2708C17.8489%2046.9478%2017.2551%2046.5885%2016.6822%2046.1978C16.1093%2045.8072%2015.5572%2045.3905%2015.0312%2044.9374C14.5051%2044.4895%2013.9999%2044.0155%2013.5208%2043.5155C13.0468%2043.0103%2012.5937%2042.4843%2012.1718%2041.9374C11.7499%2041.3853%2011.3593%2040.8124%2010.9999%2040.2239C10.6405%2039.6301%2010.3124%2039.0208%2010.0155%2038.3958C9.71867%2037.7655%209.45825%2037.1249%209.22909%2036.4739C9.00513%2035.8176%208.81242%2035.151%208.65617%2034.4791C8.49992%2033.802%208.38013%2033.1197%208.29679%2032.4322C8.21346%2031.7447%208.16659%2031.0572%208.15617%2030.3645C8.14575%2029.6718%208.17179%2028.9791%208.23429%2028.2864C8.29679%2027.5989%208.39575%2026.9114%208.53638%2026.2343C8.67179%2025.552%208.84367%2024.8853%209.052%2024.2239C9.26034%2023.5624%209.49992%2022.9114%209.78117%2022.276C10.0572%2021.6458%2010.3645%2021.026%2010.7083%2020.4218C11.052%2019.8228%2011.427%2019.2395%2011.8333%2018.677C12.2343%2018.1145%2012.6718%2017.5728%2013.1353%2017.0572C13.5937%2016.5416%2014.0833%2016.052%2014.5989%2015.5885C15.1145%2015.1249%2015.651%2014.6874%2016.2135%2014.2812C16.776%2013.8749%2017.3541%2013.4999%2017.9583%2013.1562C18.5572%2012.8124%2019.177%2012.4999%2019.8124%2012.2239C20.4478%2011.9426%2021.0937%2011.6978%2021.7551%2011.4895C22.4166%2011.2812%2023.0833%2011.1041%2023.7655%2010.9687C24.4426%2010.828%2025.1249%2010.7291%2025.8176%2010.6614C26.5051%2010.5989%2027.1978%2010.5676%2027.8905%2010.578C28.5833%2010.5885%2029.276%2010.6301%2029.9635%2010.7135C30.651%2010.7968%2031.3333%2010.9166%2032.0103%2011.0676C32.6822%2011.2239%2033.3489%2011.4166%2034.0051%2011.6405C34.6614%2011.8645%2035.302%2012.1249%2035.927%2012.4218V3.85409L32.276%201.74471C31.5728%201.33846%2030.828%201.03117%2030.0416%200.822835C29.2551%200.609294%2028.453%200.505127%2027.6405%200.505127C26.828%200.505127%2026.026%200.609294%2025.2447%200.822835C24.4583%201.03117%2023.7135%201.33846%2023.0051%201.74471L5.15617%2012.052C4.44784%2012.4583%203.80721%2012.9478%203.23429%2013.526C2.66138%2014.0989%202.16659%2014.7395%201.76034%2015.4478C1.35409%2016.151%201.04679%2016.8958%200.833252%2017.6822C0.624919%2018.4687%200.520752%2019.2655%200.520752%2020.078V40.6926C0.520752%2041.5051%200.624919%2042.3072%200.833252%2043.0937C1.04679%2043.8801%201.35409%2044.6249%201.76034%2045.328C2.16659%2046.0312%202.66138%2046.6718%203.23429%2047.2499C3.80721%2047.8228%204.44784%2048.3124%205.15617%2048.7187L23.0051%2059.026C23.7135%2059.4322%2024.4583%2059.7447%2025.2447%2059.953C26.026%2060.1614%2026.828%2060.2708%2027.6405%2060.2708C28.453%2060.2708%2029.2551%2060.1614%2030.0416%2059.953C30.828%2059.7447%2031.5728%2059.4322%2032.276%2059.026L50.1301%2048.7187C50.8333%2048.3124%2051.4739%2047.8228%2052.0468%2047.2447C52.6249%2046.6718%2053.1145%2046.0312%2053.5208%2045.328C53.927%2044.6197%2054.2395%2043.8749%2054.4478%2043.0885C54.6562%2042.3072%2054.7655%2041.5051%2054.7655%2040.6926V20.078C54.7655%2019.2655%2054.6562%2018.4687%2054.4478%2017.6822C54.2395%2016.8958%2053.927%2016.151%2053.5208%2015.4478C53.1145%2014.7395%2052.6249%2014.0989%2052.0468%2013.526C51.4739%2012.9478%2050.8333%2012.4583%2050.1301%2012.052Z%22%20fill%3D%22%23f5f5f6%22/%3E%3C/svg%3E">
+  <style>
+    .t {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .t th,
+    .t td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 12px 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .t th {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--ink-3);
+      font-weight: 500;
+    }
+
+    .t td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .t td {
+      color: var(--ink-2);
+    }
+
+    .tscroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tscroll .t {
+      min-width: 760px;
+    }
+
+    .todo {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: c;
+    }
+
+    .todo li {
+      counter-increment: c;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 8px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .todo li::before {
+      content: counter(c, decimal-leading-zero);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--signal);
+      padding-top: 4px;
+    }
+
+    .todo strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .todo span {
+      color: var(--ink-2);
+      font-size: 15.5px;
+    }
+
+    .ba {
+      display: grid;
+      gap: 12px;
+    }
+
+    @media (min-width: 820px) {
+      .ba {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .ba>div {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+      background: var(--card);
+    }
+
+    .ba .after {
+      border-color: var(--signal);
+    }
+
+    .ba p {
+      margin: 8px 0 0;
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    .steps {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    @media (min-width: 900px) {
+      .steps {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .steps>div {
+      background: var(--paper);
+      padding: 20px;
+    }
+
+    .steps strong {
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      display: block;
+    }
+
+    .steps p {
+      margin: 8px 0 0;
+      font-size: 14.5px;
+      color: var(--ink-2);
+    }
+
+    h2.h3 {
+      margin-bottom: 18px;
+    }
+  </style>
 </head>
+
 <body>
-<div class="prog" aria-hidden="true"></div>
-<nav class="nav" aria-label="Primary"><div class="wrap nav-in">
-  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg class="logo-mark" viewBox="0 0 55 61" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M35.9272 30.0833C35.9272 30.6302 35.8751 31.1667 35.7709 31.7031C35.6615 32.2344 35.5053 32.7552 35.297 33.2552C35.0886 33.7604 34.8334 34.2396 34.5313 34.6875C34.2293 35.1406 33.8855 35.5625 33.5001 35.9479C33.1147 36.3281 32.698 36.6719 32.2449 36.974C31.7918 37.276 31.3178 37.5313 30.8126 37.7396C30.3126 37.9479 29.7917 38.1094 29.2605 38.2135C28.724 38.3177 28.1876 38.375 27.6407 38.375C27.099 38.375 26.5574 38.3177 26.0261 38.2135C25.4897 38.1094 24.974 37.9479 24.4688 37.7396C23.9688 37.5313 23.4897 37.276 23.0365 36.974C22.5834 36.6719 22.1667 36.3281 21.7813 35.9479C21.3959 35.5625 21.0522 35.1406 20.7501 34.6875C20.448 34.2396 20.1928 33.7604 19.9845 33.2552C19.7761 32.7552 19.6199 32.2344 19.5157 31.7031C19.4063 31.1667 19.3542 30.6302 19.3542 30.0833C19.3542 29.5417 19.4063 29.0052 19.5157 28.4688C19.6199 27.9375 19.7761 27.4167 19.9845 26.9167C20.1928 26.4115 20.448 25.9323 20.7501 25.4844C21.0522 25.0312 21.3959 24.6094 21.7813 24.224C22.1667 23.8438 22.5834 23.5 23.0365 23.1979C23.4897 22.8958 23.9688 22.6406 24.4688 22.4323C24.974 22.224 25.4897 22.0625 26.0261 21.9583C26.5574 21.8542 27.099 21.7969 27.6407 21.7969C28.1876 21.7969 28.724 21.8542 29.2605 21.9583C29.7917 22.0625 30.3126 22.224 30.8126 22.4323C31.3178 22.6406 31.7918 22.8958 32.2449 23.1979C32.698 23.5 33.1147 23.8438 33.5001 24.224C33.8855 24.6094 34.2293 25.0312 34.5313 25.4844C34.8334 25.9323 35.0886 26.4115 35.297 26.9167C35.5053 27.4167 35.6615 27.9375 35.7709 28.4688C35.8751 29.0052 35.9272 29.5417 35.9272 30.0833Z" fill="currentColor"/><path d="M50.1301 12.052L47.151 10.3333V30.8124H47.1353C47.1093 31.5051 47.0468 32.1926 46.9478 32.8801C46.8489 33.5676 46.7135 34.2447 46.5416 34.9166C46.3697 35.5885 46.1614 36.2447 45.9166 36.8958C45.677 37.5468 45.401 38.1822 45.0885 38.802C44.7812 39.4218 44.4374 40.0208 44.0624 40.6041C43.6874 41.1874 43.2864 41.7499 42.8489 42.2916C42.4166 42.828 41.953 43.3437 41.4635 43.8385C40.9791 44.328 40.4635 44.7916 39.927 45.2291C39.3853 45.6614 38.828 46.0676 38.2447 46.4478C37.6614 46.8228 37.0624 47.1666 36.4426 47.4791C35.8228 47.7916 35.1926 48.0728 34.5416 48.3176C33.8958 48.5624 33.2343 48.7708 32.5676 48.9426C31.8958 49.1197 31.2187 49.2603 30.5312 49.3593C29.8437 49.4635 29.1562 49.5312 28.4635 49.5572C27.7708 49.5885 27.078 49.578 26.3905 49.5312C25.6978 49.4895 25.0103 49.4062 24.328 49.2916C23.6458 49.1718 22.9687 49.0155 22.302 48.828C21.6353 48.6353 20.9843 48.4114 20.3385 48.151C19.6978 47.8905 19.0728 47.5989 18.4583 47.2708C17.8489 46.9478 17.2551 46.5885 16.6822 46.1978C16.1093 45.8072 15.5572 45.3905 15.0312 44.9374C14.5051 44.4895 13.9999 44.0155 13.5208 43.5155C13.0468 43.0103 12.5937 42.4843 12.1718 41.9374C11.7499 41.3853 11.3593 40.8124 10.9999 40.2239C10.6405 39.6301 10.3124 39.0208 10.0155 38.3958C9.71867 37.7655 9.45825 37.1249 9.22909 36.4739C9.00513 35.8176 8.81242 35.151 8.65617 34.4791C8.49992 33.802 8.38013 33.1197 8.29679 32.4322C8.21346 31.7447 8.16659 31.0572 8.15617 30.3645C8.14575 29.6718 8.17179 28.9791 8.23429 28.2864C8.29679 27.5989 8.39575 26.9114 8.53638 26.2343C8.67179 25.552 8.84367 24.8853 9.052 24.2239C9.26034 23.5624 9.49992 22.9114 9.78117 22.276C10.0572 21.6458 10.3645 21.026 10.7083 20.4218C11.052 19.8228 11.427 19.2395 11.8333 18.677C12.2343 18.1145 12.6718 17.5728 13.1353 17.0572C13.5937 16.5416 14.0833 16.052 14.5989 15.5885C15.1145 15.1249 15.651 14.6874 16.2135 14.2812C16.776 13.8749 17.3541 13.4999 17.9583 13.1562C18.5572 12.8124 19.177 12.4999 19.8124 12.2239C20.4478 11.9426 21.0937 11.6978 21.7551 11.4895C22.4166 11.2812 23.0833 11.1041 23.7655 10.9687C24.4426 10.828 25.1249 10.7291 25.8176 10.6614C26.5051 10.5989 27.1978 10.5676 27.8905 10.578C28.5833 10.5885 29.276 10.6301 29.9635 10.7135C30.651 10.7968 31.3333 10.9166 32.0103 11.0676C32.6822 11.2239 33.3489 11.4166 34.0051 11.6405C34.6614 11.8645 35.302 12.1249 35.927 12.4218V3.85409L32.276 1.74471C31.5728 1.33846 30.828 1.03117 30.0416 0.822835C29.2551 0.609294 28.453 0.505127 27.6405 0.505127C26.828 0.505127 26.026 0.609294 25.2447 0.822835C24.4583 1.03117 23.7135 1.33846 23.0051 1.74471L5.15617 12.052C4.44784 12.4583 3.80721 12.9478 3.23429 13.526C2.66138 14.0989 2.16659 14.7395 1.76034 15.4478C1.35409 16.151 1.04679 16.8958 0.833252 17.6822C0.624919 18.4687 0.520752 19.2655 0.520752 20.078V40.6926C0.520752 41.5051 0.624919 42.3072 0.833252 43.0937C1.04679 43.8801 1.35409 44.6249 1.76034 45.328C2.16659 46.0312 2.66138 46.6718 3.23429 47.2499C3.80721 47.8228 4.44784 48.3124 5.15617 48.7187L23.0051 59.026C23.7135 59.4322 24.4583 59.7447 25.2447 59.953C26.026 60.1614 26.828 60.2708 27.6405 60.2708C28.453 60.2708 29.2551 60.1614 30.0416 59.953C30.828 59.7447 31.5728 59.4322 32.276 59.026L50.1301 48.7187C50.8333 48.3124 51.4739 47.8228 52.0468 47.2447C52.6249 46.6718 53.1145 46.0312 53.5208 45.328C53.927 44.6197 54.2395 43.8749 54.4478 43.0885C54.6562 42.3072 54.7655 41.5051 54.7655 40.6926V20.078C54.7655 19.2655 54.6562 18.4687 54.4478 17.6822C54.2395 16.8958 53.927 16.151 53.5208 15.4478C53.1145 14.7395 52.6249 14.0989 52.0468 13.526C51.4739 12.9478 50.8333 12.4583 50.1301 12.052Z" fill="currentColor"/></svg></span>Strategy playbook</a>
-  <div class="nav-links"><a href="index.html" class="keep">View the site</a></div>
-</div></nav>
-
-<main id="main">
-<header class="cs-hero"><div class="wrap"><div class="hero-card">
-  <span class="eyebrow mono">Private · not linked from the site · for Dinesh</span>
-  <h1 class="display" style="max-width:18ch">Portfolio revamp: <span class="serif">the reasoning behind every call.</span></h1>
-  <p class="lede">I've read your portfolio the way a design director hiring for a senior role would. Here is what I found, what I changed and why, and what only you can fix.</p>
-</div></div></header>
-
-<!-- 1 VERDICT -->
-<section class="cs-sec" style="padding-top:0"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">01</span><span class="mono">Verdict</span></div>
-  <div class="prose">
-    <h2 class="h3">Your thinking is already top-tier. Your packaging wasn't.</h2>
-    <p>The source material is <strong>better than most senior portfolios I'd expect to see</strong>. You have real decisions, rejected alternatives, honest evidence and working interactive recreations. Most designers can't write “what I shipped first, what broke, what shipped” for even one decision, and you have more than twenty.</p>
-    <p>What was holding it back wasn't the content. It was that <strong>the strongest material was hard to find in the first minute</strong>, and a reviewer usually decides in that minute whether to keep reading. Six problems:</p>
-    <ol style="color:var(--ink-2);padding-left:20px;max-width:66ch">
-      <li><strong>Your positioning was too generic for your work.</strong> “Enterprise systems people can operate without a manual” could describe hundreds of B2B designers. Your best decisions share a sharper theme that you never named. (Section 03.)</li>
-      <li><strong>The home page showed nothing for over two seconds.</strong> The hero fades in with a delay. On first load, a reviewer sees a beige page.</li>
-      <li><strong>The headline numbers measured volume, not impact.</strong> The home-page stats were “10 products, 73 policies, 62 users, 1,000+ employees.” A director reads those as activity. Your outcome numbers were buried inside case studies.</li>
-      <li><strong>The case studies were too long.</strong> HRM Genie has seven decisions and five interactive demos. Nobody reads that on a first pass, and the best decision (the rule-engine trade-off) sits fourth.</li>
-      <li><strong>The honesty became a nervous habit.</strong> “I'd rather show four honest numbers than ten I can't defend” appears in some form on almost every page. Said once, it's integrity. Said four times, it sounds anxious. I replaced it with a system (the evidence scale), so the honesty is structural and you only explain it once.</li>
-      <li><strong>The visual language was a well-made template.</strong> Inter, an italic serif accent, warm off-white and rounded cards is the 2024–25 default. Competent, but nobody remembers it.</li>
-    </ol>
-  </div>
-</div></section>
-
-<!-- 2 AUDIT -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">02</span><span class="mono">Audit</span></div>
-  <div>
-    <h2 class="h3">Area by area</h2>
-    <div class="tscroll"><table class="t">
-      <thead><tr><th>Area</th><th>Working</th><th>Holding you back</th><th>What I changed</th></tr></thead>
-      <tbody>
-        <tr><td>Positioning</td><td>Clear audience (enterprise). Honest about scope.</td><td>Generic claim. A dual “Designer &amp; PM” title muddies levelling for design roles.</td><td>One sharp thesis: you design software that makes decisions, and the trust layer around it. The title is Product Designer, and the PM ownership appears as evidence.</td></tr>
-        <tr><td>First 10 seconds</td><td>Portrait, availability, location.</td><td>Blank hero on load. No proof of craft or thinking above the fold.</td><td>A short thesis headline and a profile card with three graded numbers, all above the fold. A floating chat button on every page opens “Interview me in 60 seconds”: the questions hiring managers usually start with, each answered in your words with a link to the proof.</td></tr>
-        <tr><td>Proof</td><td>Numbers come with sources and caveats.</td><td>Volume metrics up front. Caveats repeated everywhere.</td><td>Three outcome numbers, each graded on a 4-level evidence scale used across the site.</td></tr>
-        <tr><td>Curation</td><td>Five strong projects. “Also shipped” is clearly secondary.</td><td>Five equal-weight case studies plus 14 tiles plus a 30-item journey. Breadth reads as junior.</td><td>Five case studies in one consistent card format, ordered by strength, and side projects reduced to one line on About.</td></tr>
-        <tr><td>Case-study structure</td><td>The “shipped first, broke, shipped” pattern is excellent.</td><td>No summary layer. 5–7 decisions each. Section counts contradict the content.</td><td>A 30-second summary card, four decisions maximum, the same Decision Record format everywhere, and one principle per decision.</td></tr>
-        <tr><td>Navigation</td><td>Simple.</td><td>Hash routing (no deep links to sections, weak SEO and link previews). A “Journey” page that repeats the work list.</td><td>Real pages with anchor deep links. A Decision Index lets reviewers jump to the problem they're hiring for.</td></tr>
-        <tr><td>Social proof</td><td>Relationship and date on every recommendation. That's a great detail.</td><td>The marquee duplicates every card. Long quotes are hard to scan.</td><td>Three short pull-quotes on the home page, six on About. No duplicates.</td></tr>
-        <tr><td>Visual design</td><td>Clean, accessible, dark mode.</td><td>Template aesthetic. Mono labels on nearly every element, so they stop meaning anything.</td><td>GrowthSchool-aligned system (Section 06).</td></tr>
-        <tr><td>Voice</td><td>Human, direct, specific.</td><td>Some lines undermine you: “It does not teach you craft.” “I would not judge my current thinking by it.”</td><td>Same honesty, aimed forward: “I've had breadth. Now I want depth.”</td></tr>
-      </tbody>
-    </table></div>
-  </div>
-</div></section>
-
-<!-- 2b BUGS -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">02b</span><span class="mono">Errors a reviewer would catch</span></div>
-  <div class="prose">
-    <h2 class="h3">Inconsistencies in the current site</h2>
-    <p>Directors read closely. Each of these makes them doubt everything else on the page:</p>
-    <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
-      <li>The home page says <strong>“The three above are where the thinking is”</strong> under <em>five</em> case studies.</li>
-      <li>MDM Genie's heading says <strong>“Two decisions that defined the product”</strong>, then shows four. TAT Genie says <strong>“Six decisions”</strong>, numbers two of them “Decision 04”, then says <strong>“Four decisions carry the narrative.”</strong></li>
-      <li>The Sendcrux case study is labelled <strong>“03”</strong> but is fifth in the list.</li>
-      <li><strong>“10 products taken 0→1”</strong> on the home page vs <strong>“15 products”</strong> on Journey.</li>
-      <li>MDM research is described as <strong>5 admins “across three companies”</strong> in one place and <strong>“five organisations”</strong> in another.</li>
-      <li><strong>42% → 79% with n=5 doesn't work as a headcount:</strong> 42% of 5 people isn't a whole number. If it's an average on a willingness scale, say so. If it's 2 of 5 → 4 of 5, say “2 of 5 → 4 of 5.” This is the first thing a sharp interviewer will ask about, so resolve it before you send the link. (I kept your figure on the new site and flagged it as tested with n=5.)</li>
-    </ul>
-  </div>
-</div></section>
-
-<!-- 3 POSITIONING -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">03</span><span class="mono">Positioning</span></div>
-  <div class="prose">
-    <h2 class="h3">The theme you never named</h2>
-    <p>Put your best decisions side by side:</p>
-    <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
-      <li>AI routes tickets only above a confidence threshold, and overrides become training data. <span class="muted">(TAT)</span></li>
-      <li>The AI candidate score is broken into editable parts, because nobody acts on a number they can't question. <span class="muted">(HRM)</span></li>
-      <li>Batch approval can't sweep up uncertain AI output. <span class="muted">(QA)</span></li>
-      <li>Auto-assignment shows its reasoning, or people route around it. <span class="muted">(TAT)</span></li>
-      <li>An extra step proves to employees what IT can't see. <span class="muted">(MDM)</span></li>
-      <li>A blast-radius preview replaces “Are you sure?” <span class="muted">(MDM)</span></li>
-      <li>Automate the labour, never the understanding. <span class="muted">(Sendcrux)</span></li>
-    </ul>
-    <p>Every one is about <strong>the line between what the system decides and what a person must be able to check.</strong> That's the central design problem of 2026: agents, copilots, automated workflows. Every AI lab and serious B2B company is hiring for it, and you have shipped evidence across five products.</p>
-    <div class="ba" style="margin:28px 0">
-      <div><span class="mono muted">Before</span><p>“I design enterprise systems people can operate without a manual.”</p></div>
-      <div class="after"><span class="mono" style="color:var(--signal)">After</span><p>“I design software that makes decisions, and the parts that let people trust them.”</p></div>
+  <div class="prog" aria-hidden="true"></div>
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap nav-in">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg class="logo-mark"
+            viewBox="0 0 55 61" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M35.9272 30.0833C35.9272 30.6302 35.8751 31.1667 35.7709 31.7031C35.6615 32.2344 35.5053 32.7552 35.297 33.2552C35.0886 33.7604 34.8334 34.2396 34.5313 34.6875C34.2293 35.1406 33.8855 35.5625 33.5001 35.9479C33.1147 36.3281 32.698 36.6719 32.2449 36.974C31.7918 37.276 31.3178 37.5313 30.8126 37.7396C30.3126 37.9479 29.7917 38.1094 29.2605 38.2135C28.724 38.3177 28.1876 38.375 27.6407 38.375C27.099 38.375 26.5574 38.3177 26.0261 38.2135C25.4897 38.1094 24.974 37.9479 24.4688 37.7396C23.9688 37.5313 23.4897 37.276 23.0365 36.974C22.5834 36.6719 22.1667 36.3281 21.7813 35.9479C21.3959 35.5625 21.0522 35.1406 20.7501 34.6875C20.448 34.2396 20.1928 33.7604 19.9845 33.2552C19.7761 32.7552 19.6199 32.2344 19.5157 31.7031C19.4063 31.1667 19.3542 30.6302 19.3542 30.0833C19.3542 29.5417 19.4063 29.0052 19.5157 28.4688C19.6199 27.9375 19.7761 27.4167 19.9845 26.9167C20.1928 26.4115 20.448 25.9323 20.7501 25.4844C21.0522 25.0312 21.3959 24.6094 21.7813 24.224C22.1667 23.8438 22.5834 23.5 23.0365 23.1979C23.4897 22.8958 23.9688 22.6406 24.4688 22.4323C24.974 22.224 25.4897 22.0625 26.0261 21.9583C26.5574 21.8542 27.099 21.7969 27.6407 21.7969C28.1876 21.7969 28.724 21.8542 29.2605 21.9583C29.7917 22.0625 30.3126 22.224 30.8126 22.4323C31.3178 22.6406 31.7918 22.8958 32.2449 23.1979C32.698 23.5 33.1147 23.8438 33.5001 24.224C33.8855 24.6094 34.2293 25.0312 34.5313 25.4844C34.8334 25.9323 35.0886 26.4115 35.297 26.9167C35.5053 27.4167 35.6615 27.9375 35.7709 28.4688C35.8751 29.0052 35.9272 29.5417 35.9272 30.0833Z"
+              fill="currentColor" />
+            <path
+              d="M50.1301 12.052L47.151 10.3333V30.8124H47.1353C47.1093 31.5051 47.0468 32.1926 46.9478 32.8801C46.8489 33.5676 46.7135 34.2447 46.5416 34.9166C46.3697 35.5885 46.1614 36.2447 45.9166 36.8958C45.677 37.5468 45.401 38.1822 45.0885 38.802C44.7812 39.4218 44.4374 40.0208 44.0624 40.6041C43.6874 41.1874 43.2864 41.7499 42.8489 42.2916C42.4166 42.828 41.953 43.3437 41.4635 43.8385C40.9791 44.328 40.4635 44.7916 39.927 45.2291C39.3853 45.6614 38.828 46.0676 38.2447 46.4478C37.6614 46.8228 37.0624 47.1666 36.4426 47.4791C35.8228 47.7916 35.1926 48.0728 34.5416 48.3176C33.8958 48.5624 33.2343 48.7708 32.5676 48.9426C31.8958 49.1197 31.2187 49.2603 30.5312 49.3593C29.8437 49.4635 29.1562 49.5312 28.4635 49.5572C27.7708 49.5885 27.078 49.578 26.3905 49.5312C25.6978 49.4895 25.0103 49.4062 24.328 49.2916C23.6458 49.1718 22.9687 49.0155 22.302 48.828C21.6353 48.6353 20.9843 48.4114 20.3385 48.151C19.6978 47.8905 19.0728 47.5989 18.4583 47.2708C17.8489 46.9478 17.2551 46.5885 16.6822 46.1978C16.1093 45.8072 15.5572 45.3905 15.0312 44.9374C14.5051 44.4895 13.9999 44.0155 13.5208 43.5155C13.0468 43.0103 12.5937 42.4843 12.1718 41.9374C11.7499 41.3853 11.3593 40.8124 10.9999 40.2239C10.6405 39.6301 10.3124 39.0208 10.0155 38.3958C9.71867 37.7655 9.45825 37.1249 9.22909 36.4739C9.00513 35.8176 8.81242 35.151 8.65617 34.4791C8.49992 33.802 8.38013 33.1197 8.29679 32.4322C8.21346 31.7447 8.16659 31.0572 8.15617 30.3645C8.14575 29.6718 8.17179 28.9791 8.23429 28.2864C8.29679 27.5989 8.39575 26.9114 8.53638 26.2343C8.67179 25.552 8.84367 24.8853 9.052 24.2239C9.26034 23.5624 9.49992 22.9114 9.78117 22.276C10.0572 21.6458 10.3645 21.026 10.7083 20.4218C11.052 19.8228 11.427 19.2395 11.8333 18.677C12.2343 18.1145 12.6718 17.5728 13.1353 17.0572C13.5937 16.5416 14.0833 16.052 14.5989 15.5885C15.1145 15.1249 15.651 14.6874 16.2135 14.2812C16.776 13.8749 17.3541 13.4999 17.9583 13.1562C18.5572 12.8124 19.177 12.4999 19.8124 12.2239C20.4478 11.9426 21.0937 11.6978 21.7551 11.4895C22.4166 11.2812 23.0833 11.1041 23.7655 10.9687C24.4426 10.828 25.1249 10.7291 25.8176 10.6614C26.5051 10.5989 27.1978 10.5676 27.8905 10.578C28.5833 10.5885 29.276 10.6301 29.9635 10.7135C30.651 10.7968 31.3333 10.9166 32.0103 11.0676C32.6822 11.2239 33.3489 11.4166 34.0051 11.6405C34.6614 11.8645 35.302 12.1249 35.927 12.4218V3.85409L32.276 1.74471C31.5728 1.33846 30.828 1.03117 30.0416 0.822835C29.2551 0.609294 28.453 0.505127 27.6405 0.505127C26.828 0.505127 26.026 0.609294 25.2447 0.822835C24.4583 1.03117 23.7135 1.33846 23.0051 1.74471L5.15617 12.052C4.44784 12.4583 3.80721 12.9478 3.23429 13.526C2.66138 14.0989 2.16659 14.7395 1.76034 15.4478C1.35409 16.151 1.04679 16.8958 0.833252 17.6822C0.624919 18.4687 0.520752 19.2655 0.520752 20.078V40.6926C0.520752 41.5051 0.624919 42.3072 0.833252 43.0937C1.04679 43.8801 1.35409 44.6249 1.76034 45.328C2.16659 46.0312 2.66138 46.6718 3.23429 47.2499C3.80721 47.8228 4.44784 48.3124 5.15617 48.7187L23.0051 59.026C23.7135 59.4322 24.4583 59.7447 25.2447 59.953C26.026 60.1614 26.828 60.2708 27.6405 60.2708C28.453 60.2708 29.2551 60.1614 30.0416 59.953C30.828 59.7447 31.5728 59.4322 32.276 59.026L50.1301 48.7187C50.8333 48.3124 51.4739 47.8228 52.0468 47.2447C52.6249 46.6718 53.1145 46.0312 53.5208 45.328C53.927 44.6197 54.2395 43.8749 54.4478 43.0885C54.6562 42.3072 54.7655 41.5051 54.7655 40.6926V20.078C54.7655 19.2655 54.6562 18.4687 54.4478 17.6822C54.2395 16.8958 53.927 16.151 53.5208 15.4478C53.1145 14.7395 52.6249 14.0989 52.0468 13.526C51.4739 12.9478 50.8333 12.4583 50.1301 12.052Z"
+              fill="currentColor" />
+          </svg></span>Strategy playbook</a>
+      <div class="nav-links"><a href="index.html" class="keep">View the site</a></div>
     </div>
-    <p><strong>Why not lead with “Designer + PM” or “designer who codes”?</strong> Both are true and both are valuable, but they describe how you work, not what you're best at. At top companies, a dual title raises a levelling question (“is this a PM?”) that you don't want in the first screen. Both now appear as evidence: the rule-engine trade-off shows product judgement, and the working demos show engineering fluency.</p>
-    <p><strong>Your elevator pitch</strong>, for intros, LinkedIn and the first minute of every interview:</p>
-    <p class="pull" style="font-size:24px;max-width:46ch">“I design the trust layer of complex software: the moment an AI or an automated system asks a person to believe it. I've shipped that across AI triage, device security and HR policy engines, usually as the only designer, so I also own the specs and the front-end.”</p>
-  </div>
-</div></section>
+  </nav>
 
-<!-- 4 RESEARCH -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">04</span><span class="mono">Research</span></div>
-  <div class="prose">
-    <h2 class="h3">What the strongest portfolios do, and what hiring managers say</h2>
-    <p><strong>From hiring managers</strong> (recent LinkedIn posts and portfolio-review guides; practitioner opinion, not formal research):</p>
-    <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
-      <li>Put 2–4 of your strongest case studies up front, with clear headings and skimmable structure. Use <strong>the same structure in every case study</strong> so reviewers know where to look.</li>
-      <li><strong>Start each case study with a summary</strong> and outcomes. Senior candidates should lead with impact, not a long tour of their process.</li>
-      <li>Polished screens without decisions or trade-offs are a reason to reject. Reviewers <em>want</em> some mess, as long as the line from problem to decision is clear.</li>
-      <li>If you can't share exact numbers, give direction and magnitude. At staff level, reviewers expect at least one example of moving a real business metric.</li>
-      <li>Show what a design system enabled, not the system itself. And show how you're experimenting with AI.</li>
-    </ul>
-    <p><strong>Patterns from the portfolios people remember</strong>, mostly design engineers and senior designers at product-led companies:</p>
-    <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
-      <li><strong>The portfolio demonstrates the skill instead of describing it.</strong> Craft-focused designers publish small, interactive pieces you can touch. Your coded recreations already do this. They just weren't above the fold.</li>
-      <li><strong>Writing as proof of thinking.</strong> Senior designers at top companies are often known for a few essays more than a gallery. Your “principle” lines are essays waiting to be written.</li>
-      <li><strong>Restraint.</strong> The strongest sites have the fewest projects. Curation signals judgement.</li>
-      <li><strong>One idea, executed fully.</strong> Memorable sites have a single concept (a format, an interaction, a voice) carried through everything, rather than many effects.</li>
-    </ul>
-    <p class="muted" style="font-size:14px">Sources for the hiring-manager points: <a href="https://read.cv/twanlass/case-studies" target="_blank" rel="noopener">read.cv/twanlass</a>, <a href="https://www.tryexponent.com/courses/product-designer-interview/portfolio-review/preparing-your-portfolio-designing" target="_blank" rel="noopener">Exponent portfolio guide</a>, <a href="https://digm.drexel.edu/uxid/?p=6740" target="_blank" rel="noopener">Drexel UXID “Don't Make Me Read”</a>, <a href="https://medium.com/design-bootcamp/stop-guessing-the-exact-ux-portfolio-structure-top-companies-love-8da8a19594e1" target="_blank" rel="noopener">Bootcamp on Medium</a>, <a href="https://hackernoon.com/8-design-portfolio-must-haves" target="_blank" rel="noopener">HackerNoon</a>, and hiring-manager posts on LinkedIn. The portfolio patterns come from my own knowledge of the field, not a fresh crawl, so treat them as direction, not citation.</p>
-  </div>
-</div></section>
+  <main id="main">
+    <header class="cs-hero">
+      <div class="wrap">
+        <div class="hero-card">
+          <span class="eyebrow mono">Private · not linked from the site · for Dinesh</span>
+          <h1 class="display" style="max-width:18ch">Portfolio revamp: <span class="serif">the reasoning behind every
+              call.</span></h1>
+          <p class="lede">I've read your portfolio the way a design director hiring for a senior role would. Here is
+            what I found, what I changed and why, and what only you can fix.</p>
+        </div>
+      </div>
+    </header>
 
-<!-- 5 CASE STUDY SYSTEM -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">05</span><span class="mono">Case-study system</span></div>
-  <div class="prose">
-    <h2 class="h3">Ten chapters, four reading depths, one format</h2>
-    <div class="steps" style="margin:20px 0 28px">
-      <div><span class="mono muted">10 seconds</span><strong>Card</strong><p>Title, one-line thesis and two graded numbers on the home page.</p></div>
-      <div><span class="mono muted">30 seconds</span><strong>Summary</strong><p>Problem / What I did / What changed, at the top of each case.</p></div>
-      <div><span class="mono muted">~11 minutes</span><strong>Full story</strong><p>Ten chapters: overview, problem, research, strategy, IA, UX &amp; UI, features, challenges, impact, role.</p></div>
-      <div><span class="mono muted">Interview</span><strong>Depth</strong><p>“Also worth asking me about” lists what stays out of the page.</p></div>
-    </div>
-    <p><strong>The ten-chapter story.</strong> Every case study follows the same chapters, tracked by a sticky chapter bar: project overview (audience and business context), problem (with a “how might we”), research and discovery (methods, numbered findings, limitations), product strategy (bets and explicit trade-offs), information architecture (module map, journeys, system layers), UX and UI design (decision records, rejected-vs-shipped wireframe explorations, working demos), key features, challenges and solutions, impact (graded outcomes and who benefits), and my role (a contribution matrix that separates what I owned from what I shared, plus reflection). NDA screens are replaced by diagrams and wireframes that show the thinking, and every claim traces to the original portfolio or a public product page.</p><p><strong>The Decision Record</strong> borrows from engineering's Architecture Decision Records, which signals systems thinking to technical leaders. Each one has: context → options (rejected ones marked ✕, the shipped one marked ●) → evidence grade → one-sentence principle. Because the structure is the same everywhere, a reviewer learns it once.</p>
-    <p><strong>The evidence scale</strong> (●●● measured, ●●○ usability-tested, ●○○ stakeholder-reported, ○○○ scope) replaces paragraphs of caveats. It makes your integrity visible at a glance and is something reviewers will remember you for.</p>
-    <p><strong>The Decision Index</strong> on the home page lists 16 decisions, filterable by AI, trust and safety, systems, and strategy. A hiring manager for an AI-agent team can go straight to your five AI decisions. As far as I know, no standard portfolio template does this.</p>
-    <p><strong>Ranking.</strong> MDM goes first because it has the strongest research reversal and your best number. TAT is second because it's the most relevant to AI hiring and shows you influencing a roadmap you didn't own. HRM is third because it has your clearest product trade-off. QA (04) and Sendcrux (05) use the same card format as the first three, so the showcase reads as one series. They are shorter case studies: QA has no outcome data yet, and Sendcrux is older but has live, public proof. Five equal cards is a trade-off against curation, so keep the order: strongest first.</p>
-  </div>
-</div></section>
+    <!-- 1 VERDICT -->
+    <section class="cs-sec" style="padding-top:0">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">01</span><span class="mono">Verdict</span></div>
+        <div class="prose">
+          <h2 class="h3">Your thinking is already top-tier. Your packaging wasn't.</h2>
+          <p>The source material is <strong>better than most senior portfolios I'd expect to see</strong>. You have real
+            decisions, rejected alternatives, honest evidence and working interactive recreations. Most designers can't
+            write “what I shipped first, what broke, what shipped” for even one decision, and you have more than twenty.
+          </p>
+          <p>What was holding it back wasn't the content. It was that <strong>the strongest material was hard to find in
+              the first minute</strong>, and a reviewer usually decides in that minute whether to keep reading. Six
+            problems:</p>
+          <ol style="color:var(--ink-2);padding-left:20px;max-width:66ch">
+            <li><strong>Your positioning was too generic for your work.</strong> “Enterprise systems people can operate
+              without a manual” could describe hundreds of B2B designers. Your best decisions share a sharper theme that
+              you never named. (Section 03.)</li>
+            <li><strong>The home page showed nothing for over two seconds.</strong> The hero fades in with a delay. On
+              first load, a reviewer sees a beige page.</li>
+            <li><strong>The headline numbers measured volume, not impact.</strong> The home-page stats were “10
+              products, 73 policies, 62 users, 1,000+ employees.” A director reads those as activity. Your outcome
+              numbers were buried inside case studies.</li>
+            <li><strong>The case studies were too long.</strong> HRM Genie has seven decisions and five interactive
+              demos. Nobody reads that on a first pass, and the best decision (the rule-engine trade-off) sits fourth.
+            </li>
+            <li><strong>The honesty became a nervous habit.</strong> “I'd rather show four honest numbers than ten I
+              can't defend” appears in some form on almost every page. Said once, it's integrity. Said four times, it
+              sounds anxious. I replaced it with a system (the evidence scale), so the honesty is structural and you
+              only explain it once.</li>
+            <li><strong>The visual language was a well-made template.</strong> Inter, an italic serif accent, warm
+              off-white and rounded cards is the 2024–25 default. Competent, but nobody remembers it.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
-<!-- 6 CREATIVE -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">06</span><span class="mono">Creative direction</span></div>
-  <div class="prose">
-    <h2 class="h3">Concept: “show the decision”</h2>
-    <p>The memorable thing isn't an animation. It's that <strong>the site behaves like your thesis</strong>. From any page, a visitor can <em>interview you</em> through the floating chat button in the bottom-right corner. “Interview me in 60 seconds” is a chat where they tap a question (how you design for AI, your biggest mistake, a decision you defended, whether your numbers hold up). Each answer is written by you and comes with a proof card linking to the decision, the graded number or the quote behind it. It is clearly labelled “no AI”, so the format itself shows the trust thesis: nothing is invented. It answers screening-call questions before the call happens. Every case-study demo works the same way, with a v1 and a v2 you can switch between.</p>
-    <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
-      <li><strong>Design language: aligned to GrowthSchool</strong> (at your request). The system follows growthschool.io's tokens and components. It uses none of their logo, imagery or copy.</li>
-      <li><strong>Type.</strong> IBM Plex Sans throughout: 500 weight for headings (48 / 32 / 20px scale), 400 for body, uppercase 14px eyebrows. The second half of each headline drops to 400 weight in softer grey instead of switching typeface. IBM Plex Mono only for timestamps and DNS records inside demos.</li>
-      <li><strong>Colour.</strong> Deep teal <code>#002726</code> ink, cream <code>#FFFAF1</code> cards and section bands, one green action colour <code>#33C375</code> (a darker <code>#147A43</code> wherever green is text, for contrast), peach <code>#FFE3B1</code> for quote marks, and a <code>#042626</code> footer. Light mode only, as on GrowthSchool.</li>
-      <li><strong>Components.</strong> A dark teal hero card with a 48px grid-line texture. A cream dotted card for the live demo. White uppercase chips with teal borders. A green primary button with an inset teal ring. Cream cards with 12px or 24px radii. FAQ-style bordered rows for the Decision Index. A sticky cream action bar at the bottom of every page.</li>
-      <li><strong>Motion.</strong> Only motion that carries meaning: rows reorder with FLIP so you see the queue change, countdowns are live, and undo windows really count down. Content is never hidden waiting for an animation, and reduced-motion settings are respected.</li>
-      <li><strong>Layout.</strong> A 1152px container. Case studies keep a sticky numbered section label on the left, so long cases stay navigable.</li>
-    </ul>
-    <p><strong>What I deliberately didn't do:</strong> WebGL heroes, custom cursors, scroll-jacking or a bento grid. They make portfolios memorable for the wrong reason, and on a page that argues for trust and clarity, they'd contradict the argument.</p>
-  </div>
-</div></section>
+    <!-- 2 AUDIT -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">02</span><span class="mono">Audit</span></div>
+        <div>
+          <h2 class="h3">Area by area</h2>
+          <div class="tscroll">
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Area</th>
+                  <th>Working</th>
+                  <th>Holding you back</th>
+                  <th>What I changed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Positioning</td>
+                  <td>Clear audience (enterprise). Honest about scope.</td>
+                  <td>Generic claim. A dual “Designer &amp; PM” title muddies levelling for design roles.</td>
+                  <td>One sharp thesis: you design software that makes decisions, and the trust layer around it. The
+                    title is Product Designer, and the PM ownership appears as evidence.</td>
+                </tr>
+                <tr>
+                  <td>First 10 seconds</td>
+                  <td>Portrait, availability, location.</td>
+                  <td>Blank hero on load. No proof of craft or thinking above the fold.</td>
+                  <td>A short thesis headline and a profile card with three graded numbers, all above the fold. A
+                    floating chat button on every page opens “Interview me in 60 seconds”: the questions hiring managers
+                    usually start with, each answered in your words with a link to the proof.</td>
+                </tr>
+                <tr>
+                  <td>Proof</td>
+                  <td>Numbers come with sources and caveats.</td>
+                  <td>Volume metrics up front. Caveats repeated everywhere.</td>
+                  <td>Three outcome numbers, each graded on a 4-level evidence scale used across the site.</td>
+                </tr>
+                <tr>
+                  <td>Curation</td>
+                  <td>Five strong projects. “Also shipped” is clearly secondary.</td>
+                  <td>Five equal-weight case studies plus 14 tiles plus a 30-item journey. Breadth reads as junior.</td>
+                  <td>Five case studies in one consistent card format, ordered by strength, and side projects reduced to
+                    one line on About.</td>
+                </tr>
+                <tr>
+                  <td>Case-study structure</td>
+                  <td>The “shipped first, broke, shipped” pattern is excellent.</td>
+                  <td>No summary layer. 5–7 decisions each. Section counts contradict the content.</td>
+                  <td>A 30-second summary card, four decisions maximum, the same Decision Record format everywhere, and
+                    one principle per decision.</td>
+                </tr>
+                <tr>
+                  <td>Navigation</td>
+                  <td>Simple.</td>
+                  <td>Hash routing (no deep links to sections, weak SEO and link previews). A “Journey” page that
+                    repeats the work list.</td>
+                  <td>Real pages with anchor deep links. A Decision Index lets reviewers jump to the problem they're
+                    hiring for.</td>
+                </tr>
+                <tr>
+                  <td>Social proof</td>
+                  <td>Relationship and date on every recommendation. That's a great detail.</td>
+                  <td>The marquee duplicates every card. Long quotes are hard to scan.</td>
+                  <td>Three short pull-quotes on the home page, six on About. No duplicates.</td>
+                </tr>
+                <tr>
+                  <td>Visual design</td>
+                  <td>Clean, accessible, dark mode.</td>
+                  <td>Template aesthetic. Mono labels on nearly every element, so they stop meaning anything.</td>
+                  <td>GrowthSchool-aligned system (Section 06).</td>
+                </tr>
+                <tr>
+                  <td>Voice</td>
+                  <td>Human, direct, specific.</td>
+                  <td>Some lines undermine you: “It does not teach you craft.” “I would not judge my current thinking by
+                    it.”</td>
+                  <td>Same honesty, aimed forward: “I've had breadth. Now I want depth.”</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- 7 HIRING LENS -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">07</span><span class="mono">Hiring lens</span></div>
-  <div class="prose">
-    <h2 class="h3">How a design director now moves through the site</h2>
-    <div class="tscroll"><table class="t">
-      <thead><tr><th>Moment</th><th>What they need to conclude</th><th>What gets them there</th></tr></thead>
-      <tbody>
-        <tr><td>0–6 s</td><td>“Senior, has a point of view, relevant to us.”</td><td>Thesis headline. Profile card with graded proof. “Open to senior roles.” A floating chat to interview you, on every page.</td></tr>
-        <tr><td>6–60 s</td><td>“Has real outcomes and is honest about them.”</td><td>Three graded numbers. Three flagships, each with a one-line insight.</td></tr>
-        <tr><td>1–6 min</td><td>“Thinks in systems and trade-offs, and owns decisions.”</td><td>Summary card. Decision Records with rejected options. Rule-engine trade-off. Confidence gating.</td></tr>
-        <tr><td>Debrief</td><td>“I can defend this hire to my VP.”</td><td>Evidence scale. “What I got wrong” sections. Recommendations from managers.</td></tr>
-      </tbody>
-    </table></div>
-    <p style="margin-top:20px"><strong>Risks to prepare for in interviews:</strong> (1) “Most of your numbers are self-reported.” Your answer: the instrumentation lesson, and what you'd measure now. (2) “You've mostly been a solo designer. How do you handle critique?” Have a concrete story ready. (3) “What did the PM own on TAT, and what did you?” You set this up well. Rehearse it.</p>
-  </div>
-</div></section>
+    <!-- 2b BUGS -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">02b</span><span class="mono">Errors a reviewer would catch</span>
+        </div>
+        <div class="prose">
+          <h2 class="h3">Inconsistencies in the current site</h2>
+          <p>Directors read closely. Each of these makes them doubt everything else on the page:</p>
+          <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
+            <li>The home page says <strong>“The three above are where the thinking is”</strong> under <em>five</em> case
+              studies.</li>
+            <li>MDM Genie's heading says <strong>“Two decisions that defined the product”</strong>, then shows four. TAT
+              Genie says <strong>“Six decisions”</strong>, numbers two of them “Decision 04”, then says <strong>“Four
+                decisions carry the narrative.”</strong></li>
+            <li>The Sendcrux case study is labelled <strong>“03”</strong> but is fifth in the list.</li>
+            <li><strong>“10 products taken 0→1”</strong> on the home page vs <strong>“15 products”</strong> on Journey.
+            </li>
+            <li>MDM research is described as <strong>5 admins “across three companies”</strong> in one place and
+              <strong>“five organisations”</strong> in another.
+            </li>
+            <li><strong>42% → 79% with n=5 doesn't work as a headcount:</strong> 42% of 5 people isn't a whole number.
+              If it's an average on a willingness scale, say so. If it's 2 of 5 → 4 of 5, say “2 of 5 → 4 of 5.” This is
+              the first thing a sharp interviewer will ask about, so resolve it before you send the link. (I kept your
+              figure on the new site and flagged it as tested with n=5.)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<!-- 8 TODO -->
-<section class="cs-sec"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">08</span><span class="mono">Only you can do these</span></div>
-  <div>
-    <h2 class="h3">Before you send the link</h2>
-    <ol class="todo">
-      <li><div><strong>Resolve the 42% → 79% math.</strong><span>State what was measured: a scale average, or 2/5 → 4/5. Then update mdm.html and the home-page proof strip.</span></div></li>
-      <li><div><strong>Fix the research counts.</strong><span>5 admins across three companies or five organisations? Pick the true one.</span></div></li>
-      <li><div><strong>Add team composition to each case study.</strong><span>e.g. “1 PM, 4 engineers, 1 QA.” Hiring managers look for it to judge scope and collaboration. I left it out rather than guess.</span></div></li>
-      <li><div><strong>Get one instrumented metric from Brilyant.</strong><span>Even one real number, like TAT's SLA attainment or MDM's real BYOD enrolment rate, would turn a flagship case into staff-level evidence. Ask your PM for production data you're allowed to cite.</span></div></li>
-      <li><div><strong>Check NDA and naming permissions.</strong><span>You name the products and the employer. Confirm you're allowed to, and that the recreations don't expose anything the customers consider confidential.</span></div></li>
-      <li><div><strong>Align LinkedIn and your résumé.</strong><span>Headline: “Product Designer: AI, trust &amp; complex systems.” Make the résumé's first line match the site's thesis. Inconsistency between them is a common reason reviewers lose confidence.</span></div></li>
-      <li><div><strong>Put it on your own domain.</strong><span>Real multi-page URLs give you deep links (e.g. <code>/tat.html#d2</code>) that you can drop into recruiter messages for specific roles.</span></div></li>
-      <li><div><strong>Record a 90-second walkthrough of one case study.</strong><span>Hiring managers increasingly use these to judge how you communicate. Link it from the MDM page.</span></div></li>
-      <li><div><strong>Write one essay.</strong><span>“Designing the override: what four AI products taught me about human-in-the-loop UX.” It's your thesis in long form, it's very shareable, and it gives interviewers something to talk to you about.</span></div></li>
-    </ol>
-  </div>
-</div></section>
+    <!-- 3 POSITIONING -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">03</span><span class="mono">Positioning</span></div>
+        <div class="prose">
+          <h2 class="h3">The theme you never named</h2>
+          <p>Put your best decisions side by side:</p>
+          <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
+            <li>AI routes tickets only above a confidence threshold, and overrides become training data. <span
+                class="muted">(TAT)</span></li>
+            <li>The AI candidate score is broken into editable parts, because nobody acts on a number they can't
+              question. <span class="muted">(HRM)</span></li>
+            <li>Batch approval can't sweep up uncertain AI output. <span class="muted">(QA)</span></li>
+            <li>Auto-assignment shows its reasoning, or people route around it. <span class="muted">(TAT)</span></li>
+            <li>An extra step proves to employees what IT can't see. <span class="muted">(MDM)</span></li>
+            <li>A blast-radius preview replaces “Are you sure?” <span class="muted">(MDM)</span></li>
+            <li>Automate the labour, never the understanding. <span class="muted">(Sendcrux)</span></li>
+          </ul>
+          <p>Every one is about <strong>the line between what the system decides and what a person must be able to
+              check.</strong> That's the central design problem of 2026: agents, copilots, automated workflows. Every AI
+            lab and serious B2B company is hiring for it, and you have shipped evidence across five products.</p>
+          <div class="ba" style="margin:28px 0">
+            <div><span class="mono muted">Before</span>
+              <p>“I design enterprise systems people can operate without a manual.”</p>
+            </div>
+            <div class="after"><span class="mono" style="color:var(--signal)">After</span>
+              <p>“I design software that makes decisions, and the parts that let people trust them.”</p>
+            </div>
+          </div>
+          <p><strong>Why not lead with “Designer + PM” or “designer who codes”?</strong> Both are true and both are
+            valuable, but they describe how you work, not what you're best at. At top companies, a dual title raises a
+            levelling question (“is this a PM?”) that you don't want in the first screen. Both now appear as evidence:
+            the rule-engine trade-off shows product judgement, and the working demos show engineering fluency.</p>
+          <p><strong>Your elevator pitch</strong>, for intros, LinkedIn and the first minute of every interview:</p>
+          <p class="pull" style="font-size:24px;max-width:46ch">“I design the trust layer of complex software: the
+            moment an AI or an automated system asks a person to believe it. I've shipped that across AI triage, device
+            security and HR policy engines, usually as the only designer, so I also own the specs and the front-end.”
+          </p>
+        </div>
+      </div>
+    </section>
 
-<div class="wrap" style="padding:80px var(--gut) 64px"><a class="btn primary" href="index.html">Open the new portfolio →</a></div>
-</main>
-<script src="assets/app.js?v=33"></script>
+    <!-- 4 RESEARCH -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">04</span><span class="mono">Research</span></div>
+        <div class="prose">
+          <h2 class="h3">What the strongest portfolios do, and what hiring managers say</h2>
+          <p><strong>From hiring managers</strong> (recent LinkedIn posts and portfolio-review guides; practitioner
+            opinion, not formal research):</p>
+          <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
+            <li>Put 2–4 of your strongest case studies up front, with clear headings and skimmable structure. Use
+              <strong>the same structure in every case study</strong> so reviewers know where to look.
+            </li>
+            <li><strong>Start each case study with a summary</strong> and outcomes. Senior candidates should lead with
+              impact, not a long tour of their process.</li>
+            <li>Polished screens without decisions or trade-offs are a reason to reject. Reviewers <em>want</em> some
+              mess, as long as the line from problem to decision is clear.</li>
+            <li>If you can't share exact numbers, give direction and magnitude. At staff level, reviewers expect at
+              least one example of moving a real business metric.</li>
+            <li>Show what a design system enabled, not the system itself. And show how you're experimenting with AI.
+            </li>
+          </ul>
+          <p><strong>Patterns from the portfolios people remember</strong>, mostly design engineers and senior designers
+            at product-led companies:</p>
+          <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
+            <li><strong>The portfolio demonstrates the skill instead of describing it.</strong> Craft-focused designers
+              publish small, interactive pieces you can touch. Your coded recreations already do this. They just weren't
+              above the fold.</li>
+            <li><strong>Writing as proof of thinking.</strong> Senior designers at top companies are often known for a
+              few essays more than a gallery. Your “principle” lines are essays waiting to be written.</li>
+            <li><strong>Restraint.</strong> The strongest sites have the fewest projects. Curation signals judgement.
+            </li>
+            <li><strong>One idea, executed fully.</strong> Memorable sites have a single concept (a format, an
+              interaction, a voice) carried through everything, rather than many effects.</li>
+          </ul>
+          <p class="muted" style="font-size:14px">Sources for the hiring-manager points: <a
+              href="https://read.cv/twanlass/case-studies" target="_blank" rel="noopener">read.cv/twanlass</a>, <a
+              href="https://www.tryexponent.com/courses/product-designer-interview/portfolio-review/preparing-your-portfolio-designing"
+              target="_blank" rel="noopener">Exponent portfolio guide</a>, <a
+              href="https://digm.drexel.edu/uxid/?p=6740" target="_blank" rel="noopener">Drexel UXID “Don't Make Me
+              Read”</a>, <a
+              href="https://medium.com/design-bootcamp/stop-guessing-the-exact-ux-portfolio-structure-top-companies-love-8da8a19594e1"
+              target="_blank" rel="noopener">Bootcamp on Medium</a>, <a
+              href="https://hackernoon.com/8-design-portfolio-must-haves" target="_blank" rel="noopener">HackerNoon</a>,
+            and hiring-manager posts on LinkedIn. The portfolio patterns come from my own knowledge of the field, not a
+            fresh crawl, so treat them as direction, not citation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 CASE STUDY SYSTEM -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">05</span><span class="mono">Case-study system</span></div>
+        <div class="prose">
+          <h2 class="h3">Ten chapters, four reading depths, one format</h2>
+          <div class="steps" style="margin:20px 0 28px">
+            <div><span class="mono muted">10 seconds</span><strong>Card</strong>
+              <p>Title, one-line thesis and two graded numbers on the home page.</p>
+            </div>
+            <div><span class="mono muted">30 seconds</span><strong>Summary</strong>
+              <p>Problem / What I did / What changed, at the top of each case.</p>
+            </div>
+            <div><span class="mono muted">~11 minutes</span><strong>Full story</strong>
+              <p>Ten chapters: overview, problem, research, strategy, IA, UX &amp; UI, features, challenges, impact,
+                role.</p>
+            </div>
+            <div><span class="mono muted">Interview</span><strong>Depth</strong>
+              <p>“Also worth asking me about” lists what stays out of the page.</p>
+            </div>
+          </div>
+          <p><strong>The ten-chapter story.</strong> Every case study follows the same chapters, tracked by a sticky
+            chapter bar: project overview (audience and business context), problem (with a “how might we”), research and
+            discovery (methods, numbered findings, limitations), product strategy (bets and explicit trade-offs),
+            information architecture (module map, journeys, system layers), UX and UI design (decision records,
+            rejected-vs-shipped wireframe explorations, working demos), key features, challenges and solutions, impact
+            (graded outcomes and who benefits), and my role (a contribution matrix that separates what I owned from what
+            I shared, plus reflection). NDA screens are replaced by diagrams and wireframes that show the thinking, and
+            every claim traces to the original portfolio or a public product page.</p>
+          <p><strong>The Decision Record</strong> borrows from engineering's Architecture Decision Records, which
+            signals systems thinking to technical leaders. Each one has: context → options (rejected ones marked ✕, the
+            shipped one marked ●) → evidence grade → one-sentence principle. Because the structure is the same
+            everywhere, a reviewer learns it once.</p>
+          <p><strong>The evidence scale</strong> (●●● measured, ●●○ usability-tested, ●○○ stakeholder-reported, ○○○
+            scope) replaces paragraphs of caveats. It makes your integrity visible at a glance and is something
+            reviewers will remember you for.</p>
+          <p><strong>The Decision Index</strong> on the home page lists 16 decisions, filterable by AI, trust and
+            safety, systems, and strategy. A hiring manager for an AI-agent team can go straight to your five AI
+            decisions. As far as I know, no standard portfolio template does this.</p>
+          <p><strong>Ranking.</strong> MDM goes first because it has the strongest research reversal and your best
+            number. TAT is second because it's the most relevant to AI hiring and shows you influencing a roadmap you
+            didn't own. HRM is third because it has your clearest product trade-off. QA (04) and Sendcrux (05) use the
+            same card format as the first three, so the showcase reads as one series. They are shorter case studies: QA
+            has no outcome data yet, and Sendcrux is older but has live, public proof. Five equal cards is a trade-off
+            against curation, so keep the order: strongest first.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 CREATIVE -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">06</span><span class="mono">Creative direction</span></div>
+        <div class="prose">
+          <h2 class="h3">Concept: “show the decision”</h2>
+          <p>The memorable thing isn't an animation. It's that <strong>the site behaves like your thesis</strong>. From
+            any page, a visitor can <em>interview you</em> through the floating chat button in the bottom-right corner.
+            “Interview me in 60 seconds” is a chat where they tap a question (how you design for AI, your biggest
+            mistake, a decision you defended, whether your numbers hold up). Each answer is written by you and comes
+            with a proof card linking to the decision, the graded number or the quote behind it. It is clearly labelled
+            “no AI”, so the format itself shows the trust thesis: nothing is invented. It answers screening-call
+            questions before the call happens. Every case-study demo works the same way, with a v1 and a v2 you can
+            switch between.</p>
+          <ul style="color:var(--ink-2);padding-left:20px;max-width:70ch">
+            <li><strong>Design language: aligned to GrowthSchool</strong> (at your request). The system follows
+              growthschool.io's tokens and components. It uses none of their logo, imagery or copy.</li>
+            <li><strong>Type.</strong> IBM Plex Sans throughout: 500 weight for headings (48 / 32 / 20px scale), 400 for
+              body, uppercase 14px eyebrows. The second half of each headline drops to 400 weight in softer grey instead
+              of switching typeface. IBM Plex Mono only for timestamps and DNS records inside demos.</li>
+            <li><strong>Colour.</strong> Deep teal <code>#002726</code> ink, cream <code>#FFFAF1</code> cards and
+              section bands, one green action colour <code>#33C375</code> (a darker <code>#147A43</code> wherever green
+              is text, for contrast), peach <code>#FFE3B1</code> for quote marks, and a <code>#042626</code> footer.
+              Light mode only, as on GrowthSchool.</li>
+            <li><strong>Components.</strong> A dark teal hero card with a 48px grid-line texture. A cream dotted card
+              for the live demo. White uppercase chips with teal borders. A green primary button with an inset teal
+              ring. Cream cards with 12px or 24px radii. FAQ-style bordered rows for the Decision Index. A sticky cream
+              action bar at the bottom of every page.</li>
+            <li><strong>Motion.</strong> Only motion that carries meaning: rows reorder with FLIP so you see the queue
+              change, countdowns are live, and undo windows really count down. Content is never hidden waiting for an
+              animation, and reduced-motion settings are respected.</li>
+            <li><strong>Layout.</strong> A 1152px container. Case studies keep a sticky numbered section label on the
+              left, so long cases stay navigable.</li>
+          </ul>
+          <p><strong>What I deliberately didn't do:</strong> WebGL heroes, custom cursors, scroll-jacking or a bento
+            grid. They make portfolios memorable for the wrong reason, and on a page that argues for trust and clarity,
+            they'd contradict the argument.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 HIRING LENS -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">07</span><span class="mono">Hiring lens</span></div>
+        <div class="prose">
+          <h2 class="h3">How a design director now moves through the site</h2>
+          <div class="tscroll">
+            <table class="t">
+              <thead>
+                <tr>
+                  <th>Moment</th>
+                  <th>What they need to conclude</th>
+                  <th>What gets them there</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0–6 s</td>
+                  <td>“Senior, has a point of view, relevant to us.”</td>
+                  <td>Thesis headline. Profile card with graded proof. “Open to senior roles.” A floating chat to
+                    interview you, on every page.</td>
+                </tr>
+                <tr>
+                  <td>6–60 s</td>
+                  <td>“Has real outcomes and is honest about them.”</td>
+                  <td>Three graded numbers. Three flagships, each with a one-line insight.</td>
+                </tr>
+                <tr>
+                  <td>1–6 min</td>
+                  <td>“Thinks in systems and trade-offs, and owns decisions.”</td>
+                  <td>Summary card. Decision Records with rejected options. Rule-engine trade-off. Confidence gating.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Debrief</td>
+                  <td>“I can defend this hire to my VP.”</td>
+                  <td>Evidence scale. “What I got wrong” sections. Recommendations from managers.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:20px"><strong>Risks to prepare for in interviews:</strong> (1) “Most of your numbers are
+            self-reported.” Your answer: the instrumentation lesson, and what you'd measure now. (2) “You've mostly been
+            a solo designer. How do you handle critique?” Have a concrete story ready. (3) “What did the PM own on TAT,
+            and what did you?” You set this up well. Rehearse it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 TODO -->
+    <section class="cs-sec">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">08</span><span class="mono">Only you can do these</span></div>
+        <div>
+          <h2 class="h3">Before you send the link</h2>
+          <ol class="todo">
+            <li>
+              <div><strong>Resolve the 42% → 79% math.</strong><span>State what was measured: a scale average, or 2/5 →
+                  4/5. Then update mdm and the home-page proof strip.</span></div>
+            </li>
+            <li>
+              <div><strong>Fix the research counts.</strong><span>5 admins across three companies or five organisations?
+                  Pick the true one.</span></div>
+            </li>
+            <li>
+              <div><strong>Add team composition to each case study.</strong><span>e.g. “1 PM, 4 engineers, 1 QA.” Hiring
+                  managers look for it to judge scope and collaboration. I left it out rather than guess.</span></div>
+            </li>
+            <li>
+              <div><strong>Get one instrumented metric from Brilyant.</strong><span>Even one real number, like TAT's SLA
+                  attainment or MDM's real BYOD enrolment rate, would turn a flagship case into staff-level evidence.
+                  Ask your PM for production data you're allowed to cite.</span></div>
+            </li>
+            <li>
+              <div><strong>Check NDA and naming permissions.</strong><span>You name the products and the employer.
+                  Confirm you're allowed to, and that the recreations don't expose anything the customers consider
+                  confidential.</span></div>
+            </li>
+            <li>
+              <div><strong>Align LinkedIn and your résumé.</strong><span>Headline: “Product Designer: AI, trust &amp;
+                  complex systems.” Make the résumé's first line match the site's thesis. Inconsistency between them is
+                  a common reason reviewers lose confidence.</span></div>
+            </li>
+            <li>
+              <div><strong>Put it on your own domain.</strong><span>Real multi-page URLs give you deep links (e.g.
+                  <code>/tat#d2</code>) that you can drop into recruiter messages for specific roles.</span></div>
+            </li>
+            <li>
+              <div><strong>Record a 90-second walkthrough of one case study.</strong><span>Hiring managers increasingly
+                  use these to judge how you communicate. Link it from the MDM page.</span></div>
+            </li>
+            <li>
+              <div><strong>Write one essay.</strong><span>“Designing the override: what four AI products taught me about
+                  human-in-the-loop UX.” It's your thesis in long form, it's very shareable, and it gives interviewers
+                  something to talk to you about.</span></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap" style="padding:80px var(--gut) 64px"><a class="btn primary" href="index.html">Open the new
+        portfolio →</a></div>
+  </main>
+  <script src="assets/app.js?v=33"></script>
 </body>
+
 </html>

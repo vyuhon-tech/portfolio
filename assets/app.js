@@ -17,7 +17,7 @@
     paint();
     btn.addEventListener('click', () => {
       root.dataset.theme = isDark() ? 'light' : 'dark';
-      try { localStorage.setItem('dd-theme', root.dataset.theme); } catch (e) {}
+      try { localStorage.setItem('dd-theme', root.dataset.theme); } catch (e) { }
       paint();
     });
   }
@@ -238,8 +238,10 @@
         const open = cs.filter((c, i) => !c[1] && !state.has(`${gi}-${i}`)).length;
         return `<div class="rv-group"><header><span style="font-weight:600;font-size:14px">${name} <span class="muted mono" style="font-size:11px">${cs.length} generated</span></span>
           <button class="btn-s" data-g="${gi}" ${open ? '' : 'disabled'} style="padding:6px 10px;font-size:13px">${open ? `Approve ${open} unflagged` : 'Batch done'}</button></header>
-          ${cs.map((c, i) => { const k = `${gi}-${i}`, s = state.get(k); return `<div class="rv-item ${s === 'ok' ? 'ok' : ''}"><span>${c[0]}${c[1] ? `<span class="flag">${c[1]}</span>` : ''}</span>
-            <span class="row" style="gap:4px">${s ? `<span class="mono" style="font-size:11px;color:${s === 'ok' ? 'var(--ok)' : 'var(--risk)'}">${s === 'ok' ? 'APPROVED' : 'REJECTED'}</span>` : `<button class="btn-s" data-i="${k}" data-s="ok" aria-label="Approve" style="padding:4px 9px">✓</button><button class="btn-s" data-i="${k}" data-s="no" aria-label="Reject" style="padding:4px 9px">✕</button>`}</span></div>`; }).join('')}</div>`;
+          ${cs.map((c, i) => {
+          const k = `${gi}-${i}`, s = state.get(k); return `<div class="rv-item ${s === 'ok' ? 'ok' : ''}"><span>${c[0]}${c[1] ? `<span class="flag">${c[1]}</span>` : ''}</span>
+            <span class="row" style="gap:4px">${s ? `<span class="mono" style="font-size:11px;color:${s === 'ok' ? 'var(--ok)' : 'var(--risk)'}">${s === 'ok' ? 'APPROVED' : 'REJECTED'}</span>` : `<button class="btn-s" data-i="${k}" data-s="ok" aria-label="Approve" style="padding:4px 9px">✓</button><button class="btn-s" data-i="${k}" data-s="no" aria-label="Reject" style="padding:4px 9px">✕</button>`}</span></div>`;
+        }).join('')}</div>`;
       }).join('');
       const total = G.reduce((n, g) => n + g[1].length, 0), ok = [...state.values()].filter(v => v === 'ok').length, no = state.size - ok;
       stat.innerHTML = `<strong>${ok}</strong> approved · <strong>${no}</strong> rejected · <strong>${total - state.size}</strong> left · <strong>${clicks}</strong> clicks` + (total === state.size ? ` — <span class="ok-ic">12 cases reviewed in ${clicks} clicks, and every flagged one had a human look at it.</span>` : '');
@@ -360,7 +362,7 @@
       let ok = false;
       try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
         const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select(); try { ok = document.execCommand('copy'); } catch (e2) {} ta.remove();
+        document.body.appendChild(ta); ta.select(); try { ok = document.execCommand('copy'); } catch (e2) { } ta.remove();
       }
       const label = btn.textContent;
       btn.textContent = ok ? 'Copied ✓' : 'Copy failed';
@@ -406,154 +408,238 @@
     const MAIL = 'mailto:dineshdoddaga@gmail.com';
     const KB = [
       /* ---------- small talk ---------- */
-      { id: 'hello', k: ['hi', 'hello', 'hey', 'hii', 'hola', 'namaste', 'good morning', 'good afternoon', 'good evening', 'yo'],
-        a: 'Hi! 👋 Ask me anything about my work, experience, skills or availability. Each answer links to the proof.' },
-      { id: 'howareyou', k: ['how are you', 'how are you doing', 'how r u', 'how is it going', 'how’s it going', "how's it going", 'hows it going', 'whats up', "what's up", 'wassup', 'sup', 'how do you do', 'how have you been', 'are you there', 'you there'],
-        a: 'All good, thanks for asking! 😊 I’m happy to walk you through my work. Try “Tell me about yourself”, “What projects have you worked on?”, or ask about my experience, skills or availability.' },
-      { id: 'thanks', k: ['thanks', 'thank you', 'thx', 'great', 'awesome', 'cool', 'nice', 'perfect', 'helpful'],
+      {
+        id: 'hello', k: ['hi', 'hello', 'hey', 'hii', 'hola', 'namaste', 'good morning', 'good afternoon', 'good evening', 'yo'],
+        a: 'Hi! 👋 Ask me anything about my work, experience, skills or availability. Each answer links to the proof.'
+      },
+      {
+        id: 'howareyou', k: ['how are you', 'how are you doing', 'how r u', 'how is it going', 'how’s it going', "how's it going", 'hows it going', 'whats up', "what's up", 'wassup', 'sup', 'how do you do', 'how have you been', 'are you there', 'you there'],
+        a: 'All good, thanks for asking! 😊 I’m happy to walk you through my work. Try “Tell me about yourself”, “What projects have you worked on?”, or ask about my experience, skills or availability.'
+      },
+      {
+        id: 'thanks', k: ['thanks', 'thank you', 'thx', 'great', 'awesome', 'cool', 'nice', 'perfect', 'helpful'],
         a: 'Glad it helped. If you’d like to keep talking, email me and I’ll reply myself.',
-        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Email me directly', href: MAIL } },
+        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Email me directly', href: MAIL }
+      },
 
       /* ---------- who I am ---------- */
-      { id: 'intro', chip: 'What kind of designer are you?',
+      {
+        id: 'intro', chip: 'What kind of designer are you?',
         k: ['kind of designer', 'what kind', 'who are you', 'about you', 'about yourself', 'yourself', 'introduce', 'introduction', 'tell me about you', 'your name', 'what do you do', 'describe yourself', 'summary', 'elevator pitch', 'specialis', 'speciali', 'type of designer', 'designer are you'],
         a: 'I’m Dinesh Doddaga, a product designer in Bengaluru. I design software that makes decisions people can trust: AI ticket triage, device security, HR policy engines and email infrastructure. I map the rules and the data model before I draw a screen. I was usually the only designer, so I also wrote the specs, made scope calls as acting PM, and shipped front-end code.',
-        proof: { kind: 'link', label: 'Five case studies', sub: 'MDM · TAT · HRM · QA Genie · Sendcrux', href: 'index.html#work' } },
-      { id: 'experience', chip: 'How many years of experience do you have?',
+        proof: { kind: 'link', label: 'Five case studies', sub: 'MDM · TAT · HRM · QA Genie · Sendcrux', href: 'index.html#work' }
+      },
+      {
+        id: 'experience', chip: 'How many years of experience do you have?',
         k: ['years of experience', 'how many years', 'experience', 'how long', 'yoe', 'seniority', 'level', 'senior', 'career', 'journey', 'background', 'work history', 'trajectory', 'timeline'],
         a: 'About four years. I started as a UI/UX design intern in December 2022, did contract product design in 2023, was Product Designer at Sendcrux Labs from August 2023 to November 2024, and have been Product Designer and acting PM at Brilyant IT Solutions since December 2024. The scope I was given kept growing faster than my years: I went from scoping projects alone to owning whole product suites.',
-        proof: { kind: 'link', label: 'Full trajectory', sub: 'About page · every role with dates', href: 'about.html' } },
-      { id: 'current', chip: 'Where do you work now?',
+        proof: { kind: 'link', label: 'Full trajectory', sub: 'About page · every role with dates', href: 'about' }
+      },
+      {
+        id: 'current', chip: 'Where do you work now?',
         k: ['!current company', 'currently', '!current role', 'where do you work', 'working now', '!brilyant', 'employer', 'job now', 'right now', 'current job', 'which company', 'present company', '!where are you working', '!working currently', 'at brilyant'],
         a: 'Since December 2024 I’ve been Product Designer and acting Product Manager at Brilyant IT Solutions in Bengaluru. I’m the sole designer across the company’s enterprise suite: HRM Genie, MDM Genie, TAT Genie, QA Genie, a Sales CRM, IT asset management, purchase and benefits portals, and an intranet. I write the requirements, design end to end, and ship production UI. I also built the design system the product teams use.',
-        proof: { kind: 'link', label: 'Brilyant work', sub: 'MDM · TAT · HRM · QA Genie case studies', href: 'index.html#work' } },
-      { id: 'sendcrux-role', k: ['!sendcrux labs', '!previous company', '!previous job', '!last company', '!before brilyant', 'hyderabad', 'prior role'],
+        proof: { kind: 'link', label: 'Brilyant work', sub: 'MDM · TAT · HRM · QA Genie case studies', href: 'index.html#work' }
+      },
+      {
+        id: 'sendcrux-role', k: ['!sendcrux labs', '!previous company', '!previous job', '!last company', '!before brilyant', 'hyderabad', 'prior role'],
         a: 'Before Brilyant, I was Product Designer at Sendcrux Labs in Hyderabad, from August 2023 to November 2024. I owned design across web, dashboard and mobile for a full email-infrastructure stack. I took WarmupIP from concept to production and then designed the Sendcrux platform around it. Both are live. I also worked on client projects there: a luxury fashion e-commerce store and hospital operations tooling.',
-        proof: { kind: 'link', label: 'Sendcrux & WarmupIP', sub: 'Case study 05 · live at sendcrux.com', href: 'sendcrux.html' } },
-      { id: 'freelance', k: ['!freelance', '!freelancing', '!contract', '!contractor', 'independent', 'clients', 'client work', 'consulting', 'side project'],
+        proof: { kind: 'link', label: 'Sendcrux & WarmupIP', sub: 'Case study 05 · live at sendcrux.com', href: 'sendcrux' }
+      },
+      {
+        id: 'freelance', k: ['!freelance', '!freelancing', '!contract', '!contractor', 'independent', 'clients', 'client work', 'consulting', 'side project'],
         a: 'From April to July 2023 I worked independently as a contract product designer, taking projects from brief to production handoff on my own. They included an employee purchase portal with multi-level approvals and four role-based dashboards, a mentoring platform (discovery, booking, live events, payments), a freelancer recruitment portal, a hospitality management suite and a dockyard ship-services platform. That’s where I learned to scope ruthlessly, because nobody else was going to do it.',
-        proof: { kind: 'link', label: 'Trajectory', sub: 'About page', href: 'about.html' } },
-      { id: 'early', k: ['!intern', '!internship', '!first job', 'start your career', 'started', 'beginning', '!victaman', '!aureum', 'fresher', 'early career', 'how did you start'],
+        proof: { kind: 'link', label: 'Trajectory', sub: 'About page', href: 'about' }
+      },
+      {
+        id: 'early', k: ['!intern', '!internship', '!first job', 'start your career', 'started', 'beginning', '!victaman', '!aureum', 'fresher', 'early career', 'how did you start'],
         a: 'I started in December 2022 as a UI/UX designer and design intern at VictaMan Services and Aureum Network, across Bengaluru and Hyderabad. I worked on a 3D home-modelling and contractor-booking app (DesignMyHouse), a property marketplace (ePropertyMall), digital billboard booking (DSmart Ads) and a crypto investment dashboard. That’s where I learned to ship rather than polish.',
-        proof: { kind: 'link', label: 'Trajectory', sub: 'About page', href: 'about.html' } },
-      { id: 'education', chip: 'What’s your education?',
+        proof: { kind: 'link', label: 'Trajectory', sub: 'About page', href: 'about' }
+      },
+      {
+        id: 'education', chip: 'What’s your education?',
         k: ['!education', '!degree', '!college', '!university', 'study', 'studied', '!qualification', 'graduat', '!b.tech', '!btech', '!bachelor', 'computer science', 'cse', 'school'],
         a: 'I have a B.Tech in Computer Science & Engineering from Sri Venkatesa Perumal College (2022). A CS background is a big part of why I can ship front-end code and talk through data models with engineers.',
-        proof: { kind: 'link', label: 'About me', sub: 'Background and trajectory', href: 'about.html' } },
-      { id: 'location', chip: 'Are you open to remote or relocation?',
+        proof: { kind: 'link', label: 'About me', sub: 'Background and trajectory', href: 'about' }
+      },
+      {
+        id: 'location', chip: 'Are you open to remote or relocation?',
         k: ['location', '!where are you based', 'based', 'city', 'bengaluru', 'bangalore', 'india', '!remote', '!hybrid', 'onsite', 'on-site', 'office', '!relocat', 'move', '!timezone', 'time zone', 'ist', 'abroad', 'visa', 'country'],
         a: 'I’m based in Bengaluru, India (IST, UTC+5:30). Remote, hybrid or relocation all work for me, and I’ve shipped entirely remote before.',
-        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Tell me about the role', href: MAIL } },
-      { id: 'availability', chip: 'When can you start?',
+        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Tell me about the role', href: MAIL }
+      },
+      {
+        id: 'availability', chip: 'When can you start?',
         k: ['available', 'availability', '!notice', '!notice period', '!join', '!joining', 'start date', '!when can you start', 'immediately', 'how soon', 'open to work', 'actively looking', 'job search'],
         a: 'I’m open to senior product design roles and available to talk now. I’m currently at Brilyant IT Solutions, so standard notice applies. Email me with your timeline and I’ll give you an exact date.',
-        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Share your timeline', href: MAIL } },
-      { id: 'salary', k: ['!salary', '!ctc', '!compensation', 'pay', 'expected salary', 'expectation', 'package', '!lpa', 'rate', 'hourly', 'budget', 'money', 'stipend'],
+        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Share your timeline', href: MAIL }
+      },
+      {
+        id: 'salary', k: ['!salary', '!ctc', '!compensation', 'pay', 'expected salary', 'expectation', 'package', '!lpa', 'rate', 'hourly', 'budget', 'money', 'stipend'],
         a: 'I’d rather talk compensation directly than put a number in a chatbot, because it depends on the role, level and location. Email me and I’ll answer straight away.',
-        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'I’ll reply personally', href: MAIL } },
-      { id: 'contact', chip: 'How can I contact you?',
+        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'I’ll reply personally', href: MAIL }
+      },
+      {
+        id: 'contact', chip: 'How can I contact you?',
         k: ['!contact', 'reach you', 'reach out', 'email', 'mail', 'phone', 'call', '!whatsapp', '!phone number', 'mobile number', '!linkedin', '!behance', 'dribbble', 'social', 'profiles', '!resume', '!résumé', '!cv', 'get in touch', 'talk to you', 'connect', 'schedule', 'meeting'],
         a: 'Email is the best way to reach me, and I reply personally. You can also check my résumé, my LinkedIn recommendations and my Behance.',
-        proof: { kind: 'links', items: [
-          { label: 'Contact page →', sub: 'Résumé, LinkedIn, email and a quick composer', href: 'contact.html' },
-          { label: 'dineshdoddaga@gmail.com', sub: 'Email · best for detail', href: MAIL },
-          { label: 'Résumé (PDF) ↗', sub: 'One page: history, tools, education', href: RESUME, ext: true },
-          { label: 'LinkedIn ↗', sub: 'Recommendations and full role detail', href: LINKEDIN, ext: true },
-          { label: 'Behance ↗', sub: 'Visual work and project shots', href: 'https://www.behance.net/dineshdoddaga', ext: true } ] } },
-      { id: 'next', chip: 'What are you looking for next?',
+        proof: {
+          kind: 'links', items: [
+            { label: 'Contact page →', sub: 'Résumé, LinkedIn, email and a quick composer', href: 'contact.html' },
+            { label: 'dineshdoddaga@gmail.com', sub: 'Email · best for detail', href: MAIL },
+            { label: 'Résumé (PDF) ↗', sub: 'One page: history, tools, education', href: RESUME, ext: true },
+            { label: 'LinkedIn ↗', sub: 'Recommendations and full role detail', href: LINKEDIN, ext: true },
+            { label: 'Behance ↗', sub: 'Visual work and project shots', href: 'https://www.behance.net/dineshdoddaga', ext: true }]
+        }
+      },
+      {
+        id: 'next', chip: 'What are you looking for next?',
         k: ['!looking for', 'next role', 'what next', 'next', 'ideal role', 'dream job', 'what kind of role', 'kind of company', 'type of company', 'domain', 'industry', 'goal', 'goals', 'future', 'career goal', 'why are you leaving', '!why leave', 'why switch', 'why change', '!leaving'],
         a: 'A senior product design role where I own a surface end to end, on a product that has to earn trust: AI-native tools, security, infrastructure or complex B2B. Being the only designer taught me speed and ownership. Now I want depth, and colleagues who are better than me at things I’m not good at yet.',
-        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Email me directly', href: MAIL } },
-      { id: 'whyhire', chip: 'Why should we hire you?',
+        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Email me directly', href: MAIL }
+      },
+      {
+        id: 'whyhire', chip: 'Why should we hire you?',
         k: ['!why should we hire', '!why hire', 'why you', '!what makes you different', '!how are you different', '!different from other', '!different from others', 'unique', 'stand out', 'value', 'bring to', 'fit', 'convince', 'sell yourself', 'best at'],
         a: 'Three things. First, I find the real problem: on MDM Genie research showed the issue was trust, not complexity, and adding one honest step took opt-in from 42% to 79% in testing. Second, I own product calls: I traded two features to build HRM Genie’s rule engine and defended it in planning. Third, I ship: I write specs and production front-end code, so less is lost between design and what goes live.',
-        proof: { kind: 'link', label: 'The Decision Index', sub: '16 decisions I’d defend in an interview', href: 'index.html#decisions' } },
+        proof: { kind: 'link', label: 'The Decision Index', sub: '16 decisions I’d defend in an interview', href: 'index.html#decisions' }
+      },
 
       /* ---------- how I work ---------- */
-      { id: 'ai', chip: 'How do you design for AI?',
+      {
+        id: 'ai', chip: 'How do you design for AI?',
         k: ['!ai', '!artificial intelligence', '!machine learning', '!ml', '!llm', '!gpt', 'model', 'automation', 'automate', 'agent', '!agentic', 'confidence', 'human in the loop', '!genai', 'generative'],
         a: 'I treat trust as the design material. Let the model act on its own only above a confidence threshold. Show what it matched and what it missed. Let people edit the inputs. Make every correction count as training data. I’ve shipped this in three products: AI ticket triage (TAT Genie), AI candidate ranking (HRM Genie) and AI test generation (QA Genie). People ignore an AI output they can’t question, however accurate it is.',
-        proof: { kind: 'link', label: 'Confidence-gated AI triage', sub: 'TAT Genie · Decision 02 · 25,000+ tickets', href: 'tat.html#d2' } },
-      { id: 'process', chip: 'What’s your design process?',
+        proof: { kind: 'link', label: 'Confidence-gated AI triage', sub: 'TAT Genie · Decision 02 · 25,000+ tickets', href: 'tat#d2' }
+      },
+      {
+        id: 'process', chip: 'What’s your design process?',
         k: ['process', 'approach', 'methodology', 'how do you work', 'how you work', 'workflow', 'framework', 'philosophy', 'principles', 'belief', 'way of working', 'design thinking', 'how do you design', 'start a project'],
         a: 'I start with the rules, not the screens. In enterprise software, the policy, the exceptions and the data model are the product, so I map them before drawing a frame. Then I research with the people who actually operate the tool, prototype, test, and argue for trade-offs with evidence. I give admin and configuration screens the same care as user-facing flows, and I build what I design, because implementing a design shows me which decisions were expensive.',
-        proof: { kind: 'link', label: 'Four beliefs, each from a mistake', sub: 'Home · How I work', href: 'index.html#decisions' } },
-      { id: 'research', chip: 'How do you do user research?',
+        proof: { kind: 'link', label: 'Four beliefs, each from a mistake', sub: 'Home · How I work', href: 'index.html#decisions' }
+      },
+      {
+        id: 'research', chip: 'How do you do user research?',
         k: ['!research', '!user research', 'interview', 'interviews', '!usability', 'user testing', 'testing', 'survey', 'contextual inquiry', 'shadowing', 'synthesis', 'affinity', 'personas', 'discovery', 'insights', 'participants'],
         a: 'Mostly in context: watching people work in their real tools rather than asking them to describe it. On HRM Genie I interviewed 32 people (8 HR managers and 24 employees) and ran 12 moderated usability sessions. On MDM Genie I did contextual inquiry with 5 IT admins and synthesised about 180 observations. For Sendcrux I researched 62 users (15 interviews and 47 survey responses). I always state sample sizes and limitations, because a small study can show direction but not size.',
-        proof: { kind: 'link', label: 'Research that reversed the brief', sub: 'MDM Genie · the finding', href: 'mdm.html' } },
-      { id: 'tools', chip: 'What tools and skills do you use?',
+        proof: { kind: 'link', label: 'Research that reversed the brief', sub: 'MDM Genie · the finding', href: 'mdm' }
+      },
+      {
+        id: 'tools', chip: 'What tools and skills do you use?',
         k: ['!tools', 'tool', '!figma', 'software', '!skills', 'skill', 'stack', 'tech stack', 'tech', 'proficient', 'expertise', 'competenc', 'framer', 'prototype', 'prototyping', 'adobe', 'sketch', 'what do you use', 'design tools', 'capabilities'],
         a: 'Figma for design and prototyping. I also ship production front-end code, turning my Figma specs into working components with AI-assisted development tools. My core skills are product strategy and PRDs, research and usability testing, information architecture, design systems and shipping production UI. The interactive demos on this site are code I wrote myself. My résumé lists the full toolset.',
-        proof: { kind: 'links', items: [
-          { label: 'Résumé (PDF) ↗', sub: 'Full tools and education', href: RESUME, ext: true },
-          { label: 'Live demos I coded', sub: 'Try the blast-radius demo in MDM Genie', href: 'mdm.html#d2' } ] } },
-      { id: 'code', k: ['!code', '!coding', 'developer', 'develop', 'front-end', 'frontend', 'html', 'css', '!javascript', '!react', 'engineering skills', 'technical', 'build', 'ship code', 'implement', 'programming'],
+        proof: {
+          kind: 'links', items: [
+            { label: 'Résumé (PDF) ↗', sub: 'Full tools and education', href: RESUME, ext: true },
+            { label: 'Live demos I coded', sub: 'Try the blast-radius demo in MDM Genie', href: 'mdm#d2' }]
+        }
+      },
+      {
+        id: 'code', k: ['!code', '!coding', 'developer', 'develop', 'front-end', 'frontend', 'html', 'css', '!javascript', '!react', 'engineering skills', 'technical', 'build', 'ship code', 'implement', 'programming'],
         a: 'Yes, I write front-end code. I ship production UI alongside the Figma work, turning specs into working components with AI-assisted development tools, and I have a computer science degree. Building what I design shows me which decisions are expensive before engineering has to tell me. Every interactive demo on this site is code I wrote.',
-        proof: { kind: 'link', label: 'A demo I built', sub: 'MDM Genie · blast-radius preview', href: 'mdm.html#d2' } },
-      { id: 'pm', chip: 'Have you worked as a product manager?',
+        proof: { kind: 'link', label: 'A demo I built', sub: 'MDM Genie · blast-radius preview', href: 'mdm#d2' }
+      },
+      {
+        id: 'pm', chip: 'Have you worked as a product manager?',
         k: ['!product manager', '!acting pm', 'pm', 'product management', 'requirements', '!prd', '!prds', '!roadmap', 'scope', 'scoping', 'prioriti', 'backlog', 'strategy', 'product strategy', 'business', 'product thinking', 'stakeholder'],
         a: 'Yes, as acting PM on HRM Genie, MDM Genie and QA Genie. I ran discovery, wrote requirements, sequenced releases and made scope trade-offs with engineering. Two examples: on MDM Genie I cut several hundred possible device controls down to 73 that map to real compliance audits. On HRM Genie I traded two features to fund a rule engine. On TAT Genie a separate PM owned the backlog, and I changed the roadmap by showing evidence.',
-        proof: { kind: 'link', label: 'Rule engine trade-off', sub: 'HRM Genie · Decision 03', href: 'hrm.html#d3' } },
-      { id: 'collab', chip: 'How do you work with PMs and engineers?',
+        proof: { kind: 'link', label: 'Rule engine trade-off', sub: 'HRM Genie · Decision 03', href: 'hrm#d3' }
+      },
+      {
+        id: 'collab', chip: 'How do you work with PMs and engineers?',
         k: ['work with', '!collaborat', 'team', 'teamwork', 'engineers', 'engineer', 'developers', '!cross-functional', 'cross functional', 'handoff', 'hand off', 'communication', 'communicate', 'influence', 'disagree with pm', 'work with others', '!work with engineers'],
         a: 'On TAT Genie I didn’t own the backlog; the product had its own PM. A research finding about how the queue was ordered still changed the roadmap, because I could show it working instead of just arguing for it. With engineers, the fact that I ship code means my specs are realistic and I can talk through data models and edge cases in their terms.',
-        proof: { kind: 'quote', label: '“…the design force that brought every single idea to life.”', sub: 'S Jagadesh · my product manager for about a year' } },
-      { id: 'designsystem', k: ['!design system', '!component library', 'components', 'tokens', 'ui kit', 'consistency', 'style guide'],
+        proof: { kind: 'quote', label: '“…the design force that brought every single idea to life.”', sub: 'S Jagadesh · my product manager for about a year' }
+      },
+      {
+        id: 'designsystem', k: ['!design system', '!component library', 'components', 'tokens', 'ui kit', 'consistency', 'style guide'],
         a: 'I built the design system at Brilyant from scratch, with a component library and tokens that the company’s product teams use. Its value is what it enabled: one designer could keep five enterprise platforms consistent, and specs became working components faster.',
-        proof: { kind: 'link', label: 'Trajectory', sub: 'About page · Brilyant', href: 'about.html' } },
-      { id: 'decision', chip: 'Tell me about a decision you had to defend.',
+        proof: { kind: 'link', label: 'Trajectory', sub: 'About page · Brilyant', href: 'about' }
+      },
+      {
+        id: 'decision', chip: 'Tell me about a decision you had to defend.',
         k: ['decision', '!defend', '!trade-off', '!tradeoff', 'trade off', 'push back', 'pushback', 'conflict', '!disagree', '!tough call', 'hard call', 'difficult decision', 'convinced', 'challenge', 'challenging', 'hardest', '!tough decision'],
         a: 'On HRM Genie, every stakeholder said approvals went “manager, then HR”. Shadowing found at least four routes. I pushed for a rule engine instead of a fixed chain. It roughly tripled the module’s estimate, so I defended it in planning as acting PM and cut two lower-value features to fund it. A fixed chain would have pushed every exception back into email, which was the problem we were solving.',
-        proof: { kind: 'link', label: 'Rule engine over a fixed chain', sub: 'HRM Genie · Decision 03', href: 'hrm.html#d3' } },
-      { id: 'mistake', chip: 'What’s your biggest mistake?',
+        proof: { kind: 'link', label: 'Rule engine over a fixed chain', sub: 'HRM Genie · Decision 03', href: 'hrm#d3' }
+      },
+      {
+        id: 'mistake', chip: 'What’s your biggest mistake?',
         k: ['!mistake', '!fail', '!failure', 'failed', 'wrong', 'regret', '!weakness', 'weaknesses', 'learned', 'lesson', 'differently', 'improve', 'area of improvement', 'growth area', 'what went wrong'],
         a: 'On HRM Genie I gave the employee flows my best attention and treated the HR admin screens as a settings dump. Admins struggled most in testing, and I rebuilt those screens in round two. Now I scope the admin surface as a product in its own right. My other recurring lesson: define success metrics before building. Too many of my numbers are stakeholder-reported rather than measured, and I’m fixing that.',
-        proof: { kind: 'link', label: 'What I got wrong', sub: 'HRM Genie · In hindsight', href: 'hrm.html#role' } },
-      { id: 'strength', k: ['!strength', '!strengths', 'good at', 'superpower', 'best skill', 'what are you best'],
+        proof: { kind: 'link', label: 'What I got wrong', sub: 'HRM Genie · In hindsight', href: 'hrm#role' }
+      },
+      {
+        id: 'strength', k: ['!strength', '!strengths', 'good at', 'superpower', 'best skill', 'what are you best'],
         a: 'Turning messy, rule-heavy domains into interfaces people can operate and trust. I spot when the brief is wrong (MDM’s real problem was trust, not complexity), I can make and defend product trade-offs, and I can take a design all the way to production code.',
-        proof: { kind: 'link', label: 'MDM Genie', sub: 'When research reversed the brief', href: 'mdm.html' } },
-      { id: 'numbers', chip: 'Can I trust your numbers?',
+        proof: { kind: 'link', label: 'MDM Genie', sub: 'When research reversed the brief', href: 'mdm' }
+      },
+      {
+        id: 'numbers', chip: 'Can I trust your numbers?',
         k: ['trust your numbers', 'your numbers', 'numbers', 'metric', 'metrics', 'data', 'impact', 'measure', 'measured', 'result', 'results', 'outcome', 'outcomes', 'kpi', 'proof', 'evidence', 'roi', 'achievement', 'achievements', 'accomplish', 'success'],
         a: 'Every number on this site is graded: measured, usability-tested, stakeholder-reported, or scope. Highlights: 42% → 79% willingness to enrol after one added step (tested, n=5). Time to first campaign cut from 2–3 hours to 15 minutes (measured). 25,000+ tickets on TAT Genie (production). 1,000+ employees on HRM Genie (production). I say where a number is small or self-reported.',
-        proof: { kind: 'ev', label: '42% → 79%', sub: 'stated willingness to enrol · MDM Genie', ev: 2, evText: 'Tested · n=5', href: 'mdm.html#d1' } },
-      { id: 'recs', k: ['!recommendation', 'recommendations', 'reference', '!references', '!testimonial', '!testimonials', 'feedback', 'what do others say', 'what people say', 'manager say', 'colleagues', 'reviews', 'endorse', '!say about you', '!managers say', '!people say'],
+        proof: { kind: 'ev', label: '42% → 79%', sub: 'stated willingness to enrol · MDM Genie', ev: 2, evText: 'Tested · n=5', href: 'mdm#d1' }
+      },
+      {
+        id: 'recs', k: ['!recommendation', 'recommendations', 'reference', '!references', '!testimonial', '!testimonials', 'feedback', 'what do others say', 'what people say', 'manager say', 'colleagues', 'reviews', 'endorse', '!say about you', '!managers say', '!people say'],
         a: 'Six people recommended me on LinkedIn: two managers, my product manager, a strategy director I worked with, and two clients. My PM, S Jagadesh, called me “one of the most well-rounded UX/UI designers” he’d worked with. Nagi Reddy B, founder of WarmupIP, who managed me directly, highlighted how fast I grasp requirements. Pavan Kumar PVS (Director of Strategy at Fiserv) mentioned the speed and quality of my work.',
-        proof: { kind: 'links', items: [
-          { label: 'All recommendations', sub: 'About page · relationship and date on each', href: 'about.html' },
-          { label: 'Verify on LinkedIn ↗', sub: 'Public and checkable', href: LINKEDIN, ext: true } ] } },
-      { id: 'projects', chip: 'What projects have you worked on?',
+        proof: {
+          kind: 'links', items: [
+            { label: 'All recommendations', sub: 'About page · relationship and date on each', href: 'about' },
+            { label: 'Verify on LinkedIn ↗', sub: 'Public and checkable', href: LINKEDIN, ext: true }]
+        }
+      },
+      {
+        id: 'projects', chip: 'What projects have you worked on?',
         k: ['projects', 'project', 'portfolio', 'work samples', 'case study', 'case studies', 'products', 'what have you built', 'what have you designed', 'shipped', 'best work', 'favourite project', 'favorite project', 'proudest', 'show me'],
         a: 'Five case studies: MDM Genie (cross-platform device security), TAT Genie (AI IT service desk, 25,000+ tickets), HRM Genie (12-module HR platform for 1,000+ people), QA Genie (AI test generation and review) and Sendcrux & WarmupIP (live email infrastructure). I’ve also shipped a Sales CRM, IT asset management for 1,000+ assets, purchase and benefits portals, an intranet and a design system, plus client work in e-commerce, healthcare, mentoring, hospitality and real estate.',
-        proof: { kind: 'link', label: 'Five case studies', sub: 'Home · Selected work', href: 'index.html#work' } },
-      { id: 'other', k: ['!crm', 'sales crm', '!asset management', 'it asset', '!intranet', 'benefits portal', 'purchase portal', '!e-commerce', '!ecommerce', 'fashion', '!hospital', '!healthcare', '!mentoring', '!hospitality', '!real estate', 'property', 'ship services', '!crypto', '!mobile app', 'mobile', 'ios', 'android app', 'b2c', 'consumer', '!mobile apps'],
+        proof: { kind: 'link', label: 'Five case studies', sub: 'Home · Selected work', href: 'index.html#work' }
+      },
+      {
+        id: 'other', k: ['!crm', 'sales crm', '!asset management', 'it asset', '!intranet', 'benefits portal', 'purchase portal', '!e-commerce', '!ecommerce', 'fashion', '!hospital', '!healthcare', '!mentoring', '!hospitality', '!real estate', 'property', 'ship services', '!crypto', '!mobile app', 'mobile', 'ios', 'android app', 'b2c', 'consumer', '!mobile apps'],
         a: 'Beyond the five case studies: at Brilyant, a Sales CRM, IT asset management for 1,000+ assets, a customer purchase portal that removed the sales team from the transaction, an employee benefits portal and an intranet. At Sendcrux, iOS and Android companion apps, plus client work on luxury fashion e-commerce and hospital operations tooling. Freelance, a mentoring platform, a hospitality suite, a recruitment portal and a ship-services platform. Early on, real estate and crypto products.',
-        proof: { kind: 'link', label: 'Trajectory', sub: 'About page · full list', href: 'about.html' } },
+        proof: { kind: 'link', label: 'Trajectory', sub: 'About page · full list', href: 'about' }
+      },
 
       /* ---------- projects ---------- */
-      { id: 'mdm', k: ['!mdm', '!mdm genie', 'device', 'devices', '!device management', '!byod', 'security', 'enrol', 'enroll', 'enrolment', 'enrollment', 'android', 'windows', 'apple', 'policy builder', 'remote wipe', 'blast radius', 'compliance monitor', 'it admin'],
+      {
+        id: 'mdm', k: ['!mdm', '!mdm genie', 'device', 'devices', '!device management', '!byod', 'security', 'enrol', 'enroll', 'enrolment', 'enrollment', 'android', 'windows', 'apple', 'policy builder', 'remote wipe', 'blast radius', 'compliance monitor', 'it admin'],
         a: 'MDM Genie is one console that manages Android, Windows and Apple devices. The brief said admins had a complexity problem. Research showed employees had a trust problem: they finished the enrolment flow and still refused to enrol their phones. I added a step showing what IT can and can never see, and stated willingness rose from 42% to 79%. I also built blast-radius previews for destructive actions and one policy form for three OSes (73 policies).',
-        proof: { kind: 'link', label: 'MDM Genie case study', sub: '01 · Device security · 6 min', href: 'mdm.html' } },
-      { id: 'tat', k: ['!tat', '!tat genie', '!itsm', '!service desk', '!helpdesk', 'help desk', '!ticket', '!tickets', 'queue', 'sla', 'itil', 'incident', 'triage', 'routing'],
+        proof: { kind: 'link', label: 'MDM Genie case study', sub: '01 · Device security · 6 min', href: 'mdm' }
+      },
+      {
+        id: 'tat', k: ['!tat', '!tat genie', '!itsm', '!service desk', '!helpdesk', 'help desk', '!ticket', '!tickets', 'queue', 'sla', 'itil', 'incident', 'triage', 'routing'],
         a: 'TAT Genie is an AI IT service desk that has handled 25,000+ tickets. The queue was sorted by arrival, so a whole-floor outage sat under a laptop request. I re-sorted it by time-to-breach. The AI routes tickets only above a confidence threshold, agents decide below it, and every correction becomes training data. It had its own PM, and my research still changed the roadmap.',
-        proof: { kind: 'link', label: 'TAT Genie case study', sub: '02 · AI service desk · 6 min', href: 'tat.html' } },
-      { id: 'hrm', k: ['!hrm', '!hrm genie', '!hrms', 'hr platform', 'hr', 'human resources', '!leave', '!payroll', 'attendance', 'approval', 'approvals', 'policy', 'recruitment', 'hiring tool', 'chatbot', 'sandwich'],
+        proof: { kind: 'link', label: 'TAT Genie case study', sub: '02 · AI service desk · 6 min', href: 'tat' }
+      },
+      {
+        id: 'hrm', k: ['!hrm', '!hrm genie', '!hrms', 'hr platform', 'hr', 'human resources', '!leave', '!payroll', 'attendance', 'approval', 'approvals', 'policy', 'recruitment', 'hiring tool', 'chatbot', 'sandwich'],
         a: 'HRM Genie is a 12-module HR platform live for 1,000+ employees. The hard part was the rules, not the screens. Highlights: a live leave counter that shows the sandwich-leave cost while dates are being picked, versioned policies so acknowledgements can’t go stale, a rule engine for approval routes (I cut two features to fund it), and AI candidate scores broken into parts HR can edit. Payroll now reads attendance directly, so the manual cross-check is gone.',
-        proof: { kind: 'link', label: 'HRM Genie case study', sub: '03 · HR platform · 7 min', href: 'hrm.html' } },
-      { id: 'qa', k: ['!qa', '!qa genie', 'quality assurance', '!test case', '!test cases', 'test generation', 'playwright', 'automation testing', 'review workspace', 'batch approve', 'batch'],
+        proof: { kind: 'link', label: 'HRM Genie case study', sub: '03 · HR platform · 7 min', href: 'hrm' }
+      },
+      {
+        id: 'qa', k: ['!qa', '!qa genie', 'quality assurance', '!test case', '!test cases', 'test generation', 'playwright', 'automation testing', 'review workspace', 'batch approve', 'batch'],
         a: 'QA Genie is a platform where AI writes test cases and humans decide which ones are real. Generating them was easy; reviewing 40 cases one at a time took two hours. I grouped cases so people can batch-approve the obvious ones, while flagged cases can never be swept into a batch. I also designed one shared record for QA and automation developers, so handoffs stopped happening in chat. It’s the newest product, so there’s no post-launch data yet.',
-        proof: { kind: 'link', label: 'QA Genie case study', sub: '04 · AI test generation · 3 min', href: 'qa.html' } },
-      { id: 'sendcrux', k: ['!sendcrux', '!warmupip', '!warmup', '!warm-up', 'warm up', '!deliverability', '!cold email', 'email infrastructure', '!dns', 'spf', 'dkim', 'dmarc', 'mailbox', 'outreach', 'campaign', 'inbox'],
+        proof: { kind: 'link', label: 'QA Genie case study', sub: '04 · AI test generation · 3 min', href: 'qa' }
+      },
+      {
+        id: 'sendcrux', k: ['!sendcrux', '!warmupip', '!warmup', '!warm-up', 'warm up', '!deliverability', '!cold email', 'email infrastructure', '!dns', 'spf', 'dkim', 'dmarc', 'mailbox', 'outreach', 'campaign', 'inbox'],
         a: 'Sendcrux and WarmupIP are live email-infrastructure products for salespeople who are afraid of breaking their domain. I automated DNS setup but showed each record as a verified checklist instead of a spinner. Domain setup dropped from about 2 hours to about 2 minutes, and time to first campaign from 2–3 hours to about 15 minutes, both measured. I designed web, dashboard and the iOS and Android apps.',
-        proof: { kind: 'links', items: [
-          { label: 'Sendcrux case study', sub: '05 · Live product · 3 min', href: 'sendcrux.html' },
-          { label: 'sendcrux.com ↗', sub: 'See it live', href: 'https://sendcrux.com', ext: true } ] } },
-      { id: 'nda', k: ['!nda', '!screenshots', 'real screens', 'confidential', 'recreation', 'recreations', 'demo', 'demos', 'interactive', 'real product'],
+        proof: {
+          kind: 'links', items: [
+            { label: 'Sendcrux case study', sub: '05 · Live product · 3 min', href: 'sendcrux' },
+            { label: 'sendcrux.com ↗', sub: 'See it live', href: 'https://sendcrux.com', ext: true }]
+        }
+      },
+      {
+        id: 'nda', k: ['!nda', '!screenshots', 'real screens', 'confidential', 'recreation', 'recreations', 'demo', 'demos', 'interactive', 'real product'],
         a: 'The Brilyant products run inside enterprise customers under NDA, so I can’t publish real screenshots. Every interface on this site is a working recreation I built in code from my own specs, with illustrative data. The interactions are real, so you can click them. Sendcrux and WarmupIP are public, so you can see those live.',
-        proof: { kind: 'link', label: 'Try a demo', sub: 'MDM Genie · blast-radius preview', href: 'mdm.html#d2' } },
-      { id: 'bot', k: ['!are you ai', '!are you a bot', 'are you real', '!is this ai', '!chatgpt', 'how does this work', 'how does this chat', 'who wrote', 'real person', 'human', '!this chatbot', '!this chat', '!who is this', '!chatbot work'],
+        proof: { kind: 'link', label: 'Try a demo', sub: 'MDM Genie · blast-radius preview', href: 'mdm#d2' }
+      },
+      {
+        id: 'bot', k: ['!are you ai', '!are you a bot', 'are you real', '!is this ai', '!chatgpt', 'how does this work', 'how does this chat', 'who wrote', 'real person', 'human', '!this chatbot', '!this chat', '!who is this', '!chatbot work'],
         a: 'This isn’t an AI. I wrote every answer myself from my case studies, and your question is matched to the closest one by keywords. If there’s no good match, it tells you so instead of guessing. Nothing you type is stored or sent anywhere. For anything else, email me and I’ll reply personally.',
-        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Talk to the real me', href: MAIL } }
+        proof: { kind: 'cta', label: 'dineshdoddaga@gmail.com', sub: 'Talk to the real me', href: MAIL }
+      }
     ];
 
     const SMALL_TALK = new Set(['hello', 'howareyou', 'thanks']);
