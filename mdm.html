@@ -1,134 +1,851 @@
 <!doctype html>
 <html lang="en" data-brand="d">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MDM Genie — Dinesh Doddaga</title>
-<meta name="description" content="Case study: designing cross-platform device management where the real blocker was trust, not usability.">
-<script>document.documentElement.classList.add('js');(function(){try{var q=new URLSearchParams(location.search).get('brand'),s=sessionStorage;if(q){s.setItem('dd-brand',q);}var b=s.getItem('dd-brand');if(b)document.documentElement.dataset.brand=b;}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css?v=33">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2055%2061%22%3E%3Crect%20width%3D%2255%22%20height%3D%2261%22%20rx%3D%2213%22%20fill%3D%22%2308080a%22/%3E%3Cpath%20d%3D%22M35.9272%2030.0833C35.9272%2030.6302%2035.8751%2031.1667%2035.7709%2031.7031C35.6615%2032.2344%2035.5053%2032.7552%2035.297%2033.2552C35.0886%2033.7604%2034.8334%2034.2396%2034.5313%2034.6875C34.2293%2035.1406%2033.8855%2035.5625%2033.5001%2035.9479C33.1147%2036.3281%2032.698%2036.6719%2032.2449%2036.974C31.7918%2037.276%2031.3178%2037.5313%2030.8126%2037.7396C30.3126%2037.9479%2029.7917%2038.1094%2029.2605%2038.2135C28.724%2038.3177%2028.1876%2038.375%2027.6407%2038.375C27.099%2038.375%2026.5574%2038.3177%2026.0261%2038.2135C25.4897%2038.1094%2024.974%2037.9479%2024.4688%2037.7396C23.9688%2037.5313%2023.4897%2037.276%2023.0365%2036.974C22.5834%2036.6719%2022.1667%2036.3281%2021.7813%2035.9479C21.3959%2035.5625%2021.0522%2035.1406%2020.7501%2034.6875C20.448%2034.2396%2020.1928%2033.7604%2019.9845%2033.2552C19.7761%2032.7552%2019.6199%2032.2344%2019.5157%2031.7031C19.4063%2031.1667%2019.3542%2030.6302%2019.3542%2030.0833C19.3542%2029.5417%2019.4063%2029.0052%2019.5157%2028.4688C19.6199%2027.9375%2019.7761%2027.4167%2019.9845%2026.9167C20.1928%2026.4115%2020.448%2025.9323%2020.7501%2025.4844C21.0522%2025.0312%2021.3959%2024.6094%2021.7813%2024.224C22.1667%2023.8438%2022.5834%2023.5%2023.0365%2023.1979C23.4897%2022.8958%2023.9688%2022.6406%2024.4688%2022.4323C24.974%2022.224%2025.4897%2022.0625%2026.0261%2021.9583C26.5574%2021.8542%2027.099%2021.7969%2027.6407%2021.7969C28.1876%2021.7969%2028.724%2021.8542%2029.2605%2021.9583C29.7917%2022.0625%2030.3126%2022.224%2030.8126%2022.4323C31.3178%2022.6406%2031.7918%2022.8958%2032.2449%2023.1979C32.698%2023.5%2033.1147%2023.8438%2033.5001%2024.224C33.8855%2024.6094%2034.2293%2025.0312%2034.5313%2025.4844C34.8334%2025.9323%2035.0886%2026.4115%2035.297%2026.9167C35.5053%2027.4167%2035.6615%2027.9375%2035.7709%2028.4688C35.8751%2029.0052%2035.9272%2029.5417%2035.9272%2030.0833Z%22%20fill%3D%22%23f5f5f6%22/%3E%3Cpath%20d%3D%22M50.1301%2012.052L47.151%2010.3333V30.8124H47.1353C47.1093%2031.5051%2047.0468%2032.1926%2046.9478%2032.8801C46.8489%2033.5676%2046.7135%2034.2447%2046.5416%2034.9166C46.3697%2035.5885%2046.1614%2036.2447%2045.9166%2036.8958C45.677%2037.5468%2045.401%2038.1822%2045.0885%2038.802C44.7812%2039.4218%2044.4374%2040.0208%2044.0624%2040.6041C43.6874%2041.1874%2043.2864%2041.7499%2042.8489%2042.2916C42.4166%2042.828%2041.953%2043.3437%2041.4635%2043.8385C40.9791%2044.328%2040.4635%2044.7916%2039.927%2045.2291C39.3853%2045.6614%2038.828%2046.0676%2038.2447%2046.4478C37.6614%2046.8228%2037.0624%2047.1666%2036.4426%2047.4791C35.8228%2047.7916%2035.1926%2048.0728%2034.5416%2048.3176C33.8958%2048.5624%2033.2343%2048.7708%2032.5676%2048.9426C31.8958%2049.1197%2031.2187%2049.2603%2030.5312%2049.3593C29.8437%2049.4635%2029.1562%2049.5312%2028.4635%2049.5572C27.7708%2049.5885%2027.078%2049.578%2026.3905%2049.5312C25.6978%2049.4895%2025.0103%2049.4062%2024.328%2049.2916C23.6458%2049.1718%2022.9687%2049.0155%2022.302%2048.828C21.6353%2048.6353%2020.9843%2048.4114%2020.3385%2048.151C19.6978%2047.8905%2019.0728%2047.5989%2018.4583%2047.2708C17.8489%2046.9478%2017.2551%2046.5885%2016.6822%2046.1978C16.1093%2045.8072%2015.5572%2045.3905%2015.0312%2044.9374C14.5051%2044.4895%2013.9999%2044.0155%2013.5208%2043.5155C13.0468%2043.0103%2012.5937%2042.4843%2012.1718%2041.9374C11.7499%2041.3853%2011.3593%2040.8124%2010.9999%2040.2239C10.6405%2039.6301%2010.3124%2039.0208%2010.0155%2038.3958C9.71867%2037.7655%209.45825%2037.1249%209.22909%2036.4739C9.00513%2035.8176%208.81242%2035.151%208.65617%2034.4791C8.49992%2033.802%208.38013%2033.1197%208.29679%2032.4322C8.21346%2031.7447%208.16659%2031.0572%208.15617%2030.3645C8.14575%2029.6718%208.17179%2028.9791%208.23429%2028.2864C8.29679%2027.5989%208.39575%2026.9114%208.53638%2026.2343C8.67179%2025.552%208.84367%2024.8853%209.052%2024.2239C9.26034%2023.5624%209.49992%2022.9114%209.78117%2022.276C10.0572%2021.6458%2010.3645%2021.026%2010.7083%2020.4218C11.052%2019.8228%2011.427%2019.2395%2011.8333%2018.677C12.2343%2018.1145%2012.6718%2017.5728%2013.1353%2017.0572C13.5937%2016.5416%2014.0833%2016.052%2014.5989%2015.5885C15.1145%2015.1249%2015.651%2014.6874%2016.2135%2014.2812C16.776%2013.8749%2017.3541%2013.4999%2017.9583%2013.1562C18.5572%2012.8124%2019.177%2012.4999%2019.8124%2012.2239C20.4478%2011.9426%2021.0937%2011.6978%2021.7551%2011.4895C22.4166%2011.2812%2023.0833%2011.1041%2023.7655%2010.9687C24.4426%2010.828%2025.1249%2010.7291%2025.8176%2010.6614C26.5051%2010.5989%2027.1978%2010.5676%2027.8905%2010.578C28.5833%2010.5885%2029.276%2010.6301%2029.9635%2010.7135C30.651%2010.7968%2031.3333%2010.9166%2032.0103%2011.0676C32.6822%2011.2239%2033.3489%2011.4166%2034.0051%2011.6405C34.6614%2011.8645%2035.302%2012.1249%2035.927%2012.4218V3.85409L32.276%201.74471C31.5728%201.33846%2030.828%201.03117%2030.0416%200.822835C29.2551%200.609294%2028.453%200.505127%2027.6405%200.505127C26.828%200.505127%2026.026%200.609294%2025.2447%200.822835C24.4583%201.03117%2023.7135%201.33846%2023.0051%201.74471L5.15617%2012.052C4.44784%2012.4583%203.80721%2012.9478%203.23429%2013.526C2.66138%2014.0989%202.16659%2014.7395%201.76034%2015.4478C1.35409%2016.151%201.04679%2016.8958%200.833252%2017.6822C0.624919%2018.4687%200.520752%2019.2655%200.520752%2020.078V40.6926C0.520752%2041.5051%200.624919%2042.3072%200.833252%2043.0937C1.04679%2043.8801%201.35409%2044.6249%201.76034%2045.328C2.16659%2046.0312%202.66138%2046.6718%203.23429%2047.2499C3.80721%2047.8228%204.44784%2048.3124%205.15617%2048.7187L23.0051%2059.026C23.7135%2059.4322%2024.4583%2059.7447%2025.2447%2059.953C26.026%2060.1614%2026.828%2060.2708%2027.6405%2060.2708C28.453%2060.2708%2029.2551%2060.1614%2030.0416%2059.953C30.828%2059.7447%2031.5728%2059.4322%2032.276%2059.026L50.1301%2048.7187C50.8333%2048.3124%2051.4739%2047.8228%2052.0468%2047.2447C52.6249%2046.6718%2053.1145%2046.0312%2053.5208%2045.328C53.927%2044.6197%2054.2395%2043.8749%2054.4478%2043.0885C54.6562%2042.3072%2054.7655%2041.5051%2054.7655%2040.6926V20.078C54.7655%2019.2655%2054.6562%2018.4687%2054.4478%2017.6822C54.2395%2016.8958%2053.927%2016.151%2053.5208%2015.4478C53.1145%2014.7395%2052.6249%2014.0989%2052.0468%2013.526C51.4739%2012.9478%2050.8333%2012.4583%2050.1301%2012.052Z%22%20fill%3D%22%23f5f5f6%22/%3E%3C/svg%3E">
-</head>
-<body>
-<div class="prog" aria-hidden="true"></div>
-<a class="skip" href="#main">Skip to content</a>
-<nav class="nav" aria-label="Primary"><div class="wrap nav-in">
-  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg class="logo-mark" viewBox="0 0 55 61" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M35.9272 30.0833C35.9272 30.6302 35.8751 31.1667 35.7709 31.7031C35.6615 32.2344 35.5053 32.7552 35.297 33.2552C35.0886 33.7604 34.8334 34.2396 34.5313 34.6875C34.2293 35.1406 33.8855 35.5625 33.5001 35.9479C33.1147 36.3281 32.698 36.6719 32.2449 36.974C31.7918 37.276 31.3178 37.5313 30.8126 37.7396C30.3126 37.9479 29.7917 38.1094 29.2605 38.2135C28.724 38.3177 28.1876 38.375 27.6407 38.375C27.099 38.375 26.5574 38.3177 26.0261 38.2135C25.4897 38.1094 24.974 37.9479 24.4688 37.7396C23.9688 37.5313 23.4897 37.276 23.0365 36.974C22.5834 36.6719 22.1667 36.3281 21.7813 35.9479C21.3959 35.5625 21.0522 35.1406 20.7501 34.6875C20.448 34.2396 20.1928 33.7604 19.9845 33.2552C19.7761 32.7552 19.6199 32.2344 19.5157 31.7031C19.4063 31.1667 19.3542 30.6302 19.3542 30.0833C19.3542 29.5417 19.4063 29.0052 19.5157 28.4688C19.6199 27.9375 19.7761 27.4167 19.9845 26.9167C20.1928 26.4115 20.448 25.9323 20.7501 25.4844C21.0522 25.0312 21.3959 24.6094 21.7813 24.224C22.1667 23.8438 22.5834 23.5 23.0365 23.1979C23.4897 22.8958 23.9688 22.6406 24.4688 22.4323C24.974 22.224 25.4897 22.0625 26.0261 21.9583C26.5574 21.8542 27.099 21.7969 27.6407 21.7969C28.1876 21.7969 28.724 21.8542 29.2605 21.9583C29.7917 22.0625 30.3126 22.224 30.8126 22.4323C31.3178 22.6406 31.7918 22.8958 32.2449 23.1979C32.698 23.5 33.1147 23.8438 33.5001 24.224C33.8855 24.6094 34.2293 25.0312 34.5313 25.4844C34.8334 25.9323 35.0886 26.4115 35.297 26.9167C35.5053 27.4167 35.6615 27.9375 35.7709 28.4688C35.8751 29.0052 35.9272 29.5417 35.9272 30.0833Z" fill="currentColor"/><path d="M50.1301 12.052L47.151 10.3333V30.8124H47.1353C47.1093 31.5051 47.0468 32.1926 46.9478 32.8801C46.8489 33.5676 46.7135 34.2447 46.5416 34.9166C46.3697 35.5885 46.1614 36.2447 45.9166 36.8958C45.677 37.5468 45.401 38.1822 45.0885 38.802C44.7812 39.4218 44.4374 40.0208 44.0624 40.6041C43.6874 41.1874 43.2864 41.7499 42.8489 42.2916C42.4166 42.828 41.953 43.3437 41.4635 43.8385C40.9791 44.328 40.4635 44.7916 39.927 45.2291C39.3853 45.6614 38.828 46.0676 38.2447 46.4478C37.6614 46.8228 37.0624 47.1666 36.4426 47.4791C35.8228 47.7916 35.1926 48.0728 34.5416 48.3176C33.8958 48.5624 33.2343 48.7708 32.5676 48.9426C31.8958 49.1197 31.2187 49.2603 30.5312 49.3593C29.8437 49.4635 29.1562 49.5312 28.4635 49.5572C27.7708 49.5885 27.078 49.578 26.3905 49.5312C25.6978 49.4895 25.0103 49.4062 24.328 49.2916C23.6458 49.1718 22.9687 49.0155 22.302 48.828C21.6353 48.6353 20.9843 48.4114 20.3385 48.151C19.6978 47.8905 19.0728 47.5989 18.4583 47.2708C17.8489 46.9478 17.2551 46.5885 16.6822 46.1978C16.1093 45.8072 15.5572 45.3905 15.0312 44.9374C14.5051 44.4895 13.9999 44.0155 13.5208 43.5155C13.0468 43.0103 12.5937 42.4843 12.1718 41.9374C11.7499 41.3853 11.3593 40.8124 10.9999 40.2239C10.6405 39.6301 10.3124 39.0208 10.0155 38.3958C9.71867 37.7655 9.45825 37.1249 9.22909 36.4739C9.00513 35.8176 8.81242 35.151 8.65617 34.4791C8.49992 33.802 8.38013 33.1197 8.29679 32.4322C8.21346 31.7447 8.16659 31.0572 8.15617 30.3645C8.14575 29.6718 8.17179 28.9791 8.23429 28.2864C8.29679 27.5989 8.39575 26.9114 8.53638 26.2343C8.67179 25.552 8.84367 24.8853 9.052 24.2239C9.26034 23.5624 9.49992 22.9114 9.78117 22.276C10.0572 21.6458 10.3645 21.026 10.7083 20.4218C11.052 19.8228 11.427 19.2395 11.8333 18.677C12.2343 18.1145 12.6718 17.5728 13.1353 17.0572C13.5937 16.5416 14.0833 16.052 14.5989 15.5885C15.1145 15.1249 15.651 14.6874 16.2135 14.2812C16.776 13.8749 17.3541 13.4999 17.9583 13.1562C18.5572 12.8124 19.177 12.4999 19.8124 12.2239C20.4478 11.9426 21.0937 11.6978 21.7551 11.4895C22.4166 11.2812 23.0833 11.1041 23.7655 10.9687C24.4426 10.828 25.1249 10.7291 25.8176 10.6614C26.5051 10.5989 27.1978 10.5676 27.8905 10.578C28.5833 10.5885 29.276 10.6301 29.9635 10.7135C30.651 10.7968 31.3333 10.9166 32.0103 11.0676C32.6822 11.2239 33.3489 11.4166 34.0051 11.6405C34.6614 11.8645 35.302 12.1249 35.927 12.4218V3.85409L32.276 1.74471C31.5728 1.33846 30.828 1.03117 30.0416 0.822835C29.2551 0.609294 28.453 0.505127 27.6405 0.505127C26.828 0.505127 26.026 0.609294 25.2447 0.822835C24.4583 1.03117 23.7135 1.33846 23.0051 1.74471L5.15617 12.052C4.44784 12.4583 3.80721 12.9478 3.23429 13.526C2.66138 14.0989 2.16659 14.7395 1.76034 15.4478C1.35409 16.151 1.04679 16.8958 0.833252 17.6822C0.624919 18.4687 0.520752 19.2655 0.520752 20.078V40.6926C0.520752 41.5051 0.624919 42.3072 0.833252 43.0937C1.04679 43.8801 1.35409 44.6249 1.76034 45.328C2.16659 46.0312 2.66138 46.6718 3.23429 47.2499C3.80721 47.8228 4.44784 48.3124 5.15617 48.7187L23.0051 59.026C23.7135 59.4322 24.4583 59.7447 25.2447 59.953C26.026 60.1614 26.828 60.2708 27.6405 60.2708C28.453 60.2708 29.2551 60.1614 30.0416 59.953C30.828 59.7447 31.5728 59.4322 32.276 59.026L50.1301 48.7187C50.8333 48.3124 51.4739 47.8228 52.0468 47.2447C52.6249 46.6718 53.1145 46.0312 53.5208 45.328C53.927 44.6197 54.2395 43.8749 54.4478 43.0885C54.6562 42.3072 54.7655 41.5051 54.7655 40.6926V20.078C54.7655 19.2655 54.6562 18.4687 54.4478 17.6822C54.2395 16.8958 53.927 16.151 53.5208 15.4478C53.1145 14.7395 52.6249 14.0989 52.0468 13.526C51.4739 12.9478 50.8333 12.4583 50.1301 12.052Z" fill="currentColor"/></svg></span>Dinesh Doddaga</a>
-  <div class="nav-links"><a href="index.html#work">Work</a><a href="index.html#decisions">Decisions</a><a href="about.html">About</a><a class="cta" href="contact.html">Get in touch</a></div>
-</div></nav>
 
-<main id="main">
-<header class="cs-hero"><div class="wrap"><div class="hero-card">
-  <a class="crumb" href="index.html#work">← All work</a><br>
-  <span class="eyebrow mono">01 · Device security · 0→1</span>
-  <h1 class="display">MDM Genie: <span class="serif">security people would opt into.</span></h1>
-  <p class="lede">One console that governs Android, Windows and Apple devices. One wrong click there can lock a whole company out of its laptops. I expected a complexity problem. Research found a trust problem, on both sides of the product.</p>
-  <dl class="facts"><div><dt>My role</dt><dd>Product designer and acting PM. I owned the policy roadmap.</dd></div><div><dt>Where</dt><dd>Brilyant IT Solutions</dd></div><div><dt>Platforms</dt><dd>Android, Windows and Apple, one console</dd></div><div><dt>Shipped</dt><dd>73 policies, enrolment, compliance monitor, remote actions</dd></div></dl>
-</div></div></header>
-<nav class="chap-bar" aria-label="Case study chapters"><div class="wrap"><ol><li><a href="#overview"><b>01</b>Project overview</a></li><li><a href="#problem"><b>02</b>Problem</a></li><li><a href="#research"><b>03</b>Research & discovery</a></li><li><a href="#strategy"><b>04</b>Product strategy</a></li><li><a href="#ia"><b>05</b>Information architecture</a></li><li><a href="#design"><b>06</b>UX & UI design</a></li><li><a href="#features"><b>07</b>Key features</a></li><li><a href="#challenges"><b>08</b>Challenges & solutions</a></li><li><a href="#impact"><b>09</b>Impact & outcomes</a></li><li><a href="#role"><b>10</b>My role</a></li></ol></div><span class="chap-progress" aria-hidden="true"></span></nav>
-<section class="wrap" aria-label="Summary" style="padding-top:clamp(28px,4vw,48px)">
-  <p class="tldr-label mono"><span>The 30-second version</span><span>Full story · 12 min read</span></p>
-  <div class="tldr">
-    <div><span class="mono">Problem</span><p>The business needed employees to enrol their own phones. Only 42% said they would. The flow was fast, so speed wasn’t the issue. People didn’t believe what it said.</p></div>
-    <div><span class="mono">What I did</span><p>Reframed the brief from admin complexity to trust. Added a step that shows what IT can and can never see, cut several hundred possible controls to 73, and made dangerous actions show their blast radius first.</p></div>
-    <div><span class="mono">What changed</span><p>Stated willingness to enrol rose from 42% to 79% in testing. Three OS-specific consoles became one policy model.</p></div>
-  </div>
-</section>
-<section class="chapter" id="overview"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">01</span><span class="mono">Project overview</span></div>
-  <div class="ch-body"><h2 class="ch-h">A single console for three operating systems, and two kinds of user who want opposite things.</h2><div class="prose"><p>MDM Genie lets an IT team enrol devices, set security policy, monitor compliance and act remotely across Android, Windows and Apple fleets, from one place.</p><p>It serves two people whose interests genuinely conflict. <strong>The admin wants control and visibility. The employee wants privacy and autonomy.</strong> Most MDM tools resolve that tension by serving the buyer and ignoring the user, which is exactly why adoption stalls.</p></div><div class="g3"><div class="card"><span class=k>Primary user</span><h4>IT admins</h4><p>Configure policy, enrol devices and respond to incidents across mixed fleets, usually in three separate tools.</p></div><div class="card"><span class=k>Secondary user</span><h4>Employees on BYOD</h4><p>Asked to enrol a personal phone for work, and worried about what IT will be able to see.</p></div><div class="card"><span class=k>Stakeholder</span><h4>Security &amp; compliance</h4><p>Customers are audited against compliance frameworks, so policy has to map to real requirements.</p></div></div><h3 class="ch-sub">Business context</h3><div class="prose"><p>The metric the business cared about was employees enrolling their own phones, and it wasn’t moving. Customers also ran separate consoles per OS, so policy drifted between platforms and nobody had one view of compliance. Competitors answered with volume: <strong>200+ configurable policies, of which admins used about a dozen.</strong></p></div></div>
-</div></section><section class="chapter" id="problem"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">02</span><span class="mono">Problem</span></div>
-  <div class="ch-body"><h2 class="ch-h">Enrolment was stuck, and nothing on screen showed admins the consequences of a click.</h2><div><p class="pull">“I’m happy to enrol my phone for work. I just don’t want IT seeing my personal photos or my WhatsApp.”</p><p class="pull-src mono">BYOD participant · enrolment testing</p></div><div class="g3"><div class="stat"><strong>42%</strong><span>stated willingness to enrol</span><small>On a fast, four-step v1 flow that every participant could complete.</small></div><div class="stat"><strong>3 tools</strong><span>one per operating system</span><small>The same security intent had to be configured three times and kept in sync by hand.</small></div><div class="stat"><strong>Incidents</strong><span>how violations were found</span><small>Admins discovered policy breaches through incidents, not monitoring.</small></div></div><p class="hmw"><b>The question we had to answer</b>How might we let IT enforce security across three operating systems without employees refusing to enrol, and without a single click locking the company out?</p></div>
-</div></section><section class="chapter" id="research"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">03</span><span class="mono">Research & discovery</span></div>
-  <div class="ch-body"><h2 class="ch-h">I went in to validate a complexity hypothesis. Research contradicted it.</h2><div class="g4"><div class="card"><span class=k>Recruitment</span><h4>Who</h4><p>IT managers and security analysts at organisations of 200–2,000 employees, each managing at least two OS types. BYOD participants recruited separately.</p></div><div class="card"><span class=k>Protocol</span><h4>How</h4><p>Contextual inquiry, observing admins live in their existing tools, then semi-structured follow-ups on policy configuration and incident response.</p></div><div class="card"><span class=k>Synthesis</span><h4>Making sense</h4><p>Affinity mapping across about 180 observations, then policy-tree mapping to reconcile OS coverage into one schema.</p></div><div class="card"><span class=k>Evaluation</span><h4>Testing</h4><p>Moderated usability testing with 5 IT admins on the shipped flows. BYOD enrolment tested separately, with willingness captured before and after.</p></div></div><h3 class="ch-sub">Key findings</h3><ol class="insights"><li><h4>Employees weren’t confused. They didn’t believe it.</h4><p>They completed the enrolment flow and then declined. MDM tools are opaque about what they monitor, so people assume the worst.</p><span class=src>Enrolment testing</span></li><li><h4>Violations surfaced through incidents, not monitoring.</h4><p>Proactive alerting was the most requested capability across every admin interview.</p><span class=src>Admin interviews</span></li><li><h4>Seventy-three equal options hide the four that matter.</h4><p>Shown a flat list, admins couldn’t tell the settings that mattered from the ones that didn’t.</p><span class=src>Usability testing</span></li><li><h4>Disappearing options erode trust in the tool itself.</h4><p>When settings vanished, admins stopped trusting that a policy had actually been applied.</p><span class=src>Usability testing</span></li><li><h4>Nothing showed the blast radius of a click.</h4><p>One admin described a policy that hit the wrong device group and locked several hundred people out of their laptops on a Monday morning.</p><span class=src>Contextual inquiry</span></li></ol><p class="note"><strong>Limitations, stated up front.</strong> Five admins is enough to surface direction, not to size an effect. The 42% → 79% figure measures stated willingness, not real enrolment, and stated intent overstates adoption.</p></div>
-</div></section><section class="chapter" id="strategy"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">04</span><span class="mono">Product strategy</span></div>
-  <div class="ch-body"><h2 class="ch-h">The brief was about complexity. The product became about trust, twice over.</h2><div class="prose"><p>Employees had to trust IT enough to hand over a device. Admins had to trust the tool enough to press a button that could affect hundreds of laptops. Every major decision follows from that reframe.</p></div><div class="bets"><div class="bet"><span class="k">Bet 01</span><h4>Earn belief before asking for the device</h4><p>Show exactly what IT can and can never see, at the moment of decision, instead of making the flow faster.</p></div><div class="bet"><span class="k">Bet 02</span><h4>One intent, three translations</h4><p>Admins describe a policy once. The system translates it into each operating system’s enforcement.</p></div><div class="bet"><span class="k">Bet 03</span><h4>Friction proportional to consequence</h4><p>Low-risk actions stay one click. Fleet-wide, irreversible actions slow down and show who they affect.</p></div><div class="bet"><span class="k">Bet 04</span><h4>Triage first, browse second</h4><p>Open on what needs doing now, not the full state of the fleet.</p></div></div><h3 class="ch-sub">Scope as a product decision</h3><div class="trade"><div><div><span class="t-k">We chose</span><span class="t-yes">73 policies mapped to real compliance audits</span></div><div><span class="t-k">Over</span><span class="t-no">Matching competitors’ 200+ policies</span></div><div><span class="t-k">Because</span><span class="t-why">Admins used about a dozen of those. Every extra option is one more thing to misconfigure.</span></div></div><div><div><span class="t-k">We chose</span><span class="t-yes">One unified policy model</span></div><div><span class="t-k">Over</span><span class="t-no">Three per-OS configuration screens</span></div><div><span class="t-k">Because</span><span class="t-why">Separate screens are how policy drifts between platforms in the first place.</span></div></div><div><div><span class="t-k">We chose</span><span class="t-yes">Adding a fifth enrolment step</span></div><div><span class="t-k">Over</span><span class="t-no">The shortest possible flow</span></div><div><span class="t-k">Because</span><span class="t-why">Speed wasn’t the blocker. Belief was.</span></div></div></div><div class="prose"><p>As acting PM I decided which of several hundred possible device controls made the first release, in what order, and which OS reached parity when.</p></div></div>
-</div></section><section class="chapter" id="ia"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">05</span><span class="mono">Information architecture</span></div>
-  <div class="ch-body"><h2 class="ch-h">Four jobs, one console, and a translation layer underneath.</h2><figure class="ia"><div class="ia-root"><span>MDM Genie</span></div><div class="ia-cols" style="--cols:4"><div class="ia-col"><h5>Enrol</h5><p>Get devices in, safely</p><ul><li>Zero-touch enrolment</li><li>BYOD work profiles</li><li>Kiosk mode</li></ul></div><div class="ia-col"><h5>Configure</h5><p>Say what should be true</p><ul><li>Policy builder<small>73 policies, 3 OSes</small></li><li>Application management</li><li>Conflict resolution</li><li>Rollout scheduling</li></ul></div><div class="ia-col"><h5>Monitor</h5><p>Know what is true</p><ul><li>Compliance monitor</li><li>Device inventory</li><li>Compliance reporting</li><li>Audit logs</li></ul></div><div class="ia-col"><h5>Act</h5><p>Change it, carefully</p><ul><li>Remote actions<small>lock, wipe, locate, reset</small></li><li>Blast-radius preview</li></ul></div></div><figcaption class=ia-cap>Policies are grouped by intent (authentication &amp; security, network &amp; VPN, BYOD &amp; data separation), not by operating system.</figcaption></figure><h3 class="ch-sub">System architecture</h3><div class="layers"><div class="layer"><b>Admin interface</b><span>Unified dashboard · Policy builder · Device inventory · Compliance monitor · Remote actions</span></div><div class="layer"><b>Policy engine</b><span>Validator · Conflict resolver · Rollout scheduler · Compliance engine · Alerting</span></div><div class="layer"><b>OS connectors</b><span>Android EMM API · Windows MDM / Intune · Apple MDM protocol</span></div><div class="layer"><b>Device fleet</b><span>Corporate-owned · BYOD enrolled · Kiosk mode · Zero-touch provisioned</span></div></div><div class="prose"><p><strong>Why a designer drew this.</strong> The policy engine is where conflict resolution, rollout staging and the shape of an alert get decided. They’re interface problems expressed as architecture. If I’d waited for engineering to define that layer, I’d have been designing screens on top of decisions I didn’t make.</p></div><figure class="flow"><h5>BYOD enrolment journey (shipped)</h5><ol><li class=""><strong>Scan code</strong><span>From the IT invitation</span></li><li class=""><strong>Sign in</strong><span>Work identity</span></li><li class="is-key"><strong>See what IT can and can’t see</strong><span>Plain-language, two columns</span></li><li class=""><strong>Create work profile</strong><span>Separate from personal data</span></li><li class=""><strong>Apply policies</strong><span>Work data and policy only</span></li></ol><figcaption class=flow-cap>Step 3 is the one I added. It comes before the work profile is created, not buried in a policy document afterwards.</figcaption></figure></div>
-</div></section><section class="chapter" id="design"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">06</span><span class="mono">UX & UI design</span></div>
-  <div class="ch-body"><h2 class="ch-h">Four decisions that defined the product.</h2><article class="dr" id="d1">
-  <div class="dr-top mono"><span>Decision 01 · BYOD enrolment</span><span class="ev" data-l="2"><b><i></i><i></i><i></i></b>Tested · n=5</span></div>
-  <h3>I added a step to raise adoption.</h3>
-  <div class="prose"><p>The usual advice is to remove steps. I added one: a screen that lists in plain language what IT can see and, more importantly, what it can never see.</p></div><div class="options"><div class="opt no"><span class="mono">v1 · optimise speed</span><p>Four steps, under two minutes. 42% stated willingness to enrol.</p></div><div class="opt no"><span class="mono">What testing showed</span><p>No one failed a task. They finished the flow, then said they wouldn’t do it with their real phone.</p></div><div class="opt yes"><span class="mono">Shipped · optimise belief</span><p>A fifth step with two columns, shown at the moment of decision. 79% stated willingness.</p></div></div><figure class="demo" style="margin:28px 0 0">
-        <div class="demo-bar"><span class="mono">MDM Genie · enrolment, step 3 of 5</span><span class="demo-tag">Recreation</span></div>
-        <div class="demo-body">
-          <p style="font-weight:600;font-size:18px;letter-spacing:-.02em;margin-bottom:4px">Before you continue — here's exactly what this does.</p>
-          <p class="muted" style="font-size:14px;margin-bottom:14px">Your work profile is separate from your personal one. This is the full list. Nothing is left out.</p>
-          <div class="grid2">
-            <div class="box"><h5>What IT can see</h5><ul><li><span class="muted">●</span>Apps inside your work profile</li><li><span class="muted">●</span>Work profile security settings</li><li><span class="muted">●</span>Device model and OS version</li><li><span class="muted">●</span>Whether disk encryption is on</li></ul></div>
-            <div class="box" style="border-color:var(--ok)"><h5 style="color:var(--ok)">What IT can never see</h5><ul><li><span class="ok-ic">✓</span>Personal photos, videos or files</li><li><span class="ok-ic">✓</span>Personal messages, WhatsApp, SMS</li><li><span class="ok-ic">✓</span>Browsing outside work apps</li><li><span class="ok-ic">✓</span>Your location, at any time</li></ul></div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MDM Genie — Dinesh Doddaga</title>
+  <meta name="description"
+    content="Case study: designing cross-platform device management where the real blocker was trust, not usability.">
+  <script>document.documentElement.classList.add('js'); (function () { try { var q = new URLSearchParams(location.search).get('brand'), s = sessionStorage; if (q) { s.setItem('dd-brand', q); } var b = s.getItem('dd-brand'); if (b) document.documentElement.dataset.brand = b; } catch (e) { } })();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css?v=33">
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2055%2061%22%3E%3Crect%20width%3D%2255%22%20height%3D%2261%22%20rx%3D%2213%22%20fill%3D%22%2308080a%22/%3E%3Cpath%20d%3D%22M35.9272%2030.0833C35.9272%2030.6302%2035.8751%2031.1667%2035.7709%2031.7031C35.6615%2032.2344%2035.5053%2032.7552%2035.297%2033.2552C35.0886%2033.7604%2034.8334%2034.2396%2034.5313%2034.6875C34.2293%2035.1406%2033.8855%2035.5625%2033.5001%2035.9479C33.1147%2036.3281%2032.698%2036.6719%2032.2449%2036.974C31.7918%2037.276%2031.3178%2037.5313%2030.8126%2037.7396C30.3126%2037.9479%2029.7917%2038.1094%2029.2605%2038.2135C28.724%2038.3177%2028.1876%2038.375%2027.6407%2038.375C27.099%2038.375%2026.5574%2038.3177%2026.0261%2038.2135C25.4897%2038.1094%2024.974%2037.9479%2024.4688%2037.7396C23.9688%2037.5313%2023.4897%2037.276%2023.0365%2036.974C22.5834%2036.6719%2022.1667%2036.3281%2021.7813%2035.9479C21.3959%2035.5625%2021.0522%2035.1406%2020.7501%2034.6875C20.448%2034.2396%2020.1928%2033.7604%2019.9845%2033.2552C19.7761%2032.7552%2019.6199%2032.2344%2019.5157%2031.7031C19.4063%2031.1667%2019.3542%2030.6302%2019.3542%2030.0833C19.3542%2029.5417%2019.4063%2029.0052%2019.5157%2028.4688C19.6199%2027.9375%2019.7761%2027.4167%2019.9845%2026.9167C20.1928%2026.4115%2020.448%2025.9323%2020.7501%2025.4844C21.0522%2025.0312%2021.3959%2024.6094%2021.7813%2024.224C22.1667%2023.8438%2022.5834%2023.5%2023.0365%2023.1979C23.4897%2022.8958%2023.9688%2022.6406%2024.4688%2022.4323C24.974%2022.224%2025.4897%2022.0625%2026.0261%2021.9583C26.5574%2021.8542%2027.099%2021.7969%2027.6407%2021.7969C28.1876%2021.7969%2028.724%2021.8542%2029.2605%2021.9583C29.7917%2022.0625%2030.3126%2022.224%2030.8126%2022.4323C31.3178%2022.6406%2031.7918%2022.8958%2032.2449%2023.1979C32.698%2023.5%2033.1147%2023.8438%2033.5001%2024.224C33.8855%2024.6094%2034.2293%2025.0312%2034.5313%2025.4844C34.8334%2025.9323%2035.0886%2026.4115%2035.297%2026.9167C35.5053%2027.4167%2035.6615%2027.9375%2035.7709%2028.4688C35.8751%2029.0052%2035.9272%2029.5417%2035.9272%2030.0833Z%22%20fill%3D%22%23f5f5f6%22/%3E%3Cpath%20d%3D%22M50.1301%2012.052L47.151%2010.3333V30.8124H47.1353C47.1093%2031.5051%2047.0468%2032.1926%2046.9478%2032.8801C46.8489%2033.5676%2046.7135%2034.2447%2046.5416%2034.9166C46.3697%2035.5885%2046.1614%2036.2447%2045.9166%2036.8958C45.677%2037.5468%2045.401%2038.1822%2045.0885%2038.802C44.7812%2039.4218%2044.4374%2040.0208%2044.0624%2040.6041C43.6874%2041.1874%2043.2864%2041.7499%2042.8489%2042.2916C42.4166%2042.828%2041.953%2043.3437%2041.4635%2043.8385C40.9791%2044.328%2040.4635%2044.7916%2039.927%2045.2291C39.3853%2045.6614%2038.828%2046.0676%2038.2447%2046.4478C37.6614%2046.8228%2037.0624%2047.1666%2036.4426%2047.4791C35.8228%2047.7916%2035.1926%2048.0728%2034.5416%2048.3176C33.8958%2048.5624%2033.2343%2048.7708%2032.5676%2048.9426C31.8958%2049.1197%2031.2187%2049.2603%2030.5312%2049.3593C29.8437%2049.4635%2029.1562%2049.5312%2028.4635%2049.5572C27.7708%2049.5885%2027.078%2049.578%2026.3905%2049.5312C25.6978%2049.4895%2025.0103%2049.4062%2024.328%2049.2916C23.6458%2049.1718%2022.9687%2049.0155%2022.302%2048.828C21.6353%2048.6353%2020.9843%2048.4114%2020.3385%2048.151C19.6978%2047.8905%2019.0728%2047.5989%2018.4583%2047.2708C17.8489%2046.9478%2017.2551%2046.5885%2016.6822%2046.1978C16.1093%2045.8072%2015.5572%2045.3905%2015.0312%2044.9374C14.5051%2044.4895%2013.9999%2044.0155%2013.5208%2043.5155C13.0468%2043.0103%2012.5937%2042.4843%2012.1718%2041.9374C11.7499%2041.3853%2011.3593%2040.8124%2010.9999%2040.2239C10.6405%2039.6301%2010.3124%2039.0208%2010.0155%2038.3958C9.71867%2037.7655%209.45825%2037.1249%209.22909%2036.4739C9.00513%2035.8176%208.81242%2035.151%208.65617%2034.4791C8.49992%2033.802%208.38013%2033.1197%208.29679%2032.4322C8.21346%2031.7447%208.16659%2031.0572%208.15617%2030.3645C8.14575%2029.6718%208.17179%2028.9791%208.23429%2028.2864C8.29679%2027.5989%208.39575%2026.9114%208.53638%2026.2343C8.67179%2025.552%208.84367%2024.8853%209.052%2024.2239C9.26034%2023.5624%209.49992%2022.9114%209.78117%2022.276C10.0572%2021.6458%2010.3645%2021.026%2010.7083%2020.4218C11.052%2019.8228%2011.427%2019.2395%2011.8333%2018.677C12.2343%2018.1145%2012.6718%2017.5728%2013.1353%2017.0572C13.5937%2016.5416%2014.0833%2016.052%2014.5989%2015.5885C15.1145%2015.1249%2015.651%2014.6874%2016.2135%2014.2812C16.776%2013.8749%2017.3541%2013.4999%2017.9583%2013.1562C18.5572%2012.8124%2019.177%2012.4999%2019.8124%2012.2239C20.4478%2011.9426%2021.0937%2011.6978%2021.7551%2011.4895C22.4166%2011.2812%2023.0833%2011.1041%2023.7655%2010.9687C24.4426%2010.828%2025.1249%2010.7291%2025.8176%2010.6614C26.5051%2010.5989%2027.1978%2010.5676%2027.8905%2010.578C28.5833%2010.5885%2029.276%2010.6301%2029.9635%2010.7135C30.651%2010.7968%2031.3333%2010.9166%2032.0103%2011.0676C32.6822%2011.2239%2033.3489%2011.4166%2034.0051%2011.6405C34.6614%2011.8645%2035.302%2012.1249%2035.927%2012.4218V3.85409L32.276%201.74471C31.5728%201.33846%2030.828%201.03117%2030.0416%200.822835C29.2551%200.609294%2028.453%200.505127%2027.6405%200.505127C26.828%200.505127%2026.026%200.609294%2025.2447%200.822835C24.4583%201.03117%2023.7135%201.33846%2023.0051%201.74471L5.15617%2012.052C4.44784%2012.4583%203.80721%2012.9478%203.23429%2013.526C2.66138%2014.0989%202.16659%2014.7395%201.76034%2015.4478C1.35409%2016.151%201.04679%2016.8958%200.833252%2017.6822C0.624919%2018.4687%200.520752%2019.2655%200.520752%2020.078V40.6926C0.520752%2041.5051%200.624919%2042.3072%200.833252%2043.0937C1.04679%2043.8801%201.35409%2044.6249%201.76034%2045.328C2.16659%2046.0312%202.66138%2046.6718%203.23429%2047.2499C3.80721%2047.8228%204.44784%2048.3124%205.15617%2048.7187L23.0051%2059.026C23.7135%2059.4322%2024.4583%2059.7447%2025.2447%2059.953C26.026%2060.1614%2026.828%2060.2708%2027.6405%2060.2708C28.453%2060.2708%2029.2551%2060.1614%2030.0416%2059.953C30.828%2059.7447%2031.5728%2059.4322%2032.276%2059.026L50.1301%2048.7187C50.8333%2048.3124%2051.4739%2047.8228%2052.0468%2047.2447C52.6249%2046.6718%2053.1145%2046.0312%2053.5208%2045.328C53.927%2044.6197%2054.2395%2043.8749%2054.4478%2043.0885C54.6562%2042.3072%2054.7655%2041.5051%2054.7655%2040.6926V20.078C54.7655%2019.2655%2054.6562%2018.4687%2054.4478%2017.6822C54.2395%2016.8958%2053.927%2016.151%2053.5208%2015.4478C53.1145%2014.7395%2052.6249%2014.0989%2052.0468%2013.526C51.4739%2012.9478%2050.8333%2012.4583%2050.1301%2012.052Z%22%20fill%3D%22%23f5f5f6%22/%3E%3C/svg%3E">
+</head>
+
+<body>
+  <div class="prog" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="nav" aria-label="Primary">
+    <div class="wrap nav-in">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg class="logo-mark"
+            viewBox="0 0 55 61" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M35.9272 30.0833C35.9272 30.6302 35.8751 31.1667 35.7709 31.7031C35.6615 32.2344 35.5053 32.7552 35.297 33.2552C35.0886 33.7604 34.8334 34.2396 34.5313 34.6875C34.2293 35.1406 33.8855 35.5625 33.5001 35.9479C33.1147 36.3281 32.698 36.6719 32.2449 36.974C31.7918 37.276 31.3178 37.5313 30.8126 37.7396C30.3126 37.9479 29.7917 38.1094 29.2605 38.2135C28.724 38.3177 28.1876 38.375 27.6407 38.375C27.099 38.375 26.5574 38.3177 26.0261 38.2135C25.4897 38.1094 24.974 37.9479 24.4688 37.7396C23.9688 37.5313 23.4897 37.276 23.0365 36.974C22.5834 36.6719 22.1667 36.3281 21.7813 35.9479C21.3959 35.5625 21.0522 35.1406 20.7501 34.6875C20.448 34.2396 20.1928 33.7604 19.9845 33.2552C19.7761 32.7552 19.6199 32.2344 19.5157 31.7031C19.4063 31.1667 19.3542 30.6302 19.3542 30.0833C19.3542 29.5417 19.4063 29.0052 19.5157 28.4688C19.6199 27.9375 19.7761 27.4167 19.9845 26.9167C20.1928 26.4115 20.448 25.9323 20.7501 25.4844C21.0522 25.0312 21.3959 24.6094 21.7813 24.224C22.1667 23.8438 22.5834 23.5 23.0365 23.1979C23.4897 22.8958 23.9688 22.6406 24.4688 22.4323C24.974 22.224 25.4897 22.0625 26.0261 21.9583C26.5574 21.8542 27.099 21.7969 27.6407 21.7969C28.1876 21.7969 28.724 21.8542 29.2605 21.9583C29.7917 22.0625 30.3126 22.224 30.8126 22.4323C31.3178 22.6406 31.7918 22.8958 32.2449 23.1979C32.698 23.5 33.1147 23.8438 33.5001 24.224C33.8855 24.6094 34.2293 25.0312 34.5313 25.4844C34.8334 25.9323 35.0886 26.4115 35.297 26.9167C35.5053 27.4167 35.6615 27.9375 35.7709 28.4688C35.8751 29.0052 35.9272 29.5417 35.9272 30.0833Z"
+              fill="currentColor" />
+            <path
+              d="M50.1301 12.052L47.151 10.3333V30.8124H47.1353C47.1093 31.5051 47.0468 32.1926 46.9478 32.8801C46.8489 33.5676 46.7135 34.2447 46.5416 34.9166C46.3697 35.5885 46.1614 36.2447 45.9166 36.8958C45.677 37.5468 45.401 38.1822 45.0885 38.802C44.7812 39.4218 44.4374 40.0208 44.0624 40.6041C43.6874 41.1874 43.2864 41.7499 42.8489 42.2916C42.4166 42.828 41.953 43.3437 41.4635 43.8385C40.9791 44.328 40.4635 44.7916 39.927 45.2291C39.3853 45.6614 38.828 46.0676 38.2447 46.4478C37.6614 46.8228 37.0624 47.1666 36.4426 47.4791C35.8228 47.7916 35.1926 48.0728 34.5416 48.3176C33.8958 48.5624 33.2343 48.7708 32.5676 48.9426C31.8958 49.1197 31.2187 49.2603 30.5312 49.3593C29.8437 49.4635 29.1562 49.5312 28.4635 49.5572C27.7708 49.5885 27.078 49.578 26.3905 49.5312C25.6978 49.4895 25.0103 49.4062 24.328 49.2916C23.6458 49.1718 22.9687 49.0155 22.302 48.828C21.6353 48.6353 20.9843 48.4114 20.3385 48.151C19.6978 47.8905 19.0728 47.5989 18.4583 47.2708C17.8489 46.9478 17.2551 46.5885 16.6822 46.1978C16.1093 45.8072 15.5572 45.3905 15.0312 44.9374C14.5051 44.4895 13.9999 44.0155 13.5208 43.5155C13.0468 43.0103 12.5937 42.4843 12.1718 41.9374C11.7499 41.3853 11.3593 40.8124 10.9999 40.2239C10.6405 39.6301 10.3124 39.0208 10.0155 38.3958C9.71867 37.7655 9.45825 37.1249 9.22909 36.4739C9.00513 35.8176 8.81242 35.151 8.65617 34.4791C8.49992 33.802 8.38013 33.1197 8.29679 32.4322C8.21346 31.7447 8.16659 31.0572 8.15617 30.3645C8.14575 29.6718 8.17179 28.9791 8.23429 28.2864C8.29679 27.5989 8.39575 26.9114 8.53638 26.2343C8.67179 25.552 8.84367 24.8853 9.052 24.2239C9.26034 23.5624 9.49992 22.9114 9.78117 22.276C10.0572 21.6458 10.3645 21.026 10.7083 20.4218C11.052 19.8228 11.427 19.2395 11.8333 18.677C12.2343 18.1145 12.6718 17.5728 13.1353 17.0572C13.5937 16.5416 14.0833 16.052 14.5989 15.5885C15.1145 15.1249 15.651 14.6874 16.2135 14.2812C16.776 13.8749 17.3541 13.4999 17.9583 13.1562C18.5572 12.8124 19.177 12.4999 19.8124 12.2239C20.4478 11.9426 21.0937 11.6978 21.7551 11.4895C22.4166 11.2812 23.0833 11.1041 23.7655 10.9687C24.4426 10.828 25.1249 10.7291 25.8176 10.6614C26.5051 10.5989 27.1978 10.5676 27.8905 10.578C28.5833 10.5885 29.276 10.6301 29.9635 10.7135C30.651 10.7968 31.3333 10.9166 32.0103 11.0676C32.6822 11.2239 33.3489 11.4166 34.0051 11.6405C34.6614 11.8645 35.302 12.1249 35.927 12.4218V3.85409L32.276 1.74471C31.5728 1.33846 30.828 1.03117 30.0416 0.822835C29.2551 0.609294 28.453 0.505127 27.6405 0.505127C26.828 0.505127 26.026 0.609294 25.2447 0.822835C24.4583 1.03117 23.7135 1.33846 23.0051 1.74471L5.15617 12.052C4.44784 12.4583 3.80721 12.9478 3.23429 13.526C2.66138 14.0989 2.16659 14.7395 1.76034 15.4478C1.35409 16.151 1.04679 16.8958 0.833252 17.6822C0.624919 18.4687 0.520752 19.2655 0.520752 20.078V40.6926C0.520752 41.5051 0.624919 42.3072 0.833252 43.0937C1.04679 43.8801 1.35409 44.6249 1.76034 45.328C2.16659 46.0312 2.66138 46.6718 3.23429 47.2499C3.80721 47.8228 4.44784 48.3124 5.15617 48.7187L23.0051 59.026C23.7135 59.4322 24.4583 59.7447 25.2447 59.953C26.026 60.1614 26.828 60.2708 27.6405 60.2708C28.453 60.2708 29.2551 60.1614 30.0416 59.953C30.828 59.7447 31.5728 59.4322 32.276 59.026L50.1301 48.7187C50.8333 48.3124 51.4739 47.8228 52.0468 47.2447C52.6249 46.6718 53.1145 46.0312 53.5208 45.328C53.927 44.6197 54.2395 43.8749 54.4478 43.0885C54.6562 42.3072 54.7655 41.5051 54.7655 40.6926V20.078C54.7655 19.2655 54.6562 18.4687 54.4478 17.6822C54.2395 16.8958 53.927 16.151 53.5208 15.4478C53.1145 14.7395 52.6249 14.0989 52.0468 13.526C51.4739 12.9478 50.8333 12.4583 50.1301 12.052Z"
+              fill="currentColor" />
+          </svg></span>Dinesh Doddaga</a>
+      <div class="nav-links"><a href="index.html#work">Work</a><a href="index.html#decisions">Decisions</a><a
+          href="about">About</a><a class="cta" href="contact.html">Get in touch</a></div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="cs-hero">
+      <div class="wrap">
+        <div class="hero-card">
+          <a class="crumb" href="index.html#work">← All work</a><br>
+          <span class="eyebrow mono">01 · Device security · 0→1</span>
+          <h1 class="display">MDM Genie: <span class="serif">security people would opt into.</span></h1>
+          <p class="lede">One console that governs Android, Windows and Apple devices. One wrong click there can lock a
+            whole company out of its laptops. I expected a complexity problem. Research found a trust problem, on both
+            sides of the product.</p>
+          <dl class="facts">
+            <div>
+              <dt>My role</dt>
+              <dd>Product designer and acting PM. I owned the policy roadmap.</dd>
+            </div>
+            <div>
+              <dt>Where</dt>
+              <dd>Brilyant IT Solutions</dd>
+            </div>
+            <div>
+              <dt>Platforms</dt>
+              <dd>Android, Windows and Apple, one console</dd>
+            </div>
+            <div>
+              <dt>Shipped</dt>
+              <dd>73 policies, enrolment, compliance monitor, remote actions</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </header>
+    <nav class="chap-bar" aria-label="Case study chapters">
+      <div class="wrap">
+        <ol>
+          <li><a href="#overview"><b>01</b>Project overview</a></li>
+          <li><a href="#problem"><b>02</b>Problem</a></li>
+          <li><a href="#research"><b>03</b>Research & discovery</a></li>
+          <li><a href="#strategy"><b>04</b>Product strategy</a></li>
+          <li><a href="#ia"><b>05</b>Information architecture</a></li>
+          <li><a href="#design"><b>06</b>UX & UI design</a></li>
+          <li><a href="#features"><b>07</b>Key features</a></li>
+          <li><a href="#challenges"><b>08</b>Challenges & solutions</a></li>
+          <li><a href="#impact"><b>09</b>Impact & outcomes</a></li>
+          <li><a href="#role"><b>10</b>My role</a></li>
+        </ol>
+      </div><span class="chap-progress" aria-hidden="true"></span>
+    </nav>
+    <section class="wrap" aria-label="Summary" style="padding-top:clamp(28px,4vw,48px)">
+      <p class="tldr-label mono"><span>The 30-second version</span><span>Full story · 12 min read</span></p>
+      <div class="tldr">
+        <div><span class="mono">Problem</span>
+          <p>The business needed employees to enrol their own phones. Only 42% said they would. The flow was fast, so
+            speed wasn’t the issue. People didn’t believe what it said.</p>
+        </div>
+        <div><span class="mono">What I did</span>
+          <p>Reframed the brief from admin complexity to trust. Added a step that shows what IT can and can never see,
+            cut several hundred possible controls to 73, and made dangerous actions show their blast radius first.</p>
+        </div>
+        <div><span class="mono">What changed</span>
+          <p>Stated willingness to enrol rose from 42% to 79% in testing. Three OS-specific consoles became one policy
+            model.</p>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="overview">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">01</span><span class="mono">Project overview</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">A single console for three operating systems, and two kinds of user who want opposite things.
+          </h2>
+          <div class="prose">
+            <p>MDM Genie lets an IT team enrol devices, set security policy, monitor compliance and act remotely across
+              Android, Windows and Apple fleets, from one place.</p>
+            <p>It serves two people whose interests genuinely conflict. <strong>The admin wants control and visibility.
+                The employee wants privacy and autonomy.</strong> Most MDM tools resolve that tension by serving the
+              buyer and ignoring the user, which is exactly why adoption stalls.</p>
+          </div>
+          <div class="g3">
+            <div class="card"><span class=k>Primary user</span>
+              <h4>IT admins</h4>
+              <p>Configure policy, enrol devices and respond to incidents across mixed fleets, usually in three separate
+                tools.</p>
+            </div>
+            <div class="card"><span class=k>Secondary user</span>
+              <h4>Employees on BYOD</h4>
+              <p>Asked to enrol a personal phone for work, and worried about what IT will be able to see.</p>
+            </div>
+            <div class="card"><span class=k>Stakeholder</span>
+              <h4>Security &amp; compliance</h4>
+              <p>Customers are audited against compliance frameworks, so policy has to map to real requirements.</p>
+            </div>
+          </div>
+          <h3 class="ch-sub">Business context</h3>
+          <div class="prose">
+            <p>The metric the business cared about was employees enrolling their own phones, and it wasn’t moving.
+              Customers also ran separate consoles per OS, so policy drifted between platforms and nobody had one view
+              of compliance. Competitors answered with volume: <strong>200+ configurable policies, of which admins used
+                about a dozen.</strong></p>
           </div>
         </div>
-        <figcaption class="demo-foot">Remove the work profile at any time. Only work data is deleted.</figcaption>
-      </figure><div class="principle"><span class="mono">Principle</span><p>Friction isn’t the problem. Friction that doesn’t explain itself is. A step that answers the question stopping the user is the most important part of the flow.</p></div>
-</article><article class="dr" id="d2">
-  <div class="dr-top mono"><span>Decision 02 · Destructive actions</span><span class="ev" data-l="0"><b><i></i><i></i><i></i></b>Design scope</span></div>
-  <h3>Show the blast radius, not “Are you sure?”</h3>
-  <div class="prose"><p>The tool did exactly what it was told when it locked several hundred people out. Nothing on screen had shown how many devices the click would hit.</p></div><div class="options"><div class="opt no"><span class="mono">Industry default</span><p>“This cannot be undone.” People click through it on reflex. It protects the vendor, not the admin.</p></div><div class="opt no"><span class="mono">Why it fails</span><p>It asks for confirmation without giving information. The admin needs to see that their filter caught 340 devices, not 4.</p></div><div class="opt yes"><span class="mono">Shipped · proportional</span><p>Named devices and owners, typed confirmation that scales with severity, and an undo window before the command goes out.</p></div></div><figure class="demo" data-demo="blast">
-        <div class="demo-bar"><span class="mono">MDM Genie · remote action</span><span class="demo-tag">Interactive</span></div>
-        <div class="demo-body" style="display:grid;gap:14px">
-          <div><div class="label-s" style="margin-bottom:6px">Action</div><div class="seg" data-act role="group" aria-label="Action"><button data-v="lock" aria-pressed="true">Lock</button><button data-v="retire" aria-pressed="false">Retire</button><button data-v="wipe" aria-pressed="false">Remote wipe</button></div></div>
-          <div><div class="label-s" style="margin-bottom:6px">Target</div><div class="seg" data-tgt role="group" aria-label="Target"><button data-v="one" aria-pressed="true">1 device</button><button data-v="field" aria-pressed="false">Field Team · 12</button><button data-v="all" aria-pressed="false">All Windows · 340</button></div></div>
-          <div class="box" data-out aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="chapter" id="problem">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">02</span><span class="mono">Problem</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">Enrolment was stuck, and nothing on screen showed admins the consequences of a click.</h2>
+          <div>
+            <p class="pull">“I’m happy to enrol my phone for work. I just don’t want IT seeing my personal photos or my
+              WhatsApp.”</p>
+            <p class="pull-src mono">BYOD participant · enrolment testing</p>
+          </div>
+          <div class="g3">
+            <div class="stat"><strong>42%</strong><span>stated willingness to enrol</span><small>On a fast, four-step v1
+                flow that every participant could complete.</small></div>
+            <div class="stat"><strong>3 tools</strong><span>one per operating system</span><small>The same security
+                intent had to be configured three times and kept in sync by hand.</small></div>
+            <div class="stat"><strong>Incidents</strong><span>how violations were found</span><small>Admins discovered
+                policy breaches through incidents, not monitoring.</small></div>
+          </div>
+          <p class="hmw"><b>The question we had to answer</b>How might we let IT enforce security across three operating
+            systems without employees refusing to enrol, and without a single click locking the company out?</p>
         </div>
-        <div class="demo-foot row" data-confirm style="justify-content:space-between"></div>
-      </figure><p class="muted" style="font-size:14px;margin-top:10px">Try <strong>Remote wipe</strong> on <strong>All Windows · 340</strong>. The undo window is real.</p><div class="principle"><span class="mono">Principle</span><p>Friction should match the consequence, and it should tell you something. Showing 340 names to someone who expected 4 is the safety mechanism.</p></div>
-</article><article class="dr" id="d3">
-  <div class="dr-top mono"><span>Decision 03 · Policy architecture</span><span class="ev" data-l="2"><b><i></i><i></i><i></i></b>Tested</span></div>
-  <h3>One policy form for three operating systems.</h3>
-  <div class="prose"><p>Some policies apply everywhere, like password length. Others exist on one OS only: BitLocker on Windows, AirDrop on Apple, factory-reset protection on Android. I explored three structures.</p></div><div class="explore" style="--n:3"><figure class="ex"><header><b>A · Tabs per OS</b><i>Rejected</i></header><div class="wf"><div class="r"><span class="pill on">Android</span><span class="pill">Windows</span><span class="pill">Apple</span></div>
-      <div class="blk"><div class="r"><span class="lbl">Password length</span><span class="b"></span></div><div class="r"><span class="lbl">Screen lock</span><span class="b"></span></div><div class="r"><span class="lbl">Encryption</span><span class="b"></span></div></div>
-      <div class="r"><span class="b s"></span><span>…same intent, set again on 2 more tabs</span></div></div><p>Clean to build, and it recreates the original problem: the same intent configured three times.</p></figure><figure class="ex"><header><b>B · Show all 73</b><i>Rejected</i></header><div class="wf"><div class="r"><span class="lbl">All 73 policies</span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span class="b xs"></span><span class="b"></span></div><div class="r"><span>↓ 64 more</span></div></div><p>Honest, and paralysing. Admins couldn’t pick out the four settings that mattered.</p></figure><figure class="ex yes"><header><b>C · Fade, don’t hide</b><i>Shipped</i></header><div class="wf"><div class="r"><span class="lbl">Target</span><span class="pill on">Android</span><span class="pill on">Windows</span><span class="pill">Apple</span></div>
-      <div class="blk"><div class="r"><span class="lbl">Password length</span><span class="b"></span><span class="pill">A</span><span class="pill">W</span><span class="pill">⌘</span></div>
-      <div class="r"><span class="lbl">BitLocker</span><span class="b"></span><span class="pill">W</span></div>
-      <div class="r dim"><span class="lbl">FileVault</span><span class="b"></span><span class="pill">⌘</span></div>
-      <div class="r dim"><span class="lbl">Block AirDrop</span><span class="b"></span><span class="pill">⌘</span></div></div>
-      <div class="r"><span>Not applicable = faded, never hidden</span></div></div><p>Choose target platforms. Policies that don’t apply fade but stay visible, so admins learn the coverage model.</p></figure></div><div class="principle"><span class="mono">Principle</span><p>Complexity should be available, not constantly visible. Fading instead of hiding kept admins’ trust that a setting existed and had applied.</p></div>
-</article><article class="dr" id="d4">
-  <div class="dr-top mono"><span>Decision 04 · Compliance monitor</span><span class="ev" data-l="2"><b><i></i><i></i><i></i></b>Tested</span></div>
-  <h3>Triage first, browse second.</h3>
-  <div class="prose"><p>Admins arrive asking “what do I need to do right now?”, not “what is the state of my fleet?” Those questions need almost opposite interfaces.</p></div><div class="explore" style="--n:2"><figure class="ex"><header><b>v1 · Complete visibility</b><i>Rejected</i></header><div class="wf"><div class="r"><span class="lbl">Fleet</span><span class="b"></span><span class="pill">Filter</span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span class="b xs"></span></div><div class="r"><span>Accurate. Nobody acted on it.</span></div></div><p>Every device, policy and status, filterable. Admins scrolled, then closed it without acting.</p></figure><figure class="ex yes"><header><b>v2 · Severity-ranked queue</b><i>Shipped</i></header><div class="wf"><div class="r"><span class="lbl">Needs attention</span><span class="pill">6 items</span></div>
-      <div class="blk"><div class="r"><span class="pill risk">CRITICAL</span><span class="b"></span></div><div class="r"><span class="b s"></span><span class="btn acc">Re-push policy</span></div></div>
-      <div class="blk"><div class="r"><span class="pill warn">WARNING</span><span class="b"></span></div><div class="r"><span class="b s"></span><span class="btn">Reapply profile</span></div></div>
-      <div class="blk dim"><div class="r"><span class="pill">INFO</span><span class="b"></span></div></div>
-      <div class="r"><span>Full fleet view one click away</span></div></div><p>What’s critical, what it affects and the fix, side by side. The full fleet view is one click away.</p></figure></div><div class="principle"><span class="mono">Principle</span><p>“Give users all the data and let them decide” sounds respectful but often means giving up. Deciding what deserves attention is the design work.</p></div>
-</article></div>
-</div></section><section class="chapter" id="features"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">07</span><span class="mono">Key features</span></div>
-  <div class="ch-body"><h2 class="ch-h">What shipped, and why each part exists.</h2><div class="feats"><div class="feat hero-feat"><div class="ic" aria-hidden="true">◎</div><h4>Transparent BYOD enrolment</h4><p>Work profiles with explicit, visible boundaries between work and personal data, shown before enrolment completes.</p></div><div class="feat hero-feat"><div class="ic" aria-hidden="true">⚙</div><h4>Unified policy builder</h4><p>73 policies across three OSes in one form, grouped by intent, with platform coverage visible at a glance.</p></div><div class="feat hero-feat"><div class="ic" aria-hidden="true">⚠</div><h4>Remote actions with blast radius</h4><p>Lock, wipe, locate and reset, with named targets, severity-scaled confirmation and an undo window.</p></div><div class="feat"><div class="ic" aria-hidden="true">▤</div><h4>Compliance monitor</h4><p>A severity-ranked queue with remediation next to each issue, plus fleet-wide state per OS.</p></div><div class="feat"><div class="ic" aria-hidden="true">⇄</div><h4>Policy conflict resolution</h4><p>Detects contradictory policies across overlapping device groups before rollout.</p></div><div class="feat"><div class="ic" aria-hidden="true">◷</div><h4>Rollout scheduling</h4><p>Staged deployment with per-wave monitoring instead of fleet-wide pushes.</p></div><div class="feat"><div class="ic" aria-hidden="true">✓</div><h4>Zero-touch enrolment</h4><p>Devices provisioned and configured without IT touching them; under 5 minutes in testing.</p></div><div class="feat"><div class="ic" aria-hidden="true">▦</div><h4>Kiosk mode</h4><p>Single-purpose lockdown for shop floor and field devices.</p></div><div class="feat"><div class="ic" aria-hidden="true">☰</div><h4>Audit logs &amp; reporting</h4><p>Every action timestamped and attributed; posture reports mapped to the frameworks customers are audited against.</p></div></div></div>
-</div></section><section class="chapter" id="challenges"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">08</span><span class="mono">Challenges & solutions</span></div>
-  <div class="ch-body"><h2 class="ch-h">The hard parts, and what we did about them.</h2><div class="pairs"><div class="pair"><div class="c"><span class="k">Challenge</span><h4>Two users with opposing interests</h4><p>Admins want control; employees want privacy. Serving only the buyer stalls adoption.</p></div><div class="s"><span class="k">How we solved it</span><h4>Make the boundary explicit</h4><p>A plain-language “can see / can never see” step, and work profiles that keep personal data out of IT’s reach.</p></div></div><div class="pair"><div class="c"><span class="k">Challenge</span><h4>One intent, three enforcement models</h4><p>Each OS exposes different controls through different APIs, so policy drifted between platforms.</p></div><div class="s"><span class="k">How we solved it</span><h4>A single schema with a translation layer</h4><p>Admins configure intent once; the policy engine maps it to Android, Windows and Apple connectors.</p></div></div><div class="pair"><div class="c"><span class="k">Challenge</span><h4>Irreversible actions at fleet scale</h4><p>A mis-scoped filter can lock hundreds of people out, and generic confirmations get clicked through.</p></div><div class="s"><span class="k">How we solved it</span><h4>Informative, proportional friction</h4><p>Blast-radius preview with names, typed confirmation for severe actions, and a real undo window.</p></div></div><div class="pair"><div class="c"><span class="k">Challenge</span><h4>Too much accurate data</h4><p>The complete fleet view was correct and still ignored.</p></div><div class="s"><span class="k">How we solved it</span><h4>Prioritise for the admin</h4><p>A severity-ranked queue as the default view, with remediation inline.</p></div></div><div class="pair"><div class="c"><span class="k">Challenge</span><h4>A small research sample</h4><p>Five admins can show direction, not effect size.</p></div><div class="s"><span class="k">How we solved it</span><h4>Disclose it, every time</h4><p>Sample sizes and limitations appear next to the numbers, here and in interviews.</p></div></div></div></div>
-</div></section><section class="chapter" id="impact"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">09</span><span class="mono">Impact & outcomes</span></div>
-  <div class="ch-body"><h2 class="ch-h">What changed, graded by how much you should trust each number.</h2><div class="outcomes"><div><strong>42% → 79%</strong><p>Stated willingness to enrol a personal device, before and after the transparency step</p><span class="ev" data-l="2"><b><i></i><i></i><i></i></b>Moderated testing · n=5</span></div><div><strong>3 → 1</strong><p>Separate Android, Intune and Apple admin tools replaced by one policy model</p><span class="ev" data-l="0"><b><i></i><i></i><i></i></b>Shipped scope</span></div><div><strong>73</strong><p>Policies specified across three OSes, chosen to map to real compliance audits</p><span class="ev" data-l="0"><b><i></i><i></i><i></i></b>Shipped scope</span></div><div><strong>&lt; 5 min</strong><p>Zero-touch enrolment with no IT contact, timed on the shipped flow</p><span class="ev" data-l="2"><b><i></i><i></i><i></i></b>Tested</span></div></div><div class="benefits" style="--cols:3"><div class="benefit"><h4>Employees</h4><p>Know exactly what IT can and can never see before they hand over a personal phone.</p></div><div class="benefit"><h4>IT admins</h4><p>One console instead of three, and they see who an action affects before it runs.</p></div><div class="benefit"><h4>The business</h4><p>The BYOD enrolment blocker was identified as trust, and the fix moved stated willingness from 42% to 79%.</p></div></div><p class="note"><strong>How to weigh 42% → 79%.</strong> It measures stated willingness, not real enrolment, and the sample is small. Every participant gave the same reason, so the direction is clear: transparency was the blocker.</p></div>
-</div></section><section class="chapter" id="role"><div class="wrap cs-grid">
-  <div class="cs-label"><span class="mono idx">10</span><span class="mono">My role</span></div>
-  <div class="ch-body"><h2 class="ch-h">End-to-end ownership, from the policy roadmap to every screen.</h2><div class="role"><div class="role-head"><strong>Product designer + acting product manager</strong><span>MDM Genie · end-to-end ownership</span></div><div class="role-row"><b>Product strategy</b><span class="lvl">Owned</span><p>Owned the policy roadmap: which of several hundred controls shipped first, in what order, and when each OS reached parity.</p></div><div class="role-row"><b>UX research</b><span class="lvl">Owned</span><p>Planned and ran contextual inquiry, synthesised about 180 observations, and ran moderated testing with admins and BYOD users.</p></div><div class="role-row"><b>Information architecture</b><span class="lvl">Owned</span><p>Designed the cross-OS IA, the intent-based policy grouping and the policy schema, and drew the four-layer architecture.</p></div><div class="role-row"><b>Interaction &amp; UI design</b><span class="lvl">Owned</span><p>Designed every screen, including enrolment, policy builder, compliance monitor and remote actions.</p></div><div class="role-row"><b>Systems thinking</b><span class="lvl">Owned</span><p>Drew the four-layer architecture so conflict resolution, rollout staging and alert shape were designed, not inherited from engineering defaults.</p></div></div><h3 class="ch-sub">What this taught me</h3><div class="reflect"><div><h4>High-stakes interfaces need deliberate friction</h4><p>Low friction is a value, not a law. Irreversibility is when you trade it away.</p></div><div><h4>B2B products have two users</h4><p>The buyer and the user can want opposite things. Design for both, or adoption stalls.</p></div><div><h4>Task success can hide the real failure</h4><p>Every participant completed v1. I now ask “would you?” as well as “can you?”, because only one predicts adoption.</p></div><div class="diff"><h4>What I’d do differently</h4><p>Back the headline number with behaviour. A larger unmoderated study or production enrolment data would turn a strong signal into a claim without a caveat.</p></div></div></div>
-</div></section>
-<div class="wrap"><a class="next" href="tat.html"><span class="mono">Next · 02</span><h2>TAT Genie: <span class="serif">a queue that knows what matters →</span></h2></a></div>
-</main>
+      </div>
+    </section>
+    <section class="chapter" id="research">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">03</span><span class="mono">Research & discovery</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">I went in to validate a complexity hypothesis. Research contradicted it.</h2>
+          <div class="g4">
+            <div class="card"><span class=k>Recruitment</span>
+              <h4>Who</h4>
+              <p>IT managers and security analysts at organisations of 200–2,000 employees, each managing at least two
+                OS types. BYOD participants recruited separately.</p>
+            </div>
+            <div class="card"><span class=k>Protocol</span>
+              <h4>How</h4>
+              <p>Contextual inquiry, observing admins live in their existing tools, then semi-structured follow-ups on
+                policy configuration and incident response.</p>
+            </div>
+            <div class="card"><span class=k>Synthesis</span>
+              <h4>Making sense</h4>
+              <p>Affinity mapping across about 180 observations, then policy-tree mapping to reconcile OS coverage into
+                one schema.</p>
+            </div>
+            <div class="card"><span class=k>Evaluation</span>
+              <h4>Testing</h4>
+              <p>Moderated usability testing with 5 IT admins on the shipped flows. BYOD enrolment tested separately,
+                with willingness captured before and after.</p>
+            </div>
+          </div>
+          <h3 class="ch-sub">Key findings</h3>
+          <ol class="insights">
+            <li>
+              <h4>Employees weren’t confused. They didn’t believe it.</h4>
+              <p>They completed the enrolment flow and then declined. MDM tools are opaque about what they monitor, so
+                people assume the worst.</p><span class=src>Enrolment testing</span>
+            </li>
+            <li>
+              <h4>Violations surfaced through incidents, not monitoring.</h4>
+              <p>Proactive alerting was the most requested capability across every admin interview.</p><span
+                class=src>Admin interviews</span>
+            </li>
+            <li>
+              <h4>Seventy-three equal options hide the four that matter.</h4>
+              <p>Shown a flat list, admins couldn’t tell the settings that mattered from the ones that didn’t.</p><span
+                class=src>Usability testing</span>
+            </li>
+            <li>
+              <h4>Disappearing options erode trust in the tool itself.</h4>
+              <p>When settings vanished, admins stopped trusting that a policy had actually been applied.</p><span
+                class=src>Usability testing</span>
+            </li>
+            <li>
+              <h4>Nothing showed the blast radius of a click.</h4>
+              <p>One admin described a policy that hit the wrong device group and locked several hundred people out of
+                their laptops on a Monday morning.</p><span class=src>Contextual inquiry</span>
+            </li>
+          </ol>
+          <p class="note"><strong>Limitations, stated up front.</strong> Five admins is enough to surface direction, not
+            to size an effect. The 42% → 79% figure measures stated willingness, not real enrolment, and stated intent
+            overstates adoption.</p>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="strategy">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">04</span><span class="mono">Product strategy</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">The brief was about complexity. The product became about trust, twice over.</h2>
+          <div class="prose">
+            <p>Employees had to trust IT enough to hand over a device. Admins had to trust the tool enough to press a
+              button that could affect hundreds of laptops. Every major decision follows from that reframe.</p>
+          </div>
+          <div class="bets">
+            <div class="bet"><span class="k">Bet 01</span>
+              <h4>Earn belief before asking for the device</h4>
+              <p>Show exactly what IT can and can never see, at the moment of decision, instead of making the flow
+                faster.</p>
+            </div>
+            <div class="bet"><span class="k">Bet 02</span>
+              <h4>One intent, three translations</h4>
+              <p>Admins describe a policy once. The system translates it into each operating system’s enforcement.</p>
+            </div>
+            <div class="bet"><span class="k">Bet 03</span>
+              <h4>Friction proportional to consequence</h4>
+              <p>Low-risk actions stay one click. Fleet-wide, irreversible actions slow down and show who they affect.
+              </p>
+            </div>
+            <div class="bet"><span class="k">Bet 04</span>
+              <h4>Triage first, browse second</h4>
+              <p>Open on what needs doing now, not the full state of the fleet.</p>
+            </div>
+          </div>
+          <h3 class="ch-sub">Scope as a product decision</h3>
+          <div class="trade">
+            <div>
+              <div><span class="t-k">We chose</span><span class="t-yes">73 policies mapped to real compliance
+                  audits</span></div>
+              <div><span class="t-k">Over</span><span class="t-no">Matching competitors’ 200+ policies</span></div>
+              <div><span class="t-k">Because</span><span class="t-why">Admins used about a dozen of those. Every extra
+                  option is one more thing to misconfigure.</span></div>
+            </div>
+            <div>
+              <div><span class="t-k">We chose</span><span class="t-yes">One unified policy model</span></div>
+              <div><span class="t-k">Over</span><span class="t-no">Three per-OS configuration screens</span></div>
+              <div><span class="t-k">Because</span><span class="t-why">Separate screens are how policy drifts between
+                  platforms in the first place.</span></div>
+            </div>
+            <div>
+              <div><span class="t-k">We chose</span><span class="t-yes">Adding a fifth enrolment step</span></div>
+              <div><span class="t-k">Over</span><span class="t-no">The shortest possible flow</span></div>
+              <div><span class="t-k">Because</span><span class="t-why">Speed wasn’t the blocker. Belief was.</span>
+              </div>
+            </div>
+          </div>
+          <div class="prose">
+            <p>As acting PM I decided which of several hundred possible device controls made the first release, in what
+              order, and which OS reached parity when.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="ia">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">05</span><span class="mono">Information architecture</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">Four jobs, one console, and a translation layer underneath.</h2>
+          <figure class="ia">
+            <div class="ia-root"><span>MDM Genie</span></div>
+            <div class="ia-cols" style="--cols:4">
+              <div class="ia-col">
+                <h5>Enrol</h5>
+                <p>Get devices in, safely</p>
+                <ul>
+                  <li>Zero-touch enrolment</li>
+                  <li>BYOD work profiles</li>
+                  <li>Kiosk mode</li>
+                </ul>
+              </div>
+              <div class="ia-col">
+                <h5>Configure</h5>
+                <p>Say what should be true</p>
+                <ul>
+                  <li>Policy builder<small>73 policies, 3 OSes</small></li>
+                  <li>Application management</li>
+                  <li>Conflict resolution</li>
+                  <li>Rollout scheduling</li>
+                </ul>
+              </div>
+              <div class="ia-col">
+                <h5>Monitor</h5>
+                <p>Know what is true</p>
+                <ul>
+                  <li>Compliance monitor</li>
+                  <li>Device inventory</li>
+                  <li>Compliance reporting</li>
+                  <li>Audit logs</li>
+                </ul>
+              </div>
+              <div class="ia-col">
+                <h5>Act</h5>
+                <p>Change it, carefully</p>
+                <ul>
+                  <li>Remote actions<small>lock, wipe, locate, reset</small></li>
+                  <li>Blast-radius preview</li>
+                </ul>
+              </div>
+            </div>
+            <figcaption class=ia-cap>Policies are grouped by intent (authentication &amp; security, network &amp; VPN,
+              BYOD &amp; data separation), not by operating system.</figcaption>
+          </figure>
+          <h3 class="ch-sub">System architecture</h3>
+          <div class="layers">
+            <div class="layer"><b>Admin interface</b><span>Unified dashboard · Policy builder · Device inventory ·
+                Compliance monitor · Remote actions</span></div>
+            <div class="layer"><b>Policy engine</b><span>Validator · Conflict resolver · Rollout scheduler · Compliance
+                engine · Alerting</span></div>
+            <div class="layer"><b>OS connectors</b><span>Android EMM API · Windows MDM / Intune · Apple MDM
+                protocol</span></div>
+            <div class="layer"><b>Device fleet</b><span>Corporate-owned · BYOD enrolled · Kiosk mode · Zero-touch
+                provisioned</span></div>
+          </div>
+          <div class="prose">
+            <p><strong>Why a designer drew this.</strong> The policy engine is where conflict resolution, rollout
+              staging and the shape of an alert get decided. They’re interface problems expressed as architecture. If
+              I’d waited for engineering to define that layer, I’d have been designing screens on top of decisions I
+              didn’t make.</p>
+          </div>
+          <figure class="flow">
+            <h5>BYOD enrolment journey (shipped)</h5>
+            <ol>
+              <li class=""><strong>Scan code</strong><span>From the IT invitation</span></li>
+              <li class=""><strong>Sign in</strong><span>Work identity</span></li>
+              <li class="is-key"><strong>See what IT can and can’t see</strong><span>Plain-language, two columns</span>
+              </li>
+              <li class=""><strong>Create work profile</strong><span>Separate from personal data</span></li>
+              <li class=""><strong>Apply policies</strong><span>Work data and policy only</span></li>
+            </ol>
+            <figcaption class=flow-cap>Step 3 is the one I added. It comes before the work profile is created, not
+              buried in a policy document afterwards.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="design">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">06</span><span class="mono">UX & UI design</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">Four decisions that defined the product.</h2>
+          <article class="dr" id="d1">
+            <div class="dr-top mono"><span>Decision 01 · BYOD enrolment</span><span class="ev"
+                data-l="2"><b><i></i><i></i><i></i></b>Tested · n=5</span></div>
+            <h3>I added a step to raise adoption.</h3>
+            <div class="prose">
+              <p>The usual advice is to remove steps. I added one: a screen that lists in plain language what IT can see
+                and, more importantly, what it can never see.</p>
+            </div>
+            <div class="options">
+              <div class="opt no"><span class="mono">v1 · optimise speed</span>
+                <p>Four steps, under two minutes. 42% stated willingness to enrol.</p>
+              </div>
+              <div class="opt no"><span class="mono">What testing showed</span>
+                <p>No one failed a task. They finished the flow, then said they wouldn’t do it with their real phone.
+                </p>
+              </div>
+              <div class="opt yes"><span class="mono">Shipped · optimise belief</span>
+                <p>A fifth step with two columns, shown at the moment of decision. 79% stated willingness.</p>
+              </div>
+            </div>
+            <figure class="demo" style="margin:28px 0 0">
+              <div class="demo-bar"><span class="mono">MDM Genie · enrolment, step 3 of 5</span><span
+                  class="demo-tag">Recreation</span></div>
+              <div class="demo-body">
+                <p style="font-weight:600;font-size:18px;letter-spacing:-.02em;margin-bottom:4px">Before you continue —
+                  here's exactly what this does.</p>
+                <p class="muted" style="font-size:14px;margin-bottom:14px">Your work profile is separate from your
+                  personal one. This is the full list. Nothing is left out.</p>
+                <div class="grid2">
+                  <div class="box">
+                    <h5>What IT can see</h5>
+                    <ul>
+                      <li><span class="muted">●</span>Apps inside your work profile</li>
+                      <li><span class="muted">●</span>Work profile security settings</li>
+                      <li><span class="muted">●</span>Device model and OS version</li>
+                      <li><span class="muted">●</span>Whether disk encryption is on</li>
+                    </ul>
+                  </div>
+                  <div class="box" style="border-color:var(--ok)">
+                    <h5 style="color:var(--ok)">What IT can never see</h5>
+                    <ul>
+                      <li><span class="ok-ic">✓</span>Personal photos, videos or files</li>
+                      <li><span class="ok-ic">✓</span>Personal messages, WhatsApp, SMS</li>
+                      <li><span class="ok-ic">✓</span>Browsing outside work apps</li>
+                      <li><span class="ok-ic">✓</span>Your location, at any time</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <figcaption class="demo-foot">Remove the work profile at any time. Only work data is deleted.</figcaption>
+            </figure>
+            <div class="principle"><span class="mono">Principle</span>
+              <p>Friction isn’t the problem. Friction that doesn’t explain itself is. A step that answers the question
+                stopping the user is the most important part of the flow.</p>
+            </div>
+          </article>
+          <article class="dr" id="d2">
+            <div class="dr-top mono"><span>Decision 02 · Destructive actions</span><span class="ev"
+                data-l="0"><b><i></i><i></i><i></i></b>Design scope</span></div>
+            <h3>Show the blast radius, not “Are you sure?”</h3>
+            <div class="prose">
+              <p>The tool did exactly what it was told when it locked several hundred people out. Nothing on screen had
+                shown how many devices the click would hit.</p>
+            </div>
+            <div class="options">
+              <div class="opt no"><span class="mono">Industry default</span>
+                <p>“This cannot be undone.” People click through it on reflex. It protects the vendor, not the admin.
+                </p>
+              </div>
+              <div class="opt no"><span class="mono">Why it fails</span>
+                <p>It asks for confirmation without giving information. The admin needs to see that their filter caught
+                  340 devices, not 4.</p>
+              </div>
+              <div class="opt yes"><span class="mono">Shipped · proportional</span>
+                <p>Named devices and owners, typed confirmation that scales with severity, and an undo window before the
+                  command goes out.</p>
+              </div>
+            </div>
+            <figure class="demo" data-demo="blast">
+              <div class="demo-bar"><span class="mono">MDM Genie · remote action</span><span
+                  class="demo-tag">Interactive</span></div>
+              <div class="demo-body" style="display:grid;gap:14px">
+                <div>
+                  <div class="label-s" style="margin-bottom:6px">Action</div>
+                  <div class="seg" data-act role="group" aria-label="Action"><button data-v="lock"
+                      aria-pressed="true">Lock</button><button data-v="retire"
+                      aria-pressed="false">Retire</button><button data-v="wipe" aria-pressed="false">Remote
+                      wipe</button></div>
+                </div>
+                <div>
+                  <div class="label-s" style="margin-bottom:6px">Target</div>
+                  <div class="seg" data-tgt role="group" aria-label="Target"><button data-v="one" aria-pressed="true">1
+                      device</button><button data-v="field" aria-pressed="false">Field Team · 12</button><button
+                      data-v="all" aria-pressed="false">All Windows · 340</button></div>
+                </div>
+                <div class="box" data-out aria-live="polite"></div>
+              </div>
+              <div class="demo-foot row" data-confirm style="justify-content:space-between"></div>
+            </figure>
+            <p class="muted" style="font-size:14px;margin-top:10px">Try <strong>Remote wipe</strong> on <strong>All
+                Windows · 340</strong>. The undo window is real.</p>
+            <div class="principle"><span class="mono">Principle</span>
+              <p>Friction should match the consequence, and it should tell you something. Showing 340 names to someone
+                who expected 4 is the safety mechanism.</p>
+            </div>
+          </article>
+          <article class="dr" id="d3">
+            <div class="dr-top mono"><span>Decision 03 · Policy architecture</span><span class="ev"
+                data-l="2"><b><i></i><i></i><i></i></b>Tested</span></div>
+            <h3>One policy form for three operating systems.</h3>
+            <div class="prose">
+              <p>Some policies apply everywhere, like password length. Others exist on one OS only: BitLocker on
+                Windows, AirDrop on Apple, factory-reset protection on Android. I explored three structures.</p>
+            </div>
+            <div class="explore" style="--n:3">
+              <figure class="ex">
+                <header><b>A · Tabs per OS</b><i>Rejected</i></header>
+                <div class="wf">
+                  <div class="r"><span class="pill on">Android</span><span class="pill">Windows</span><span
+                      class="pill">Apple</span></div>
+                  <div class="blk">
+                    <div class="r"><span class="lbl">Password length</span><span class="b"></span></div>
+                    <div class="r"><span class="lbl">Screen lock</span><span class="b"></span></div>
+                    <div class="r"><span class="lbl">Encryption</span><span class="b"></span></div>
+                  </div>
+                  <div class="r"><span class="b s"></span><span>…same intent, set again on 2 more tabs</span></div>
+                </div>
+                <p>Clean to build, and it recreates the original problem: the same intent configured three times.</p>
+              </figure>
+              <figure class="ex">
+                <header><b>B · Show all 73</b><i>Rejected</i></header>
+                <div class="wf">
+                  <div class="r"><span class="lbl">All 73 policies</span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span></div>
+                  <div class="r"><span>↓ 64 more</span></div>
+                </div>
+                <p>Honest, and paralysing. Admins couldn’t pick out the four settings that mattered.</p>
+              </figure>
+              <figure class="ex yes">
+                <header><b>C · Fade, don’t hide</b><i>Shipped</i></header>
+                <div class="wf">
+                  <div class="r"><span class="lbl">Target</span><span class="pill on">Android</span><span
+                      class="pill on">Windows</span><span class="pill">Apple</span></div>
+                  <div class="blk">
+                    <div class="r"><span class="lbl">Password length</span><span class="b"></span><span
+                        class="pill">A</span><span class="pill">W</span><span class="pill">⌘</span></div>
+                    <div class="r"><span class="lbl">BitLocker</span><span class="b"></span><span class="pill">W</span>
+                    </div>
+                    <div class="r dim"><span class="lbl">FileVault</span><span class="b"></span><span
+                        class="pill">⌘</span></div>
+                    <div class="r dim"><span class="lbl">Block AirDrop</span><span class="b"></span><span
+                        class="pill">⌘</span></div>
+                  </div>
+                  <div class="r"><span>Not applicable = faded, never hidden</span></div>
+                </div>
+                <p>Choose target platforms. Policies that don’t apply fade but stay visible, so admins learn the
+                  coverage model.</p>
+              </figure>
+            </div>
+            <div class="principle"><span class="mono">Principle</span>
+              <p>Complexity should be available, not constantly visible. Fading instead of hiding kept admins’ trust
+                that a setting existed and had applied.</p>
+            </div>
+          </article>
+          <article class="dr" id="d4">
+            <div class="dr-top mono"><span>Decision 04 · Compliance monitor</span><span class="ev"
+                data-l="2"><b><i></i><i></i><i></i></b>Tested</span></div>
+            <h3>Triage first, browse second.</h3>
+            <div class="prose">
+              <p>Admins arrive asking “what do I need to do right now?”, not “what is the state of my fleet?” Those
+                questions need almost opposite interfaces.</p>
+            </div>
+            <div class="explore" style="--n:2">
+              <figure class="ex">
+                <header><b>v1 · Complete visibility</b><i>Rejected</i></header>
+                <div class="wf">
+                  <div class="r"><span class="lbl">Fleet</span><span class="b"></span><span class="pill">Filter</span>
+                  </div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span class="b xs"></span><span class="b"></span><span class="b xs"></span><span
+                      class="b xs"></span></div>
+                  <div class="r"><span>Accurate. Nobody acted on it.</span></div>
+                </div>
+                <p>Every device, policy and status, filterable. Admins scrolled, then closed it without acting.</p>
+              </figure>
+              <figure class="ex yes">
+                <header><b>v2 · Severity-ranked queue</b><i>Shipped</i></header>
+                <div class="wf">
+                  <div class="r"><span class="lbl">Needs attention</span><span class="pill">6 items</span></div>
+                  <div class="blk">
+                    <div class="r"><span class="pill risk">CRITICAL</span><span class="b"></span></div>
+                    <div class="r"><span class="b s"></span><span class="btn acc">Re-push policy</span></div>
+                  </div>
+                  <div class="blk">
+                    <div class="r"><span class="pill warn">WARNING</span><span class="b"></span></div>
+                    <div class="r"><span class="b s"></span><span class="btn">Reapply profile</span></div>
+                  </div>
+                  <div class="blk dim">
+                    <div class="r"><span class="pill">INFO</span><span class="b"></span></div>
+                  </div>
+                  <div class="r"><span>Full fleet view one click away</span></div>
+                </div>
+                <p>What’s critical, what it affects and the fix, side by side. The full fleet view is one click away.
+                </p>
+              </figure>
+            </div>
+            <div class="principle"><span class="mono">Principle</span>
+              <p>“Give users all the data and let them decide” sounds respectful but often means giving up. Deciding
+                what deserves attention is the design work.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="features">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">07</span><span class="mono">Key features</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">What shipped, and why each part exists.</h2>
+          <div class="feats">
+            <div class="feat hero-feat">
+              <div class="ic" aria-hidden="true">◎</div>
+              <h4>Transparent BYOD enrolment</h4>
+              <p>Work profiles with explicit, visible boundaries between work and personal data, shown before enrolment
+                completes.</p>
+            </div>
+            <div class="feat hero-feat">
+              <div class="ic" aria-hidden="true">⚙</div>
+              <h4>Unified policy builder</h4>
+              <p>73 policies across three OSes in one form, grouped by intent, with platform coverage visible at a
+                glance.</p>
+            </div>
+            <div class="feat hero-feat">
+              <div class="ic" aria-hidden="true">⚠</div>
+              <h4>Remote actions with blast radius</h4>
+              <p>Lock, wipe, locate and reset, with named targets, severity-scaled confirmation and an undo window.</p>
+            </div>
+            <div class="feat">
+              <div class="ic" aria-hidden="true">▤</div>
+              <h4>Compliance monitor</h4>
+              <p>A severity-ranked queue with remediation next to each issue, plus fleet-wide state per OS.</p>
+            </div>
+            <div class="feat">
+              <div class="ic" aria-hidden="true">⇄</div>
+              <h4>Policy conflict resolution</h4>
+              <p>Detects contradictory policies across overlapping device groups before rollout.</p>
+            </div>
+            <div class="feat">
+              <div class="ic" aria-hidden="true">◷</div>
+              <h4>Rollout scheduling</h4>
+              <p>Staged deployment with per-wave monitoring instead of fleet-wide pushes.</p>
+            </div>
+            <div class="feat">
+              <div class="ic" aria-hidden="true">✓</div>
+              <h4>Zero-touch enrolment</h4>
+              <p>Devices provisioned and configured without IT touching them; under 5 minutes in testing.</p>
+            </div>
+            <div class="feat">
+              <div class="ic" aria-hidden="true">▦</div>
+              <h4>Kiosk mode</h4>
+              <p>Single-purpose lockdown for shop floor and field devices.</p>
+            </div>
+            <div class="feat">
+              <div class="ic" aria-hidden="true">☰</div>
+              <h4>Audit logs &amp; reporting</h4>
+              <p>Every action timestamped and attributed; posture reports mapped to the frameworks customers are audited
+                against.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="challenges">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">08</span><span class="mono">Challenges & solutions</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">The hard parts, and what we did about them.</h2>
+          <div class="pairs">
+            <div class="pair">
+              <div class="c"><span class="k">Challenge</span>
+                <h4>Two users with opposing interests</h4>
+                <p>Admins want control; employees want privacy. Serving only the buyer stalls adoption.</p>
+              </div>
+              <div class="s"><span class="k">How we solved it</span>
+                <h4>Make the boundary explicit</h4>
+                <p>A plain-language “can see / can never see” step, and work profiles that keep personal data out of
+                  IT’s reach.</p>
+              </div>
+            </div>
+            <div class="pair">
+              <div class="c"><span class="k">Challenge</span>
+                <h4>One intent, three enforcement models</h4>
+                <p>Each OS exposes different controls through different APIs, so policy drifted between platforms.</p>
+              </div>
+              <div class="s"><span class="k">How we solved it</span>
+                <h4>A single schema with a translation layer</h4>
+                <p>Admins configure intent once; the policy engine maps it to Android, Windows and Apple connectors.</p>
+              </div>
+            </div>
+            <div class="pair">
+              <div class="c"><span class="k">Challenge</span>
+                <h4>Irreversible actions at fleet scale</h4>
+                <p>A mis-scoped filter can lock hundreds of people out, and generic confirmations get clicked through.
+                </p>
+              </div>
+              <div class="s"><span class="k">How we solved it</span>
+                <h4>Informative, proportional friction</h4>
+                <p>Blast-radius preview with names, typed confirmation for severe actions, and a real undo window.</p>
+              </div>
+            </div>
+            <div class="pair">
+              <div class="c"><span class="k">Challenge</span>
+                <h4>Too much accurate data</h4>
+                <p>The complete fleet view was correct and still ignored.</p>
+              </div>
+              <div class="s"><span class="k">How we solved it</span>
+                <h4>Prioritise for the admin</h4>
+                <p>A severity-ranked queue as the default view, with remediation inline.</p>
+              </div>
+            </div>
+            <div class="pair">
+              <div class="c"><span class="k">Challenge</span>
+                <h4>A small research sample</h4>
+                <p>Five admins can show direction, not effect size.</p>
+              </div>
+              <div class="s"><span class="k">How we solved it</span>
+                <h4>Disclose it, every time</h4>
+                <p>Sample sizes and limitations appear next to the numbers, here and in interviews.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="impact">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">09</span><span class="mono">Impact & outcomes</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">What changed, graded by how much you should trust each number.</h2>
+          <div class="outcomes">
+            <div><strong>42% → 79%</strong>
+              <p>Stated willingness to enrol a personal device, before and after the transparency step</p><span
+                class="ev" data-l="2"><b><i></i><i></i><i></i></b>Moderated testing · n=5</span>
+            </div>
+            <div><strong>3 → 1</strong>
+              <p>Separate Android, Intune and Apple admin tools replaced by one policy model</p><span class="ev"
+                data-l="0"><b><i></i><i></i><i></i></b>Shipped scope</span>
+            </div>
+            <div><strong>73</strong>
+              <p>Policies specified across three OSes, chosen to map to real compliance audits</p><span class="ev"
+                data-l="0"><b><i></i><i></i><i></i></b>Shipped scope</span>
+            </div>
+            <div><strong>&lt; 5 min</strong>
+              <p>Zero-touch enrolment with no IT contact, timed on the shipped flow</p><span class="ev"
+                data-l="2"><b><i></i><i></i><i></i></b>Tested</span>
+            </div>
+          </div>
+          <div class="benefits" style="--cols:3">
+            <div class="benefit">
+              <h4>Employees</h4>
+              <p>Know exactly what IT can and can never see before they hand over a personal phone.</p>
+            </div>
+            <div class="benefit">
+              <h4>IT admins</h4>
+              <p>One console instead of three, and they see who an action affects before it runs.</p>
+            </div>
+            <div class="benefit">
+              <h4>The business</h4>
+              <p>The BYOD enrolment blocker was identified as trust, and the fix moved stated willingness from 42% to
+                79%.</p>
+            </div>
+          </div>
+          <p class="note"><strong>How to weigh 42% → 79%.</strong> It measures stated willingness, not real enrolment,
+            and the sample is small. Every participant gave the same reason, so the direction is clear: transparency was
+            the blocker.</p>
+        </div>
+      </div>
+    </section>
+    <section class="chapter" id="role">
+      <div class="wrap cs-grid">
+        <div class="cs-label"><span class="mono idx">10</span><span class="mono">My role</span></div>
+        <div class="ch-body">
+          <h2 class="ch-h">End-to-end ownership, from the policy roadmap to every screen.</h2>
+          <div class="role">
+            <div class="role-head"><strong>Product designer + acting product manager</strong><span>MDM Genie ·
+                end-to-end ownership</span></div>
+            <div class="role-row"><b>Product strategy</b><span class="lvl">Owned</span>
+              <p>Owned the policy roadmap: which of several hundred controls shipped first, in what order, and when each
+                OS reached parity.</p>
+            </div>
+            <div class="role-row"><b>UX research</b><span class="lvl">Owned</span>
+              <p>Planned and ran contextual inquiry, synthesised about 180 observations, and ran moderated testing with
+                admins and BYOD users.</p>
+            </div>
+            <div class="role-row"><b>Information architecture</b><span class="lvl">Owned</span>
+              <p>Designed the cross-OS IA, the intent-based policy grouping and the policy schema, and drew the
+                four-layer architecture.</p>
+            </div>
+            <div class="role-row"><b>Interaction &amp; UI design</b><span class="lvl">Owned</span>
+              <p>Designed every screen, including enrolment, policy builder, compliance monitor and remote actions.</p>
+            </div>
+            <div class="role-row"><b>Systems thinking</b><span class="lvl">Owned</span>
+              <p>Drew the four-layer architecture so conflict resolution, rollout staging and alert shape were designed,
+                not inherited from engineering defaults.</p>
+            </div>
+          </div>
+          <h3 class="ch-sub">What this taught me</h3>
+          <div class="reflect">
+            <div>
+              <h4>High-stakes interfaces need deliberate friction</h4>
+              <p>Low friction is a value, not a law. Irreversibility is when you trade it away.</p>
+            </div>
+            <div>
+              <h4>B2B products have two users</h4>
+              <p>The buyer and the user can want opposite things. Design for both, or adoption stalls.</p>
+            </div>
+            <div>
+              <h4>Task success can hide the real failure</h4>
+              <p>Every participant completed v1. I now ask “would you?” as well as “can you?”, because only one predicts
+                adoption.</p>
+            </div>
+            <div class="diff">
+              <h4>What I’d do differently</h4>
+              <p>Back the headline number with behaviour. A larger unmoderated study or production enrolment data would
+                turn a strong signal into a claim without a caveat.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="wrap"><a class="next" href="tat"><span class="mono">Next · 02</span>
+        <h2>TAT Genie: <span class="serif">a queue that knows what matters →</span></h2>
+      </a></div>
+  </main>
 
-<footer class="contact" id="contact" style="padding-top:64px"><div class="wrap">
-  <span class="eyebrow mono">Want the longer version?</span>
-  <p class="lede" style="margin:16px 0 28px">I'm happy to walk through the policy schema, the research synthesis, or the parts that didn't work.</p>
-  <a class="contact-mail" href="mailto:dineshdoddaga@gmail.com">dineshdoddaga@gmail.com</a>
-  <div class="foot"><span>© 2026 Dinesh Doddaga</span><nav aria-label="Footer"><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="https://www.linkedin.com/in/dinesh-doddaga-579a3a19a/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://www.behance.net/dineshdoddaga" target="_blank" rel="noopener">Behance ↗</a></nav></div>
-  <p class="muted" style="font-size:13px;margin-top:16px">The product runs inside enterprise customers under NDA. The interfaces here are working recreations I built in code from my own specs, with illustrative data.</p>
-</div></footer>
-<div class="actionbar" role="complementary" aria-label="Contact">
-  <div class="wrap">
-    <div><strong>Dinesh Doddaga · Product Designer</strong><span>Open to senior product design roles · Bengaluru · Remote-friendly</span></div>
-    <a class="btn primary" href="contact.html">Get in touch</a>
+  <footer class="contact" id="contact" style="padding-top:64px">
+    <div class="wrap">
+      <span class="eyebrow mono">Want the longer version?</span>
+      <p class="lede" style="margin:16px 0 28px">I'm happy to walk through the policy schema, the research synthesis, or
+        the parts that didn't work.</p>
+      <a class="contact-mail" href="mailto:dineshdoddaga@gmail.com">dineshdoddaga@gmail.com</a>
+      <div class="foot"><span>© 2026 Dinesh Doddaga</span>
+        <nav aria-label="Footer"><a href="index.html">Home</a><a href="about">About</a><a
+            href="contact.html">Contact</a><a href="https://www.linkedin.com/in/dinesh-doddaga-579a3a19a/"
+            target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://www.behance.net/dineshdoddaga" target="_blank"
+            rel="noopener">Behance ↗</a></nav>
+      </div>
+      <p class="muted" style="font-size:13px;margin-top:16px">The product runs inside enterprise customers under NDA.
+        The interfaces here are working recreations I built in code from my own specs, with illustrative data.</p>
+    </div>
+  </footer>
+  <div class="actionbar" role="complementary" aria-label="Contact">
+    <div class="wrap">
+      <div><strong>Dinesh Doddaga · Product Designer</strong><span>Open to senior product design roles · Bengaluru ·
+          Remote-friendly</span></div>
+      <a class="btn primary" href="contact.html">Get in touch</a>
+    </div>
   </div>
-</div>
-<script src="assets/app.js?v=33"></script>
+  <script src="assets/app.js?v=33"></script>
 </body>
+
 </html>
