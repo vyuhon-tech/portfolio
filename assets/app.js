@@ -485,7 +485,7 @@
         a: 'Email is the best way to reach me, and I reply personally. You can also check my résumé, my LinkedIn recommendations and my Behance.',
         proof: {
           kind: 'links', items: [
-            { label: 'Contact page →', sub: 'Résumé, LinkedIn, email and a quick composer', href: 'contact.html' },
+            { label: 'Contact page →', sub: 'Résumé, LinkedIn, email and a quick composer', href: 'contact' },
             { label: 'dineshdoddaga@gmail.com', sub: 'Email · best for detail', href: MAIL },
             { label: 'Résumé (PDF) ↗', sub: 'One page: history, tools, education', href: RESUME, ext: true },
             { label: 'LinkedIn ↗', sub: 'Recommendations and full role detail', href: LINKEDIN, ext: true },

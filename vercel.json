@@ -5,11 +5,11 @@
     "rewrites": [
         {
             "source": "/about",
-            "destination": "/about.html"
+            "destination": "/about"
         },
         {
             "source": "/contact",
-            "destination": "/contact.html"
+            "destination": "/contact"
         },
         {
             "source": "/strategy",
@@ -17,23 +17,23 @@
         },
         {
             "source": "/hrm",
-            "destination": "/hrm.html"
+            "destination": "/hrml"
         },
         {
             "source": "/mdm",
-            "destination": "/mdm.html"
+            "destination": "/mdm"
         },
         {
             "source": "/tat",
-            "destination": "/tat.html"
+            "destination": "/tat"
         },
         {
             "source": "/qa",
-            "destination": "/qa.html"
+            "destination": "/qa"
         },
         {
             "source": "/sendcrux",
-            "destination": "/sendcrux.html"
+            "destination": "/sendcrux"
         }
     ]
 }
