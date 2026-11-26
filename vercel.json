@@ -1,39 +1,5 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
-    "cleanUrls": false,
-    "trailingSlash": false,
-    "rewrites": [
-        {
-            "source": "/about",
-            "destination": "/about"
-        },
-        {
-            "source": "/contact",
-            "destination": "/contact"
-        },
-        {
-            "source": "/strategy",
-            "destination": "/strategy.html"
-        },
-        {
-            "source": "/hrm",
-            "destination": "/hrml"
-        },
-        {
-            "source": "/mdm",
-            "destination": "/mdm"
-        },
-        {
-            "source": "/tat",
-            "destination": "/tat"
-        },
-        {
-            "source": "/qa",
-            "destination": "/qa"
-        },
-        {
-            "source": "/sendcrux",
-            "destination": "/sendcrux"
-        }
-    ]
+    "cleanUrls": true,
+    "trailingSlash": false
 }
